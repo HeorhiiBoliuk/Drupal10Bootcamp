@@ -1,0 +1,19 @@
+name: drupal10_ddev
+type: theme
+description: 'Drupal administration theme with modern minimalist design.'
+core_version_requirement: ^9.3 || ^10
+base theme: false
+
+libraries:
+  - drupalsite/global
+
+regions:
+  top_header: TopHeader
+  header: 'Header'
+  navbar: Navbar
+  breadcrumb: Breadcrumb
+  highLighted: Highlighted
+  content: Content
+  help: Help
+  footer: 'Footer'
+  featured_bottom_second: 'Bottom footer'
