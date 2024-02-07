@@ -1,0 +1,20 @@
+uuid: dfe31023-bc04-4b8c-bc7a-1d9adf404010
+langcode: en
+status: true
+dependencies:
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: Drupal10_ddev_page_title
+theme: Drupal10_ddev
+region: highLighted
+weight: -11
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

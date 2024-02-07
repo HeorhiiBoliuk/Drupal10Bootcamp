@@ -1,0 +1,25 @@
+uuid: 19e3b199-f07e-4395-a1d5-099e0bbb5637
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-buttons
+  module:
+    - system
+  theme:
+    - olivero
+id: olivero_headerbuttons
+theme: olivero
+region: header
+weight: -7
+provider: null
+plugin: 'system_menu_block:header-buttons'
+settings:
+  id: 'system_menu_block:header-buttons'
+  label: Header-buttons
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }
