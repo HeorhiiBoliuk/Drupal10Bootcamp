@@ -1,0 +1,22 @@
+uuid: ef51ce09-8bd0-4a05-8490-3a5ec9ff8b0e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: Drupal10_ddev_powered
+theme: Drupal10_ddev
+region: highLighted
+weight: 3
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

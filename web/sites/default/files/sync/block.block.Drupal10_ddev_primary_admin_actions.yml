@@ -1,0 +1,20 @@
+uuid: dc942268-7368-4ba8-92ea-35f8b97ccca5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: Drupal10_ddev_primary_admin_actions
+theme: Drupal10_ddev
+region: highLighted
+weight: -6
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

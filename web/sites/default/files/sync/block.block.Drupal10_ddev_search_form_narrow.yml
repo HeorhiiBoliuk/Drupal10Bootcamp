@@ -1,0 +1,23 @@
+uuid: b9d2676e-c718-406e-95ee-755537b398d1
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: Drupal10_ddev_search_form_narrow
+theme: Drupal10_ddev
+region: highLighted
+weight: -2
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

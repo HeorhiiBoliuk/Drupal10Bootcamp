@@ -1,0 +1,8 @@
+uuid: c41be187-dfac-47f7-88e0-0addbb267cac
+langcode: en
+status: true
+dependencies: {  }
+name: Category
+vid: news
+description: ''
+weight: 0

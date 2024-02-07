@@ -1,0 +1,22 @@
+uuid: acbf0165-e81a-469e-bd44-e6d9da3a8e73
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: Drupal10_ddev_help
+theme: Drupal10_ddev
+region: highLighted
+weight: 1
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

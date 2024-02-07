@@ -1,0 +1,25 @@
+uuid: 4f55a2d5-25f4-4930-bfa1-bce5d79b2451
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social-network
+  module:
+    - system
+  theme:
+    - Drupal10_ddev
+id: socialnetwork
+theme: Drupal10_ddev
+region: top_header
+weight: 0
+provider: null
+plugin: 'system_menu_block:social-network'
+settings:
+  id: 'system_menu_block:social-network'
+  label: 'Social Network'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }
