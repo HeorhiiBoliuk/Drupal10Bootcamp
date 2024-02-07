@@ -1,8 +1,0 @@
-uuid: 827223af-075c-43ca-89b5-c8a92b0a876c
-langcode: en
-status: true
-dependencies: {  }
-id: header-buttons
-label: Header-buttons
-description: ''
-locked: false

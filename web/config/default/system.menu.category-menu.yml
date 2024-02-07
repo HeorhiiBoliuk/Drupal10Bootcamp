@@ -1,8 +1,0 @@
-uuid: aa720ffa-6c55-4709-aedb-03a73265abf9
-langcode: en
-status: true
-dependencies: {  }
-id: category-menu
-label: Category_menu
-description: ''
-locked: false
