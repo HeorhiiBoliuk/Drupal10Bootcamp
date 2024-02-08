@@ -1,0 +1,14 @@
+uuid: eecae882-b575-43d8-97d5-62c307d69aec
+langcode: en
+status: true
+dependencies: {  }
+name: default_teaser_image
+label: 'Default teaser image'
+effects:
+  08c3101b-b80f-4147-ab95-2df98f532444:
+    uuid: 08c3101b-b80f-4147-ab95-2df98f532444
+    id: image_resize
+    weight: 1
+    data:
+      width: 324
+      height: 234

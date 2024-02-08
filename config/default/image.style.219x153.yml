@@ -1,0 +1,14 @@
+uuid: 9e920575-ca8e-4683-bcf7-44692f0934f3
+langcode: en
+status: true
+dependencies: {  }
+name: 219x153
+label: 219x153
+effects:
+  e56b763a-248e-466a-8363-7baa4be21602:
+    uuid: e56b763a-248e-466a-8363-7baa4be21602
+    id: image_resize
+    weight: 1
+    data:
+      width: 219
+      height: 153

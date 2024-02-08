@@ -11,13 +11,13 @@ dependencies:
 id: socialnetwork
 theme: Drupal10_ddev
 region: top_header
-weight: 0
+weight: -11
 provider: null
 plugin: 'system_menu_block:social-network'
 settings:
   id: 'system_menu_block:social-network'
   label: 'Social Network'
-  label_display: visible
+  label_display: '0'
   provider: system
   level: 1
   depth: 0
