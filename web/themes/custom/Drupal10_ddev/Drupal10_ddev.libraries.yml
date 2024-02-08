@@ -1,0 +1,10 @@
+global:
+  css:
+    base:
+      assets/css/elements.css: {}
+    component:
+      assets/css/page.css: {}
+      assets/css/header.css: {}
+  js:
+    js/gulpfile.js: {}
+
