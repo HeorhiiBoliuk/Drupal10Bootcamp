@@ -1,0 +1,23 @@
+uuid: 92c6cfa3-6f25-46f0-8836-0ca09f02b14d
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: Drupal10_ddev_search_form_wide
+theme: Drupal10_ddev
+region: highLighted
+weight: -9
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

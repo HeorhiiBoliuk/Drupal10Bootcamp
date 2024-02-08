@@ -1,0 +1,29 @@
+uuid: fe26fa9b-ff63-43e8-a067-7eaff5ec3c2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_overview_grid
+    - node.type.article
+    - taxonomy.vocabulary.overview_grid
+id: node.article.field_is_overview_grid
+field_name: field_is_overview_grid
+entity_type: node
+bundle: article
+label: 'Is Overview Grid'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      overview_grid: overview_grid
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

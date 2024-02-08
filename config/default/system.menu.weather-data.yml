@@ -1,0 +1,8 @@
+uuid: d0628bdd-39cc-4a02-b925-3f3b5877dbcf
+langcode: en
+status: true
+dependencies: {  }
+id: weather-data
+label: weather-data
+description: ''
+locked: false

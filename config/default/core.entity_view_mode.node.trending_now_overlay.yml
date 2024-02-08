@@ -1,0 +1,11 @@
+uuid: 74c58b46-5719-4931-88d3-1fb2df334835
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.trending_now_overlay
+label: 'Trending Now Overlay'
+description: ''
+targetEntityType: node
+cache: true
