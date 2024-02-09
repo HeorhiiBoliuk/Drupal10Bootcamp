@@ -1,0 +1,11 @@
+uuid: 45397c7e-d5b0-49bf-a736-79fac1939f19
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_with_comment_count_and_description
+label: 'Teaser without comment count'
+description: ''
+targetEntityType: node
+cache: true

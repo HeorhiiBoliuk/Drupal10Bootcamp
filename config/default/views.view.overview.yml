@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.trending_now_overlay
     - taxonomy.vocabulary.trending
   content:
     - 'taxonomy_term:trending:235f7be4-f763-438b-9e03-5cdfd021579a'
@@ -196,10 +195,12 @@ display:
           wrapper_class: item-list
           class: ''
       row:
-        type: 'entity:node'
+        type: fields
         options:
-          relationship: none
-          view_mode: trending_now_overlay
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       query:
         type: views_query
         options:

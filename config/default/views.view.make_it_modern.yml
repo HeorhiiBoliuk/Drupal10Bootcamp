@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.small_sidebar_teaser
     - taxonomy.vocabulary.news
   content:
     - 'taxonomy_term:news:3d304e38-fdb1-4609-84bc-ae6a7769dc61'
@@ -191,7 +191,8 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: teaser
+          relationship: none
+          view_mode: small_sidebar_teaser
       query:
         type: views_query
         options:

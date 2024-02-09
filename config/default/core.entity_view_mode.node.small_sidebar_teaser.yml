@@ -1,0 +1,11 @@
+uuid: 91f8f382-61dd-422e-872b-fc4b8ac24528
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.small_sidebar_teaser
+label: 'Small sidebar teaser'
+description: ''
+targetEntityType: node
+cache: true

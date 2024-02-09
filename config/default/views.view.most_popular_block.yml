@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.small_footer_teaser
     - node.type.article
     - taxonomy.vocabulary.trending
   content:
@@ -201,7 +201,8 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: teaser
+          relationship: none
+          view_mode: small_footer_teaser
       query:
         type: views_query
         options:
