@@ -11,7 +11,7 @@ dependencies:
 id: headerbuttons
 theme: Drupal10_ddev
 region: top_header
-weight: -13
+weight: -12
 provider: null
 plugin: 'system_menu_block:header-buttons'
 settings:

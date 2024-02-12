@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.article.field_is_overview_grid
     - field.field.node.article.field_is_trending
     - field.field.node.article.field_tags
+    - field.field.node.article.field_youtube_video_embed
     - field.field.node.article.layout_builder__layout
     - image.style.medium
     - node.type.article
@@ -140,4 +141,5 @@ hidden:
   field_category: true
   field_is_overview_grid: true
   field_is_trending: true
+  field_youtube_video_embed: true
   layout_builder__layout: true

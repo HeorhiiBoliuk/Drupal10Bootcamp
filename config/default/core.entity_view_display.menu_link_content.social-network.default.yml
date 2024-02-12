@@ -1,0 +1,70 @@
+uuid: b1a30d9f-e9c2-4873-9ff8-6644fa835ee3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.social-network.field_social_network_images
+    - system.menu.social-network
+  module:
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          c7943798-1b6d-4fa6-904b-73cca5e12bca:
+            uuid: c7943798-1b6d-4fa6-904b-73cca5e12bca
+            region: content
+            configuration:
+              id: 'field_block:menu_link_content:social-network:field_social_network_images'
+              label: 'Social Network images'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: full
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          39c7a7fe-d7bf-434a-a1e7-2ff0e132a8ec:
+            uuid: 39c7a7fe-d7bf-434a-a1e7-2ff0e132a8ec
+            region: content
+            configuration:
+              id: 'extra_field_block:menu_link_content:social-network:children'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: menu_link_content.social-network.default
+targetEntityType: menu_link_content
+bundle: social-network
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_social_network_images:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }
