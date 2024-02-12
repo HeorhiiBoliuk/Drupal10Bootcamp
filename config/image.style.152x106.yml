@@ -1,0 +1,14 @@
+uuid: 29b0f274-3bc5-416f-9cd4-3c0750716e90
+langcode: en
+status: true
+dependencies: {  }
+name: 152x106
+label: 152X106
+effects:
+  be17679a-de1c-4475-bfc7-20896bce2381:
+    uuid: be17679a-de1c-4475-bfc7-20896bce2381
+    id: image_resize
+    weight: 1
+    data:
+      width: 152
+      height: 106

@@ -1,0 +1,29 @@
+uuid: eea4bd58-c0f5-40eb-b2d7-280c8530b6c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_trending
+    - node.type.article
+    - taxonomy.vocabulary.trending
+id: node.article.field_is_trending
+field_name: field_is_trending
+entity_type: node
+bundle: article
+label: 'Is Trending'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      trending: trending
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

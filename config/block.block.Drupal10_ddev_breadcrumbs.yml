@@ -1,0 +1,22 @@
+uuid: cae71dac-11e5-421a-9361-3552fc4b394c
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - Drupal10_ddev
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: Drupal10_ddev_breadcrumbs
+theme: Drupal10_ddev
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,38 +1,40 @@
-uuid: f529d7f8-3801-4f94-bf50-50aece0e42bc
+uuid: fd867414-6018-46a6-9eac-59e83a6639fb
 langcode: en
-status: false
+status: true
 dependencies:
+  config:
+    - core.entity_view_mode.node.teaser_with_title_and_category
+    - node.type.article
+    - taxonomy.vocabulary.news
+  content:
+    - 'taxonomy_term:news:32fdf377-6d52-433b-8e05-0bb49ef3afca'
   module:
-    - entity_pager
     - node
+    - taxonomy
     - user
-_core:
-  default_config_hash: JOs7GQitrg1hyTfDWarD20cboTmu205j3nVihd2nhBE
-id: entity_pager_example
-label: 'Entity pager example'
+id: house_design_block
+label: 'House Design block'
 module: views
-description: 'This demonstrates a basic use case for Entity Pager.'
+description: ''
 tag: ''
 base_table: node_field_data
 base_field: nid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: ''
+      title: 'House Design block'
       fields:
-        nid:
-          id: nid
+        title:
+          id: title
           table: node_field_data
-          field: nid
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: nid
           plugin_id: field
           label: ''
           exclude: false
@@ -67,7 +69,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -76,10 +78,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: number_integer
+          type: string
           settings:
-            thousand_separator: ''
-            prefix_suffix: false
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -91,10 +92,23 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: none
+        type: mini
         options:
           offset: 0
-          items_per_page: 0
+          items_per_page: 3
+          total_pages: null
+          id: 0
+          tags:
+            next: ›
+            previous: '‹ '
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -124,9 +138,10 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
-          order: ASC
+          order: DESC
           expose:
             label: ''
+            field_identifier: ''
           exposed: false
           granularity: second
       arguments: {  }
@@ -142,21 +157,70 @@ display:
           group: 1
           expose:
             operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            article: article
+        term_node_tid_depth:
+          id: term_node_tid_depth
+          table: node_field_data
+          field: term_node_tid_depth
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_tid_depth
+          operator: or
+          value:
+            - 23
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: news
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
+          depth: 1
       style:
-        type: entity_pager
-        options:
-          grouping: {  }
-          link_next: 'next >'
-          link_prev: '< prev'
-          display_all: true
-          link_all_url: '<front>'
-          link_all_text: Home
-          display_count: true
-          show_disabled_links: true
-          circular_paging: false
-          log_performance: true
+        type: default
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_with_title_and_category
       query:
         type: views_query
         options:
@@ -174,11 +238,12 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  entity_pager_example_block:
-    id: entity_pager_example_block
+  block_1:
+    id: block_1
     display_title: Block
     display_plugin: block
     position: 1
@@ -189,6 +254,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

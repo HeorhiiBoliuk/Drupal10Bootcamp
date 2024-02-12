@@ -1,0 +1,8 @@
+uuid: 26ecdc2c-ccbe-4fbd-b118-20de89a0680a
+langcode: en
+status: true
+dependencies: {  }
+id: fashion-preview-menu
+label: 'Fashion Preview Menu'
+description: ''
+locked: false

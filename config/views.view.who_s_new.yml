@@ -1,73 +1,53 @@
-uuid: f529d7f8-3801-4f94-bf50-50aece0e42bc
+uuid: d2d74d00-ef62-47bf-aa29-0e6595222bcd
 langcode: en
-status: false
+status: true
 dependencies:
   module:
-    - entity_pager
-    - node
     - user
 _core:
-  default_config_hash: JOs7GQitrg1hyTfDWarD20cboTmu205j3nVihd2nhBE
-id: entity_pager_example
-label: 'Entity pager example'
-module: views
-description: 'This demonstrates a basic use case for Entity Pager.'
-tag: ''
-base_table: node_field_data
-base_field: nid
+  default_config_hash: zji0_13MyVGK7Bn1lUMDeZyyOIZedWvqpYUeM_SioPI
+id: who_s_new
+label: "Who's new"
+module: user
+description: 'Shows a list of the newest user accounts on the site.'
+tag: default
+base_table: users_field_data
+base_field: uid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: ''
+      title: "Who's new"
       fields:
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
+        name:
+          id: name
+          table: users_field_data
+          field: name
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: nid
+          entity_type: user
+          entity_field: name
           plugin_id: field
           label: ''
           exclude: false
           alter:
             alter_text: false
-            text: ''
             make_link: false
-            path: ''
             absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
+            word_boundary: false
+            ellipsis: false
             strip_tags: false
             trim: false
-            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -75,26 +55,12 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          type: user_name
       pager:
-        type: none
+        type: some
         options:
           offset: 0
-          items_per_page: 0
+          items_per_page: 5
       exposed_form:
         type: basic
         options:
@@ -116,45 +82,81 @@ display:
       sorts:
         created:
           id: created
-          table: node_field_data
+          table: users_field_data
           field: created
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
+          entity_type: user
           entity_field: created
           plugin_id: date
-          order: ASC
+          order: DESC
           expose:
             label: ''
+            field_identifier: created
           exposed: false
           granularity: second
       arguments: {  }
       filters:
         status:
           id: status
-          table: node_field_data
+          table: users_field_data
           field: status
-          entity_type: node
+          entity_type: user
           entity_field: status
           plugin_id: boolean
           value: '1'
           group: 1
           expose:
+            operator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
+        access:
+          id: access
+          table: users_field_data
+          field: access
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: access
+          plugin_id: date
+          operator: '>'
+          value:
+            min: ''
+            max: ''
+            value: '1970-01-01'
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: '0'
+            label: ''
+            description: ''
+            use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
-        type: entity_pager
-        options:
-          grouping: {  }
-          link_next: 'next >'
-          link_prev: '< prev'
-          display_all: true
-          link_all_url: '<front>'
-          link_all_text: Home
-          display_count: true
-          show_disabled_links: true
-          circular_paging: false
-          log_performance: true
+        type: html_list
       row:
         type: fields
       query:
@@ -174,21 +176,22 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  entity_pager_example_block:
-    id: entity_pager_example_block
-    display_title: Block
+  block_1:
+    id: block_1
+    display_title: "Who's new"
     display_plugin: block
     position: 1
     display_options:
+      display_description: 'A list of new users'
       display_extenders: {  }
+      block_description: "Who's new"
+      block_category: User
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'user.node_grants:view'
         - user.permissions
       tags: {  }
