@@ -174,16 +174,18 @@ display:
           limit: true
           error_message: true
       style:
-        type: grid_responsive
+        type: html_list
         options:
+          row_class: ''
+          default_row_class: true
           uses_fields: false
-          columns: 4
-          cell_min_width: 100
-          grid_gutter: 10
-          alignment: horizontal
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: 'entity:node'
         options:
+          relationship: none
           view_mode: teaser
       query:
         type: views_query

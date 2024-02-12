@@ -1,0 +1,29 @@
+uuid: 563320e3-e239-4eba-a816-8061a61f75c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_social_network_images
+    - media.type.image
+    - system.menu.social-network
+id: menu_link_content.social-network.field_social_network_images
+field_name: field_social_network_images
+entity_type: menu_link_content
+bundle: social-network
+label: 'Social Network images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.article.field_is_overview_grid
     - field.field.node.article.field_is_trending
     - field.field.node.article.field_tags
+    - field.field.node.article.field_youtube_video_embed
     - field.field.node.article.layout_builder__layout
     - image.style.thumbnail
     - node.type.article
@@ -20,6 +21,7 @@ dependencies:
     - layout_discovery
     - path
     - text
+    - video_embed_field
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -97,6 +99,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_youtube_video_embed:
+    type: video_embed_field_textfield
+    weight: 124
+    region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
