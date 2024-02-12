@@ -1,0 +1,24 @@
+uuid: 558f29e0-d09f-4bd3-a2f6-e7edd1554e78
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.123
+  module:
+    - views
+  theme:
+    - Drupal10_ddev
+id: views_block__123_block_1
+theme: Drupal10_ddev
+region: footer
+weight: 0
+provider: null
+plugin: 'views_block:123-block_1'
+settings:
+  id: 'views_block:123-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

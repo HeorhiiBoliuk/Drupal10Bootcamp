@@ -1,0 +1,14 @@
+uuid: 21e30a8a-66ee-4311-b079-81c90321ab1a
+langcode: en
+status: true
+dependencies: {  }
+name: 97x68
+label: 97x68
+effects:
+  ec09f007-798d-4714-9433-4d3647570997:
+    uuid: ec09f007-798d-4714-9433-4d3647570997
+    id: image_resize
+    weight: 1
+    data:
+      width: 97
+      height: 68

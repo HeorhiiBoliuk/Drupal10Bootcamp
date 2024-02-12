@@ -1,0 +1,11 @@
+uuid: 251762db-f675-4549-8408-0df72278268b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_with_title_and_category
+label: 'Teaser with Title and Category'
+description: ''
+targetEntityType: node
+cache: true

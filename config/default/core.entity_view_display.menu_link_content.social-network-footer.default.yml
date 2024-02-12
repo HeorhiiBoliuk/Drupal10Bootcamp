@@ -1,0 +1,70 @@
+uuid: 85968fdb-d693-465c-b164-7928496da173
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.social-network-footer.field_social_network_footer_imag
+    - system.menu.social-network-footer
+  module:
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          ebc9c766-7278-4a51-8ddf-85c2f54a3143:
+            uuid: ebc9c766-7278-4a51-8ddf-85c2f54a3143
+            region: content
+            configuration:
+              id: 'extra_field_block:menu_link_content:social-network-footer:children'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          8c45339d-9504-42c2-91a1-762d58284373:
+            uuid: 8c45339d-9504-42c2-91a1-762d58284373
+            region: content
+            configuration:
+              id: 'field_block:menu_link_content:social-network-footer:field_social_network_footer_imag'
+              label: 'Social Network footer images'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: menu_link_content.social-network-footer.default
+targetEntityType: menu_link_content
+bundle: social-network-footer
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_social_network_footer_imag:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

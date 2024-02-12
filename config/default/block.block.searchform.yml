@@ -1,0 +1,21 @@
+uuid: 30054005-78fc-4d5f-a652-46296ff94109
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - Drupal10_ddev
+id: searchform
+theme: Drupal10_ddev
+region: header
+weight: -12
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

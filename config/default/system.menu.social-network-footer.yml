@@ -1,0 +1,8 @@
+uuid: d115a012-c8ab-455a-8f92-4dfe99e3e646
+langcode: en
+status: true
+dependencies: {  }
+id: social-network-footer
+label: 'Social  Network Footer'
+description: ''
+locked: false
