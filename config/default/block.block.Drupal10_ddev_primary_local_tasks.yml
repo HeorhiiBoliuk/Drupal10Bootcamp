@@ -1,6 +1,6 @@
 uuid: b5786b4f-bc0b-4d83-8ea7-c2a8fe451d7d
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - Drupal10_ddev

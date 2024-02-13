@@ -3,14 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_user_description
     - field.field.user.user.user_picture
     - image.style.thumbnail
+    - system.menu.social-network
+    - views.view.latest_areticles_block
   module:
     - field_layout
     - image
     - layout_builder
     - layout_discovery
+    - system
     - user
+    - views
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -41,17 +46,69 @@ third_party_settings:
                   image_loading:
                     attribute: lazy
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
-          55ebf115-c3b8-426f-91cd-2a80589bc708:
-            uuid: 55ebf115-c3b8-426f-91cd-2a80589bc708
+          92981dc8-5974-4675-a60a-2c372508f31f:
+            uuid: 92981dc8-5974-4675-a60a-2c372508f31f
             region: content
             configuration:
-              id: 'extra_field_block:user:user:member_for'
+              id: 'field_block:user:user:name'
+              label: Name
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          6758b886-a699-4cd2-bd16-db57d092e88a:
+            uuid: 6758b886-a699-4cd2-bd16-db57d092e88a
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_user_description'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-            weight: 1
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          7b49b383-c0a7-45b3-aef9-e99dd9fbce43:
+            uuid: 7b49b383-c0a7-45b3-aef9-e99dd9fbce43
+            region: content
+            configuration:
+              id: 'views_block:latest_areticles_block-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 4
+            additional: {  }
+          69e667cb-25dd-47c8-b72e-383032440a9c:
+            uuid: 69e667cb-25dd-47c8-b72e-383032440a9c
+            region: content
+            configuration:
+              id: 'system_menu_block:social-network'
+              label: 'Social Network'
+              label_display: '0'
+              provider: system
+              context_mapping: {  }
+              level: 1
+              depth: 0
+              expand_all_items: false
+            weight: 3
             additional: {  }
         third_party_settings: {  }
 _core:
@@ -61,6 +118,14 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_user_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
   member_for:
     settings: {  }
     third_party_settings: {  }

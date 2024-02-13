@@ -1,0 +1,8 @@
+uuid: 2b7747d0-6d35-4e9a-951f-3df3528dda34
+langcode: en
+status: true
+dependencies: {  }
+id: lifestyle-preview-menu
+label: 'Lifestyle Preview menu'
+description: ''
+locked: false
