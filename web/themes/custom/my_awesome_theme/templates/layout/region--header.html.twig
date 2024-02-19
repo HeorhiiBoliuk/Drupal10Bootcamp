@@ -12,7 +12,8 @@
  * @see template_preprocess_region()
  */
 #}
-<header>
-  {{ content }}
-</header>
+{% extends "@organisms/site/site-header/site-header.twig" %}
 
+{% block header__menu %}
+  {{ content }}
+{% endblock %}

@@ -1,7 +1,16 @@
-.header{
+.header {
   max-width: 100%;
+    .top-header__weather-data, .top-header__header_top__buttons{
+      float: left;
+    }
+    .top-header__header_top__social_network{
+      float: right;
+    }
+  }
+
   .header__inner{
     max-width: 1068px;
+    margin: auto;
     .header__branding{
       align-items: center;
       justify-content: center;
@@ -17,7 +26,7 @@
       }
     }
   }
-}
+
 .top-header__top-header{
   background-color: #111111;
   width:1068px;
