@@ -1,0 +1,10 @@
+social_item:
+  facebook:
+    image: 'https://www.facebook.com/images/fb_icon_325x325.png'
+    url: '#'
+  instagram:
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg'
+    url: '#'
+  x:
+    image: 'https://www.trustedreviews.com/wp-content/uploads/sites/54/2023/07/X-app-920x483.png'
+    url: '#'

@@ -1,0 +1,5 @@
+weather:
+  city: "Lutsk"
+  img: "https://cdn-icons-png.flaticon.com/512/5538/5538410.png"
+  temperature: '14.4'
+  text: "Wednesday, February 7, 2024"

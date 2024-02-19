@@ -1,0 +1,15 @@
+my_awesome_theme.small:
+  label: small
+  mediaQuery: 'all and (min-width: 25em)'
+my_awesome_theme.small-med:
+  label: small-med
+  mediaQuery: 'all and (min-width: 26em)'
+my_awesome_theme.small-large:
+  label: small-large
+  mediaQuery: 'all and (min-width: 41em)'
+my_awesome_theme.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 48em)'
+my_awesome_theme.large:
+  label: large
+  mediaQuery: 'all and (min-width: 61.25em)'

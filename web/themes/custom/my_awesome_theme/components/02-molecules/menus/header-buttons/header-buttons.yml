@@ -1,0 +1,9 @@
+header_buttons_items:
+  - title: 'Sign in/Join'
+    url: '#'
+  - title: 'Blog'
+    url: '#'
+  - title: 'Forum'
+    url: '#'
+  - title: 'Buy now'
+    url: '#'

@@ -1,0 +1,9 @@
+buttons:
+  - button_text: "Sign in / Join"
+    url: "#"
+  - button_text: "Blog"
+    url: "#"
+  - button_text: "Forum"
+    url: "#"
+  - button_text: "Buy now!"
+    url: "#"

@@ -1,0 +1,21 @@
+{% set menu_items = [] %}
+
+{% for key, item in items %}
+  {% set menu_item = {'title': item.title, 'url': item.url} %}
+  {% if item.below is not empty %}
+    {% set below_items = [] %}
+    {% for below in item.below %}
+      {% set below_item = {'title': below.title, 'url': below.url} %}
+      {% set below_items = below_items|merge([below_item]) %}
+    {% endfor %}
+    {% set menu_item = menu_item|merge({'below': below_items}) %}
+  {% endif %}
+  {% set menu_items = menu_items|merge([menu_item]) %}
+{% endfor %}
+
+{% include '@molecules/menus/main-menu/main-menu.twig' with {
+  menu_items: menu_items,
+} %}
+
+
+

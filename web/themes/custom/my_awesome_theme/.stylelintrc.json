@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignoreAtRules": [
+          "content",
+          "each",
+          "else",
+          "extend",
+          "forward",
+          "function",
+          "if",
+          "import",
+          "include",
+          "mixin",
+          "return",
+          "use",
+          "media"
+        ]
+      }
+    ],
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "content",
+          "each",
+          "else",
+          "extend",
+          "forward",
+          "function",
+          "if",
+          "import",
+          "include",
+          "mixin",
+          "return",
+          "use"
+        ]
+      }
+    ],
+    "function-no-unknown": null,
+    "import-notation": null,
+    "media-feature-range-notation": null,
+    "prettier/prettier": true,
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "selector-not-notation": null,
+    "value-keyword-case": null
+  }
+}

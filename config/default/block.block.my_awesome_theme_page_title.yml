@@ -1,0 +1,20 @@
+uuid: 0f0b2211-6e3c-4107-93ef-07aa311f0a07
+langcode: en
+status: false
+dependencies:
+  theme:
+    - my_awesome_theme
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: my_awesome_theme_page_title
+theme: my_awesome_theme
+region: header
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

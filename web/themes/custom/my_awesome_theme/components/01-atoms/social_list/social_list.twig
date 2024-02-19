@@ -1,0 +1,12 @@
+{% set social_list_base_class = 'social_list' %}
+<div {{ bem(social_list_base_class) }}>
+  <ul>
+    {% for key, item in social_item %}
+      <div {{ bem('item') }}>
+        <a href="{{ item.url }}">
+          <img src="{{ item.image }}" alt="{{ key }}">
+        </a>
+      </div>
+    {% endfor %}
+  </ul>
+</div>

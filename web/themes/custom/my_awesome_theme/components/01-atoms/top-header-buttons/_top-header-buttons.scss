@@ -1,0 +1,31 @@
+.top_header_buttons {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Verdana,BlinkMacSystemFont,-apple-system,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.top_header_buttons__list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.top_header_buttons__item {
+
+}
+
+.top_header_buttons__button {
+  text-decoration: none;
+  padding: 0;
+  color: #ffffff;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 28px !important;
+}
+
+.top_header_buttons__button:hover {
+  color: #4DB2EC;
+}
+
