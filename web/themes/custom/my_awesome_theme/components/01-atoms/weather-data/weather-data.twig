@@ -1,0 +1,18 @@
+{% set weather_data_base_class = 'weather-data' %}
+
+<div class="{{ weather_data_base_class }}">
+  <div {{ bem(weather_data_base_class, [], 'weather') }}>
+    <img {{ bem(weather_data_base_class, [], 'img') }} src="{{ weather.img }}" alt="Weather Image">
+    <div {{ bem(weather_data_base_class, [], 'temperature') }}>
+      {{ weather.temperature }}°
+    </div>
+    <div {{ bem(weather_data_base_class, [], 'city') }}>
+      {{ weather.city }}
+    </div>
+    <div {{ bem(weather_data_base_class, [], 'data') }}>
+      <div {{ bem(weather_data_base_class, [], 'dmy') }}>
+        {{ weather.text }}
+      </div>
+    </div>
+  </div>
+</div>

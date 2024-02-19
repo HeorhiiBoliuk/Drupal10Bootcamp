@@ -1,0 +1,17 @@
+{% set weather_data = {} %}
+{% set buttons = [] %}
+{% for key, item in items %}
+  {% if loop.index0 == 0 %}
+    {% set weather_data = weather_data|merge({'text': item.title}) %}
+  {% else %}
+    {% set weather_data = weather_data|merge({'city': item.title}) %}
+  {% endif %}
+{% endfor %}
+
+{% if weather is defined %}
+  {% set weather_data = weather_data|merge(weather) %}
+{% endif %}
+
+{% include '@atoms/weather-data/weather-data.twig' with {
+  weather: weather_data
+} %}

@@ -1,0 +1,84 @@
+/* A */
+.main-menu__link {
+  display: block;
+  padding: $space $space-triple $space $space-double;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0; /* начинаем с нулевой ширины */
+    height: 3px;
+    background-color: #0a7bc1;
+    transition: width 0.5s ease;
+  }
+  &:hover::after{
+    width: 200%;
+  }
+
+  &--with-sub {
+    width: 80%;
+  }
+
+  &:focus,
+  &:hover {
+    color: clr(text);
+
+    @include medium {
+      background-color: #ffffff;
+      color: black;
+    }
+  }
+
+  @include medium {
+    position: relative;
+    display: inline-block;
+    padding: $space;
+    width: auto;
+    border-bottom: none;
+    font-size: 1.1rem;
+    text-transform: none;
+
+    &::after {
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+
+    &--sub::after {
+      display: none;
+    }
+  }
+}
+
+/*
+ * Sub Navigation Links
+ */
+
+/* A (Nested) */
+.main-menu__link--sub {
+  padding-left: $space-triple;
+  color: clr(accent);
+  font-weight: normal;
+
+  @include medium {
+    display: block;
+    padding: $space-one-third $space;
+    color: clr(highlight);
+  }
+}
+
+.main-menu--sub-2 {
+  background-color: #ffffff;
+}
+
+.main-menu__link--sub-2 {
+  padding-left: $space-quadruple;
+}

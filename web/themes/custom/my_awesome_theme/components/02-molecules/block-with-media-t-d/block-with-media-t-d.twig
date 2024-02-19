@@ -1,0 +1,21 @@
+{% set text_with_media__base_class = 'block-with-media' %}
+
+<div {{ add_attributes(text_with_media__attributes) }}>
+  <div {{ bem('inner', [], text_with_media__base_class) }}>
+    <div {{ bem('image', [], text_with_media__base_class) }}">
+      {% block text_with_title__content %}
+        <img src="{{ block_image_src }}" alt="{{ image_alt }}">
+      {% endblock %}
+    </div>
+    <div {{ bem('content', [], text_with_media__base_class) }} href="{{ block_block_href }}">
+      {% block text_with_title__content %}
+        {{ block_text_title }}
+      {% endblock %}
+    </div>
+    <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
+      {% block text_with_media__group %}
+        {{ block_text_data }}
+      {% endblock %}
+    </div>
+  </div>
+</div>

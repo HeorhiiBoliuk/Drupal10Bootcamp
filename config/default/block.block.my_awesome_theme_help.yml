@@ -1,0 +1,22 @@
+uuid: 14f8f7e2-0019-48ed-a6be-f74be9d034b8
+langcode: en
+status: false
+dependencies:
+  module:
+    - help
+  theme:
+    - my_awesome_theme
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: my_awesome_theme_help
+theme: my_awesome_theme
+region: header
+weight: -8
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: c99eab56-42cf-45e7-88a3-6afe84a1e3ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: my_awesome_theme_content
+theme: my_awesome_theme
+region: content
+weight: -12
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,26 @@
+{% set header__base_class = 'top-header' %}
+{# If `directory` is defined, set the path relative for Drupal.
+ # Otherwise, set the path relative to the Component Library. #}
+{% set header__logo_src = directory ? '/' ~ directory ~ '/images/logo.png' : 'logo.png' %}
+
+<header {{ bem(header__base_class) }}>
+  <div {{ bem('top-header', [], header__base_class) }}>
+    <div {{ bem('weather-data', [], header__base_class) }}>
+      {% block header_top__weather_data %}
+        {% include "@atoms/weather-data/weather-data.twig" %}
+      {% endblock %}
+    </div>
+    <div {{ bem('header_top__buttons', [], header__base_class) }}>
+      {% block header %}
+        {% for button in buttons %}
+          <a href="{{ button.url }}">{{ button.button_text }}</a>
+        {% endfor %}
+      {% endblock %}
+    </div>
+    <div {{ bem('header_top__social_network', [], header__base_class) }}>
+      {% block header__social_list %}
+        {% include "@atoms/social_list/social_list.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+uuid: 31c6b76f-4501-460e-9f0e-8092aab2f4ec
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - my_awesome_theme
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: my_awesome_theme_syndicate
+theme: my_awesome_theme
+region: header
+weight: -6
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

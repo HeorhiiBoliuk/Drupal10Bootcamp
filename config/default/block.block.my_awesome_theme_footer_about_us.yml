@@ -1,0 +1,25 @@
+uuid: d43d96e6-e3b3-4160-b06d-9e14c4b6fd2a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:76917d10-bb96-4bf9-b0fe-8e0144356541'
+  module:
+    - block_content
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_footer_about_us
+theme: my_awesome_theme
+region: bottom_footer
+weight: -13
+provider: null
+plugin: 'block_content:76917d10-bb96-4bf9-b0fe-8e0144356541'
+settings:
+  id: 'block_content:76917d10-bb96-4bf9-b0fe-8e0144356541'
+  label: 'ABOUT US'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

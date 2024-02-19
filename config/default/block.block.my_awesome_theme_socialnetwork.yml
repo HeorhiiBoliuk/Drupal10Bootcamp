@@ -1,0 +1,25 @@
+uuid: e55916f6-0658-47ba-8a96-6ea204cc7d9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social-network
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_socialnetwork
+theme: my_awesome_theme
+region: top_header
+weight: -11
+provider: null
+plugin: 'system_menu_block:social-network'
+settings:
+  id: 'system_menu_block:social-network'
+  label: 'Social Network'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

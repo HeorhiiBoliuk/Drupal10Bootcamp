@@ -1,0 +1,24 @@
+uuid: e5bab339-db98-4343-b1d4-f2659b36e58c
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.popular_posts
+  module:
+    - views
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_views_block__popular_posts_block_1
+theme: my_awesome_theme
+region: footer
+weight: -12
+provider: null
+plugin: 'views_block:popular_posts-block_1'
+settings:
+  id: 'views_block:popular_posts-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }

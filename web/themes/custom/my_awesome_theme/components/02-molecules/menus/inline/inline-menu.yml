@@ -1,0 +1,9 @@
+inline_menu_items:
+  - title: 'Gadgets'
+    url: '#'
+  - title: 'Mobile Phones'
+    url: '#'
+  - title: 'Photography'
+    url: '#'
+  - title: 'Reviews'
+    url: '#'

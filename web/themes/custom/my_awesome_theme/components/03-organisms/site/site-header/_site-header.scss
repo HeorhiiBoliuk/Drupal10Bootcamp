@@ -1,0 +1,32 @@
+.header{
+  max-width: 100%;
+  .header__inner{
+    max-width: 1068px;
+    .header__branding{
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      pointer-events: auto;
+      flex-direction: row;
+      max-width: 100%;
+      img{
+        max-width: 272px;
+        display: block;
+        height: auto;
+        border: 0;
+      }
+    }
+  }
+}
+.top-header__top-header{
+  background-color: #111111;
+  width:1068px;
+  height: 28px;
+  display: block;
+  .top-header__weather-data, .top-header__header_top__buttons{
+    float: left;
+  }
+  .top-header__header_top__social_network{
+    float: right;
+  }
+}

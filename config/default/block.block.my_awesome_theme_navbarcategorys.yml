@@ -1,0 +1,25 @@
+uuid: 95eaf96b-5a89-401d-a920-b416a49cd6ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.navbar-categorys
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_navbarcategorys
+theme: my_awesome_theme
+region: content
+weight: -13
+provider: null
+plugin: 'system_menu_block:navbar-categorys'
+settings:
+  id: 'system_menu_block:navbar-categorys'
+  label: Navbar-categorys
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

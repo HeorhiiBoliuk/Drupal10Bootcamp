@@ -1,0 +1,12 @@
+{% set buttons_data = {} %}
+{% set buttons_url = {} %}
+{% set buttons = [] %}
+{% for key, item in content['#items'] %}
+  {% set button_data = { 'button_text': item.title, 'url': item.url } %}
+  {% set buttons = buttons|merge([button_data]) %}
+{% endfor %}
+
+
+  {% include '@atoms/top-header-buttons/top-header-buttons.twig' with {
+    buttons: buttons,
+  } %}

@@ -1,0 +1,25 @@
+uuid: 1e6c0fe9-083f-40fe-a9e7-a3d704e6a151
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-buttons
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_headerbuttons
+theme: my_awesome_theme
+region: top_header
+weight: -12
+provider: null
+plugin: 'system_menu_block:header-buttons'
+settings:
+  id: 'system_menu_block:header-buttons'
+  label: Header-buttons
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

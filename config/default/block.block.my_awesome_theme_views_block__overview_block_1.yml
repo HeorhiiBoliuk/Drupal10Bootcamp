@@ -1,0 +1,29 @@
+uuid: e60ffdab-b28d-40d3-aec0-20eb967dcf66
+langcode: en
+status: false
+dependencies:
+  config:
+    - views.view.overview
+  module:
+    - system
+    - views
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_views_block__overview_block_1
+theme: my_awesome_theme
+region: header
+weight: -14
+provider: null
+plugin: 'views_block:overview-block_1'
+settings:
+  id: 'views_block:overview-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: '3'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /home

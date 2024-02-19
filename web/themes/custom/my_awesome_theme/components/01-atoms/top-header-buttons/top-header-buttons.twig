@@ -1,0 +1,13 @@
+{% set top_header_buttons_base_class = 'top_header_buttons' %}
+
+<div class="{{ top_header_buttons_base_class }}">
+  <ul class="{{ top_header_buttons_base_class ~ '__list' }}">
+    {% for key, item in buttons %}
+      <div class="{{ top_header_buttons_base_class ~ '__item' }}">
+        <a class="{{ top_header_buttons_base_class ~ '__button' }}" href="{{ item.url }}">
+          {{ item.button_text }}
+        </a>
+      </div>
+    {% endfor %}
+  </ul>
+</div>

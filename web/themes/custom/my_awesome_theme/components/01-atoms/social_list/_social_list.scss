@@ -1,0 +1,21 @@
+.social_list {
+  margin-bottom: 0;
+  display: flex;
+  float: right;
+  clear: none;
+
+  .item {
+    display: inline-block;
+  }
+
+  img {
+    width: 22.8px;
+    height: 22.8px;
+    margin: 2.5px 5px 2.5px 0;
+    transition: background-color 0.3s ease;
+  }
+
+  img:hover {
+    background-color: blue;
+  }
+}
