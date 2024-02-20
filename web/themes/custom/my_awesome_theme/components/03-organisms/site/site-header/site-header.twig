@@ -6,41 +6,22 @@
 <header {{ bem(header__base_class) }}>
   <div {{ bem('inner', [], header__base_class) }}>
     <div {{ bem('primary', [], header__base_class) }}>
-      <div {{ bem('top-header', [], header__base_class) }}>
-        {% block header__top_header %}
-          <div {{ bem('top-header', [], header__base_class) }}>
-            <div {{ bem('weather-data', [], header__base_class) }}>
-              {% block header_top__weather_data %}
-                {% include "@atoms/weather-data/weather-data.twig" %}
-              {% endblock %}
-            </div>
-            <div {{ bem('header_top__buttons', [], header__base_class) }}>
-              {% block header %}
-                {% for button in buttons %}
-                  <a href="{{ button.url }}">{{ button.button_text }}</a>
-                {% endfor %}
-              {% endblock %}
-            </div>
-            <div {{ bem('header_top__social_network', [], header__base_class) }}>
-              {% block header__social_list %}
-                {% include "@atoms/social_list/social_list.twig" %}
-              {% endblock %}
-            </div>
-          </div>
-        {% endblock %}
-      </div>
-    </div>
       <div {{ bem('branding', [], header__base_class) }}>
         {% block header__branding %}
-          {% include "@organisms/site/site-header/_site-header-branding.twig" %}
+
         {% endblock %}
       </div>
-    <div {{ bem('navbar', [], header__base_class) }}>
-      {% block header_navbar %}
-        {% include "@molecules/menus/main-menu/main-menu.twig" %}
+      <div {{ bem('menu', [], header__base_class) }}>
+        {% include "@organisms/site/site-header/_site-header-branding.twig" %}
+        {% block header__menu %}
+          {% include "@molecules/menus/main-menu/main-menu.twig" %}
+        {% endblock %}
+      </div>
+    </div>
+    <div {{ bem('secondary', [], header__base_class) }}>
+      {% block header__breadcrumbs %}
+        {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" %}
       {% endblock %}
     </div>
-</div>
-
+  </div>
 </header>
-

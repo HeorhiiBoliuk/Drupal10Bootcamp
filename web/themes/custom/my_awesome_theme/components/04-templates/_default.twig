@@ -13,6 +13,10 @@
 
 <div {{ bem('layout-container', layout_modifiers) }}>
 
+  {% block page_top_header %}
+    {% include "@molecules/site-top-header/site-top-header.twig" %}
+  {% endblock %}
+
   {% block page_header %}
     {% include "@organisms/site/site-header/site-header.twig" %}
   {% endblock %}
