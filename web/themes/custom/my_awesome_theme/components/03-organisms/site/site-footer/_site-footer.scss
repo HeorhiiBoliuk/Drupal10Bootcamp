@@ -1,10 +1,7 @@
 .footer {
-  background-color: clr(highlight-high);
-  padding: $space 0;
-
+  position: relative;
   &__inner {
     @include wrapper;
-
     width: 1068px;
     margin-right: auto;
     margin-left: auto;
@@ -16,30 +13,62 @@
   }
 }
 
-.footer__social {
-  margin-bottom: $space;
-
-  @include large {
-    flex: 0 1 30%;
-    margin-bottom: 0;
-    margin-right: $space;
-  }
+.footer:before {
+  background-image: url('https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2021/06/footer-bg1.jpg');
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 0;
+  opacity: 0.1;
+  background-size: cover;
+  background-position: center top;
 }
 
 .footer__menu {
   flex: 1 1 100%;
   display: flex;
   flex-wrap: wrap;
-  nav{
+  .contextual-region{
+    .social-list{
+      ul{
+        .item{
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          width: 39.2px;
+          height: 39.2px;
+          margin: 5px 10px 5px 0;
+          background: rgba(255, 255, 255, 0.03);
+        }
+      }
+    }
+  }
+  .views-element-container {
+    div {
+      .js-view-dom-id-4ab2e216877598a5b152e4836b991a2beb7b216c4edb8b3b6ae38c92034f75d8 {
+        .views-row {
+          display: flex;
+          flex-direction: row;
+          div {
+            flex: 1;
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+  nav {
     flex: 1 1 33.33%;
     max-width: 362px;
   }
-  div{
+  div {
     flex: 1 1 33.33%;
     max-width: 362px;
   }
-  .logo{
-    .logo__image{
+  .logo {
+    .logo__image {
       max-width: 231px;
       max-height: 76.5px;
     }
@@ -49,3 +78,10 @@
 .footer__branding {
   max-width: 10rem;
 }
+
+@media (max-width: 767px) {
+  .footer__menu {
+    flex-direction: column;
+  }
+}
+

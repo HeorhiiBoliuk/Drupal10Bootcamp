@@ -1,13 +1,15 @@
 .top-header{
   background-color: #111111;
-  width:1068px;
   height: 28px;
-  display: block;
-  margin: auto;
-  #block-my-awesome-theme-weatherdata, .top_header_buttons{
-    float: left;
-  }
-  #block-my-awesome-theme-socialnetwork{
-    float: right;
+  .top-header__wrapper{
+    width:1068px;
+    display: block;
+    margin: auto;
+    #block-my-awesome-theme-weatherdata, .top_header_buttons{
+      float: left;
+    }
+    #block-my-awesome-theme-socialnetwork{
+      float: right;
+    }
   }
 }

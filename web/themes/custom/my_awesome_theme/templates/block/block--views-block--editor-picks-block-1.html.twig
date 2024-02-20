@@ -1,3 +1,7 @@
+<div>
+  <h2>
+    {{ content['#title']['#markup'] }}
+  </h2>
 <div class="editor-picks">
 {% for row in content['#view'].result %}
   {% set article = row._entity %}
@@ -13,4 +17,5 @@
     block_image_src: image_url
   } %}
 {% endfor %}
+</div>
 </div>
