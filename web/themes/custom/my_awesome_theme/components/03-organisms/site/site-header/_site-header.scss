@@ -40,27 +40,27 @@
   }
   .header__menu, .header__menu nav, .header__menu .logo, .header__menu nav a {
     max-height: 58px;
-    line-height: 58px; /* Выравниваем текст по вертикали по центру */
-    overflow: hidden; /* Скрываем возможное переполнение содержимого */
+    line-height: 58px;
+    overflow: hidden;
   }
 
   .logo img {
-    max-height: 100%; /* Устанавливаем максимальную высоту для логотипа */
+    max-height: 100%;
   }
 
   .header__menu {
-    flex-direction: column; /* Устанавливаем столбцовую ориентацию для элементов */
-    align-items: flex-start; /* Выравниваем элементы по левому краю */
+    flex-direction: column;
+    align-items: flex-start;
     height: 58px;
 
     .logo {
-      margin-left: 0; /* Сбрасываем отступ слева у логотипа */
-      margin-bottom: 10px; /* Добавляем отступ снизу для разделения между логотипом и навигацией */
+      margin-left: 0;
+      margin-bottom: 10px;
       max-height: 100%; !important;
       max-width: 100%; !important;
     }
     nav {
-      margin-right: 0; /* Сбрасываем отступ справа у навигации */
+      margin-right: 0;
       max-height: 100%;
     }
   }
