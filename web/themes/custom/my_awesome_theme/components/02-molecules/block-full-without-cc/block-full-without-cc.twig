@@ -1,0 +1,21 @@
+{% set block-full-without__base_class = 'block-full-without-cc' %}
+
+<div class=" {{ text_with_media__attributes }}">
+  <div {{ bem('inner', [], text_with_media__base_class) }}>
+    <div {{ bem('image', [], text_with_media__base_class) }}">
+    <img src="{{ block_full_cc_image_src }}" alt="{{ block_full_cc_text_title }}">
+  </div>
+  <div {{ bem('column', [], text_with_media__base_class) }}>
+    <div {{ bem('content', [], text_with_media__base_class) }}">
+    {{ block_full_cc_text_title }}
+  </div>
+  <div {{ bem('author', [], text_with_media__base_class) }}>
+    {{ block_full_cc_author }}
+  </div>
+  <div {{ bem('data', [], text_with_media__base_class) }}>
+    {{ block_full_cc_text_data }}
+  </div>
+  <div {{ bem('body', [], text_with_media__base_class) }}>
+    {{ block_full_cc_body }}
+  </div>
+</div>

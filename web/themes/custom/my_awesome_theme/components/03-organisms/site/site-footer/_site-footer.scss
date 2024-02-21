@@ -1,5 +1,8 @@
 .footer {
   position: relative;
+  background-color: #111111 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   &__inner {
     @include wrapper;
     width: 1068px;
@@ -14,7 +17,7 @@
 }
 
 .footer:before {
-  background-image: url('https://demo.tagdiv.com/newspaper_pro/wp-content/uploads/2021/06/footer-bg1.jpg');
+  background-image: url('/themes/custom/my_awesome_theme/assets/images/footer-bg1.jpg');
   content: '';
   width: 100%;
   position: absolute;
@@ -32,7 +35,7 @@
   flex: 1 1 100%;
   display: flex;
   flex-wrap: wrap;
-  .contextual-region{
+  nav{
     .social-list{
       ul{
         .item{
@@ -45,15 +48,67 @@
       }
     }
   }
+  div{
+    h2{
+      color: #ffffff;
+      font-family: "HelveticaNeue","Helvetica","Arial",sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 1.8rem;
+      line-height: 1.4;
+      margin: 0 0 0.5em;
+      width: auto;
+    }
+    .layout--onecol{
+      .layout__region--content{
+        .block{
+          .text-long{
+            p{
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+  .block-with-media__inner{
+    margin-bottom: 10px;
+    .block-with-media__image{
+      margin-right: 10px;
+    }
+    .block-with-media__content{
+      color: #ffffff;
+    }
+  }
   .views-element-container {
     div {
-      .js-view-dom-id-4ab2e216877598a5b152e4836b991a2beb7b216c4edb8b3b6ae38c92034f75d8 {
+      h2{
+        color: #ffffff;
+      }
+      div {
+        .views-row:hover{
+          div {
+            color: #4DB2EC;;
+            flex: 1;
+            margin: 0 5px;
+
+            a {
+              text-decoration: none;
+              color: #4DB2EC;
+            }
+          }
+        }
         .views-row {
           display: flex;
           flex-direction: row;
           div {
+            color: #ffffff;
             flex: 1;
             margin: 0 5px;
+            a{
+              text-decoration: none;
+              color: #ffffff;
+            }
           }
         }
       }
