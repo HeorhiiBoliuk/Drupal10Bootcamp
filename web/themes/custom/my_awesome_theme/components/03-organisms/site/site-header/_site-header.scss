@@ -1,32 +1,83 @@
-.header {
+.header__menu{
   max-width: 100%;
+  .logo{
+    padding-top: 28px !important;
+    padding-bottom: 9px !important;
+    max-height: 133px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    pointer-events: auto;
+    flex-direction: row;
+    max-width: 272px;
+    img{
+      max-width: 100%;
+      max-height: 90px;
+      display: block;
+      height: auto;
+      border: 0;
+    }
+  }
+}
+
+@media (min-width: 1019px) and (max-width: 1140px) {
+  .top-header__wrapper {
+    width: 980px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1018px) {
+  .top-header__wrapper {
+    width: 740px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-header {
+    display: none;
+  }
+  .header__menu, .header__menu nav, .header__menu .logo, .header__menu nav a {
+    max-height: 58px;
+    line-height: 58px;
+    overflow: hidden;
+  }
+
+  .logo img {
+    max-height: 100%;
+  }
+
+  .header__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 58px;
+
+    .logo {
+      margin-left: 0;
+      margin-bottom: 10px;
+      max-height: 100%;
+      max-width: 100%;
+    }
+    nav {
+      margin-right: 0;
+      max-height: 100%;
+    }
+  }
+}
+
+
+.header {
+  max-width: 1068px;
+  margin-right: auto;
+  margin-left: auto;
     .top-header__weather-data, .top-header__header_top__buttons{
       float: left;
     }
     .top-header__header_top__social_network{
       float: right;
     }
-  }
-
-  .header__inner{
-    max-width: 1068px;
-    margin: auto;
-    .header__branding{
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      pointer-events: auto;
-      flex-direction: row;
-      max-width: 100%;
-      img{
-        max-width: 272px;
-        display: block;
-        height: auto;
-        border: 0;
-      }
-    }
-  }
-
+}
 .top-header__top-header{
   background-color: #111111;
   width:1068px;

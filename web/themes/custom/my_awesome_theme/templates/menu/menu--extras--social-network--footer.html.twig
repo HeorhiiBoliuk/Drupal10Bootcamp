@@ -1,0 +1,15 @@
+{% set social_list = [] %}
+{% set count = 0 %}
+{% for key, item in items %}
+  {% if count < 3 %}
+    {% set image_url = item.entity.field_social_network_images.entity.field_media_image.entity.fileuri %}
+    {% set image_uri = file_url(image_url) %}
+    {% set social_image = { 'image': image_uri, 'url': item.url } %}
+    {% set social_list = social_list|merge([social_image]) %}
+    {% set count = count + 1 %}
+  {% endif %}
+{% endfor %}
+
+{% include '@atoms/social_list/social_list.twig' with {
+  social_item: social_list
+} %}

@@ -5,19 +5,21 @@
 {% set header__logo_src = directory ? '/' ~ directory ~ '/images/logo.png' : 'logo.png' %}
 
 <header {{ bem(header__base_class) }}>
-  {% block site_top_header %}
-    <div {{ bem('top-header', [], header__base_class) }}>
-      <div {{ bem('weather-data', [], header__base_class) }}>
-        {% include "@atoms/weather-data/weather-data.twig" %}
+  <div {{ bem('wrapper', [], header__base_class) }}>
+    {% block site_top_header %}
+      <div {{ bem('top-header', [], header__base_class) }}>
+        <div {{ bem('weather-data', [], header__base_class) }}>
+          {% include "@atoms/weather-data/weather-data.twig" %}
+        </div>
+        <div {{ bem('header_top__buttons', [], header__base_class) }}>
+          {% for button in buttons %}
+            <a href="{{ button.url }}">{{ button.button_text }}</a>
+          {% endfor %}
+        </div>
+        <div {{ bem('header_top__social_network', [], header__base_class) }}>
+          {% include "@atoms/social_list/social_list.twig" %}
+        </div>
       </div>
-      <div {{ bem('header_top__buttons', [], header__base_class) }}>
-        {% for button in buttons %}
-          <a href="{{ button.url }}">{{ button.button_text }}</a>
-        {% endfor %}
-      </div>
-      <div {{ bem('header_top__social_network', [], header__base_class) }}>
-        {% include "@atoms/social_list/social_list.twig" %}
-      </div>
-    </div>
-  {% endblock %}
+    {% endblock %}
+  </div>
 </header>
