@@ -22,7 +22,7 @@ services:
         command: []
         container_name: ddev-my-site-db
         environment:
-            COLUMNS: "133"
+            COLUMNS: "228"
             DDEV_DATABASE: mariadb:10.4
             DDEV_DATABASE_FAMILY: mysql
             DDEV_HOSTNAME: my-site.ddev.site
@@ -39,7 +39,7 @@ services:
             GOOS: linux
             HOST_DOCKER_INTERNAL_IP: ""
             IS_DDEV_PROJECT: "true"
-            LINES: "24"
+            LINES: "16"
             MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/my-site-db/mysql_history
             MYSQL_PWD: db
             PGDATABASE: db
@@ -71,7 +71,6 @@ services:
             - host_ip: 127.0.0.1
               mode: ingress
               protocol: tcp
-              published: "0"
               target: 3306
         restart: "no"
         stop_grace_period: 1m0s
@@ -113,7 +112,7 @@ services:
             - /pre-start.sh
         container_name: ddev-my-site-web
         environment:
-            COLUMNS: "133"
+            COLUMNS: "228"
             DDEV_COMPOSER_ROOT: /var/www/html
             DDEV_DATABASE: mariadb:10.4
             DDEV_DATABASE_FAMILY: mysql
@@ -145,7 +144,7 @@ services:
             HTTP_EXPOSE: 80:80,8025:8025
             HTTPS_EXPOSE: 443:80,8026:8025
             IS_DDEV_PROJECT: "true"
-            LINES: "24"
+            LINES: "16"
             MYSQL_HISTFILE: /mnt/ddev-global-cache/mysqlhistory/my-site-web/mysql_history
             MYSQL_PWD: db
             NODE_EXTRA_CA_CERTS: /mnt/ddev-global-cache/mkcert/rootCA.pem
@@ -183,12 +182,10 @@ services:
             - host_ip: 127.0.0.1
               mode: ingress
               protocol: tcp
-              published: "0"
               target: 80
             - host_ip: 127.0.0.1
               mode: ingress
               protocol: tcp
-              published: "0"
               target: 443
         restart: "no"
         user: 1000:1000

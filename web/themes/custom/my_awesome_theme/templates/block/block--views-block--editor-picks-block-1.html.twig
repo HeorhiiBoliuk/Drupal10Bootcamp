@@ -1,8 +1,7 @@
-<div>
+<div class="editor-picks">
   <h2>
     {{ content['#title']['#markup'] }}
   </h2>
-<div class="editor-picks">
 {% for row in content['#view'].result %}
   {% set article = row._entity %}
   {% set image_uri = article.field_image.entity.uri.value %}
@@ -10,6 +9,7 @@
   {% set title = article.title.value %}
   {% set created_timestamp = article.created.value %}
   {% set created_date = created_timestamp | date('F j, Y') %}
+  {% set title_url = path('entity.node.canonical', {'node': article.id}) %}
 
   {% include '@molecules/block-with-media-t-d/block-with-media-t-d.twig' with {
     block_text_title: title,
@@ -18,4 +18,4 @@
   } %}
 {% endfor %}
 </div>
-</div>
+

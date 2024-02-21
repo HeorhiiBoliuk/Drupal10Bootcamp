@@ -1,0 +1,13 @@
+toolbar_items:
+  - devel.container_info.service
+  - devel.route_info.item
+  - devel.admin_settings_link
+  - devel.elements_page
+  - devel.entity_info_page
+  - devel.event_info
+  - devel.field_info_page
+  - devel_generate.generate2
+  - devel.layout_info
+  - devel.phpinfo
+  - devel.menu_rebuild
+  - devel.route_info
