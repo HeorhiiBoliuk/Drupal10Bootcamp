@@ -2,6 +2,7 @@
   width: 324px;
   height: 81px;
   flex-direction: row;
+  margin: 10px 0;
   border-color: #eaeaea !important;
   display: flex;
   position: relative;
@@ -17,6 +18,7 @@
       top: 2px;
     }
     .block-with-media__image{
+      margin-right: 10px;
       flex: 0 0 30%;
       width: 30%;
       display: block;
@@ -31,4 +33,3 @@
       }
     }
   }
-

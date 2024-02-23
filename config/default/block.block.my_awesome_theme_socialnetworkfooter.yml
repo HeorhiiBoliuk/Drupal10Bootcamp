@@ -1,6 +1,6 @@
 uuid: 6d57682f-1ab3-4450-b53b-a7b2fa6248fd
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.social-network-footer
@@ -10,8 +10,8 @@ dependencies:
     - my_awesome_theme
 id: my_awesome_theme_socialnetworkfooter
 theme: my_awesome_theme
-region: bottom_footer
-weight: -12
+region: footer
+weight: -9
 provider: null
 plugin: 'system_menu_block:social-network-footer'
 settings:

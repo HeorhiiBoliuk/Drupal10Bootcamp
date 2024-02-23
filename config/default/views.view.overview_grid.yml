@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.teaser_with_comment_count_and_description
     - taxonomy.vocabulary.trending
   content:
     - 'taxonomy_term:trending:235f7be4-f763-438b-9e03-5cdfd021579a'
@@ -186,7 +186,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: teaser
+          view_mode: teaser_with_comment_count_and_description
       query:
         type: views_query
         options:

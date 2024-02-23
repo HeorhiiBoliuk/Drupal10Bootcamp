@@ -1,0 +1,34 @@
+.latest-articles{
+  display: grid;
+  grid-template-columns: repeat(2, 348px);
+  .block-title-data-cc-img-cat{
+    margin: 0 20px;
+    width: 324px;
+
+    .column{
+      .content{
+        @include title;
+      }
+    }
+    .media{
+      color: #767676;
+      display: inline-block;
+      position: relative;
+      top: 2px;
+    }
+    .inner{
+      .image{
+        img{
+          position: relative;
+          flex: 0 0 auto;
+          width: 100%;
+          height: 162px;
+        }
+      }
+    }
+    .count{
+      @include count;
+    }
+  }
+
+}

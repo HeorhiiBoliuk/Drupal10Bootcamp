@@ -11,7 +11,7 @@ _core:
 id: my_awesome_theme_powered
 theme: my_awesome_theme
 region: header
-weight: -7
+weight: -5
 provider: null
 plugin: system_powered_by_block
 settings:

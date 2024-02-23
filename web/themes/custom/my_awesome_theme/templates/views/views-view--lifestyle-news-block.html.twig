@@ -1,0 +1,43 @@
+<div class="lifestyle-news">
+  {% for row in rows %}
+    {% set article_counter = 0 %}
+    {% for article in row['#rows'] %}
+      {% set field_article = article['#row']._entity.fields %}
+      {% set title = field_article.title.getvalue(view.result[0]) %}
+      {% set created_timestamp = field_article.created.value %}
+      {% set created_date = created_timestamp|date('F j, Y') %}
+      {% set article_entity = view.result[0]._entity %}
+      {% set image_url = file_url(article_entity.field_image.entity.uri.value) %}
+      {% set body = article_entity.body.value %}
+
+
+      {% set comment_count = last_row['#row']['comment_entity_statistics_comment_count'] %}
+
+      {% set author_entity = article_entity.getOwner() %}
+      {% set author_name = author_entity is not null ? author_entity.name.value : 'Unknown' %}
+
+      {% set category_entity = article_entity.field_category.entity %}
+      {% set category_name = category_entity is not null ? category_entity.name.value : 'Uncategorized' %}
+
+      {% if article_counter <= 1 %}
+        {% include '@molecules/block-full-article-info.twig' with {
+          block_full_text_title: title[0].value,
+          block_full_category: category_name,
+          block_full_block_full_image_src: image_url,
+          block_full_category_url: category_url_alias,
+          block_full_author: author_name,
+          block_full_text_data: created_date,
+          block_full_body: body|striptags|slice(0, 140),
+          block_full_comment_count: comment_count_value,
+        } %}
+      {% else %}
+        {% include '@molecules/block-with-media-t-d/block-with-media-t-d.twig' with {
+          block_text_title: title,
+          block_text_data: created_date,
+          block_image_src: image_url,
+        } %}
+      {% endif %}
+      {% set article_counter = article_counter + 1 %}
+    {% endfor %}
+  {% endfor %}
+</div>

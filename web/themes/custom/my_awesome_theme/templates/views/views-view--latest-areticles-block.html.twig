@@ -1,0 +1,36 @@
+<div class="latest-articles">
+  {% for row in rows %}
+    {% for article in row['#rows'] %}
+      {% set field_article = article['#row']._entity.fields %}
+      {% set title = field_article.title.value %}
+      {% set created_timestamp = field_article.created.value %}
+      {% set created_date = created_timestamp|date('F j, Y') %}
+      {% set image_url = file_url(field_article.field_image.entity.uri.value) %}
+      {% set body = field_article.body.value %}
+
+      {% set comment_count = article['#row'].comment_entity_statistics_comment_count %}
+
+      {% set author_entity = article_entity.getOwner() %}
+      {% set author_name = author_entity.name.value %}
+
+      {% set category_entity = field_article.field_category.entity %}
+      {% set category_name = category_entity.name.value %}
+
+      {% include '@molecules/block-title-data-cc-img-cat/block-title-data-cc-img-cat.twig' with {
+        block_title: title,
+        block_category: category_name,
+        block_image_src: image_url,
+        block_category_url: category_url_alias,
+        block_comment_count: comment_count,
+        block_data: created_date,
+      } %}
+
+    {% endfor %}
+  {% endfor %}
+</div>
+
+
+
+
+
+

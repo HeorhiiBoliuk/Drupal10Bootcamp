@@ -1,0 +1,35 @@
+<div class="perf-training-title">
+  <span>
+    Perfomance Training
+  </span>
+</div>
+<div class="perfomance-training">
+  {% for row in rows %}
+    {% for article in row['#rows'] %}
+      {% set field_article = article['#node'].fields %}
+      {% set title = field_article.title.value %}
+      {% set created_timestamp = field_article.created.value %}
+      {% set created_date = created_timestamp|date('F j, Y') %}
+      {% set article_entity = article['#node'] %}
+      {% set image_url = file_url(article_entity.field_image.entity.uri.value) %}
+      {% set body = article_entity.body.value %}
+
+      {% set comment_count = article['#row']['comment_entity_statistics_comment_count'].getValue() %}
+
+      {% set author_entity = article_entity.getOwner() %}
+      {% set author_name = author_entity.name.value %}
+
+      {% set category_entity = article_entity.field_category.entity %}
+      {% set category_name = category_entity.name.value %}
+
+      {% include '@molecules/block-full-article-info.twig' with {
+        block_full_text_title: title,
+        block_full_block_full_image_src: image_url,
+        block_full_author: author_name,
+        block_full_text_data: created_date,
+        block_full_body: body|striptags|slice(0, 140),
+        block_full_comment_count: comment_count,
+      } %}
+    {% endfor %}
+  {% endfor %}
+</div>

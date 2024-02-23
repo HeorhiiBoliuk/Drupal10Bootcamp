@@ -12,13 +12,17 @@ module:
   breakpoint: 0
   ckeditor5: 0
   comment: 0
+  components: 0
   config: 0
   contact: 0
   contextual: 0
   datetime: 0
   dblog: 0
+  devel: 0
+  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
+  emulsify_twig: 0
   entity_pager: 0
   entity_reference_revisions: 0
   field: 0
@@ -54,6 +58,7 @@ module:
   text: 0
   token: 0
   toolbar: 0
+  twig_tweak: 0
   update: 0
   user: 0
   video_embed_field: 0
@@ -68,4 +73,6 @@ theme:
   seven: 0
   adminimal_theme: 0
   Drupal10_ddev: 0
+  stable9: 0
+  my_awesome_theme: 0
 profile: standard

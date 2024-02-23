@@ -684,6 +684,19 @@ display:
         type: default
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline:
+            field_youtube_video_embed: field_youtube_video_embed
+            field_image: field_image
+            field_category: field_category
+            title: title
+            uid: uid
+            created: created
+            comment_count: comment_count
+            body: body
+          separator: ''
+          hide_empty: false
       query:
         type: views_query
         options:
@@ -693,6 +706,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: exposed_filters_dont_miss
       use_ajax: true
       header: {  }
       footer: {  }
@@ -746,7 +760,7 @@ display:
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: ''
+                    filter_rewrite_values: '- Any - | All'
                   collapsible: false
                   is_secondary: false
                 select_all_none: false

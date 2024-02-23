@@ -1,0 +1,303 @@
+.dont-miss{
+  .block-full-article{
+    width: 372px;
+    height: 392px;
+    padding-left: 24px;
+    padding-right: 24px;
+    .block-full-article__content{
+      font-size: 21px;
+      line-height: 25px;
+      margin: 0 0 6px 0;
+      color: var(--td_text_color,#111111);
+      text-decoration: none;
+    }
+    .block-full-article__author{
+      @include author;
+    }
+    .block-full-article__data{
+      @include data;
+    }
+    .block-full-article__count{
+      @include count;
+    }
+    .block-full-article__body{
+      @include body;
+    }
+    .block-full-article__category{
+      @include category;
+    }
+    .block-full-article__image{
+      position: relative;
+      flex: 0 0 auto;
+      width: 324px;
+      height: 233px;
+      img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.perfomance-training {
+  .block-full-article {
+    display: flex;
+    margin: 0 20px 20px 20px;
+
+    .block-full-article__inner {
+      display: flex;
+      flex-direction: row-reverse;
+
+      .block-full-article__image {
+        display: block;
+        order: 0;
+        position: relative;
+        width: 227px;
+        height: 155px;
+        margin-right: 15px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+      }
+    }
+
+    .block-full-article__content {
+      .block-full-article__column{
+        .block-full-article__content{
+          @include title;
+        }
+      }
+      .block-full-article__body {
+        @include body;
+      }
+      .block-full-article__author-data {
+        @include author-data;
+        .block-full-article__author {
+          @include author;
+        }
+
+        .block-full-article__data {
+          @include data;
+        }
+      }
+
+    }
+  }
+}
+
+
+.lifestyle-news{
+  display: flex;
+  .block-full-article{
+    width: 372px;
+    height: 392px;
+    padding-left: 24px;
+    padding-right: 24px;
+    .block-full-article__content{
+      @include body;
+    }
+    .block-full-article__author-data {
+      display: flex;
+      align-items: baseline;
+      .block-full-article__author{
+        @include author;
+      }
+      .block-full-article__data{
+        @include data;
+      }
+    }
+    .block-full-article__count{
+      @include count
+    }
+    .block-full-article__body{
+      @include body;
+    }
+    .block-full-article__category{
+      left: 0;
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      font-family: 'Open Sans','Open Sans Regular',sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1;
+      background-color: var(--td_black,#222222);
+      color: #fff;
+      margin-right: 5px;
+      padding: 3px 6px 4px;
+      display: block;
+      vertical-align: top;
+      transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease;
+    }
+    .block-full-article__image{
+      position: relative;
+      flex: 0 0 auto;
+      width: 324px;
+      height: 233px;
+      img{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.holiday-recipes{
+  .block-full-article{
+    .block-full-article__content {
+      .block-full-article__column{
+        @include title;
+      }
+      .block-full-article__author-data {
+        @include author-data;
+        .block-full-article__author {
+          @include author;
+        }
+
+        .block-full-article__data {
+          @include data;
+          font-size: 11px;
+        }
+      }
+
+      .block-full-article__count {
+        @include count
+      }
+
+      .block-full-article__body {
+        @include body;
+      }
+
+      .block-full-article__category {
+        @include category;
+      }
+    }
+    .block-full-article__inner{
+      .block-full-article__image{
+        position: relative;
+        flex: 0 0 auto;
+        width: 324px;
+        height: 233px;
+        img{
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+      }
+    }
+  }
+  }
+  .holiday-title{
+    text-align: left;
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+    border-color: #8954c1;
+    span{
+      color: #ffffff;
+      background-color: #8954c1;
+      padding: 7px 12px 4px;
+    }
+  }
+
+#edit-field-category-target-id--4{
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      @include element_a;
+
+      a:hover {
+        color: #f9c100;
+      }
+
+      &:nth-child(n + 7) {
+        display: none;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#edit-field-category-target-id--2{
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      @include element_a;
+
+      a:hover {
+        color: #3a863d;
+      }
+
+      &:nth-child(n + 7) {
+        display: none;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+  .title-house-design{
+    text-align: left;
+    font-family: 'Roboto',sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+    border-color: #5d7987;
+    span{
+      padding: 7px 12px 4px;
+      color: #ffffff;
+      background-color: #5d7987;
+    }
+  }
+.house-design{
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: 20px;
+  .block-full-article{
+    margin: 0 20px 20px 20px;
+    .block-full-article__column{
+      .block-full-article__content{
+        @include title;
+      }
+    }
+    .block-full-article__category{
+
+    }
+    .block-full-article__image{
+      width: 218px;
+      height: 153px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
