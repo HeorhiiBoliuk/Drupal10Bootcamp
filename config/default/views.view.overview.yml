@@ -210,6 +210,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: trending_now_field
       use_ajax: true
       header: {  }
       footer: {  }

@@ -27,7 +27,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Latest Areticles block'
+      title: 'Latest Articles block'
       fields:
         field_youtube_video_embed:
           id: field_youtube_video_embed
