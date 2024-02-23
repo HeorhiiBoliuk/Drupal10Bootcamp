@@ -10,7 +10,11 @@ dependencies:
     - node.type.article
     - taxonomy.vocabulary.news
   content:
+    - 'taxonomy_term:news:47318690-6871-4bae-ac6d-bd2950f57e68'
+    - 'taxonomy_term:news:4cf24081-b9e8-404a-8b1c-501c178302a0'
+    - 'taxonomy_term:news:4dfd42e7-f53c-487e-a548-e2df0e78faac'
     - 'taxonomy_term:news:6e175ae6-f946-4cc6-9600-4aeccd90f832'
+    - 'taxonomy_term:news:7f4d6d7f-3250-4b29-b011-9a280e040a87'
   module:
     - better_exposed_filters
     - image
@@ -565,6 +569,60 @@ display:
           plugin_id: bundle
           value:
             article: article
+          group: 1
+        field_category_target_id_1:
+          id: field_category_target_id_1
+          table: node__field_category
+          field: field_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            4: 4
+            19: 19
+            21: 21
+            22: 22
+            20: 20
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_category_target_id_1_op
+            label: 'Category (field_category)'
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_category_target_id_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: news
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
         field_category_target_id:
           id: field_category_target_id
           table: node__field_category
@@ -574,7 +632,11 @@ display:
           admin_label: ''
           plugin_id: taxonomy_index_tid
           operator: or
-          value: {  }
+          value:
+            19: 19
+            21: 21
+            20: 20
+            4: 4
           group: 1
           exposed: true
           expose:
@@ -610,58 +672,13 @@ display:
           reduce_duplicates: false
           vid: news
           type: select
-          hierarchy: true
-          limit: true
-          error_message: true
-        field_category_target_id_1:
-          id: field_category_target_id_1
-          table: node__field_category
-          field: field_category_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value:
-            - 4
-          group: 1
-          exposed: false
-          expose:
-            operator_id: field_category_target_id_1_op
-            label: 'Category (field_category)'
-            description: ''
-            use_operator: false
-            operator: field_category_target_id_1_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_category_target_id_1
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_editor: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: news
-          type: textfield
           hierarchy: false
           limit: true
           error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: html_list
         options:

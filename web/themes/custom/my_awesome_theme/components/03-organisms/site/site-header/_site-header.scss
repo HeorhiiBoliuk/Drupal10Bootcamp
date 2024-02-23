@@ -1,5 +1,7 @@
 .header__menu{
-  max-width: 100%;
+  max-width: 1068px;
+  margin-right: auto;
+  margin-left: auto;
   .logo{
     padding-top: 28px !important;
     padding-bottom: 9px !important;
@@ -68,9 +70,9 @@
 
 
 .header {
-  max-width: 1068px;
   margin-right: auto;
   margin-left: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     .top-header__weather-data, .top-header__header_top__buttons{
       float: left;
     }

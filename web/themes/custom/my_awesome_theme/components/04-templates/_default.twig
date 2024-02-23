@@ -30,7 +30,8 @@
       </aside>
     {% endif %}
     <main role="main" {{ bem(main_content_base_class, main_content_modifiers, main_content_blockname) }}>
-      {% block page_content %}{% endblock %}
+      {% block page_content %}
+      {% endblock %}
     </main>
   </div>
 

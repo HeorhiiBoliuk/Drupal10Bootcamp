@@ -13,12 +13,105 @@
   line-height: 1.6;
 }
 
+@mixin element_a{
+  transition: opacity 0.2s ease 0s;
+  opacity: 1;
+  display: inline-block;
+  line-height: 1;
+  margin-left: 20px;
+  text-align: right;
+
+  a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #767676;
+    line-height: 1;
+    text-decoration: none;
+  }
+}
+
+@mixin category{
+  position: absolute;
+  z-index: 2;
+  font-family: 'Open Sans', 'Open Sans Regular', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  background-color: var(--td_black, #222222);
+  color: #fff;
+  margin-right: 5px;
+  padding: 3px 6px 4px;
+  display: block;
+  vertical-align: top;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+
 @mixin clearfix {
   &::after {
     clear: both;
     content: '';
     display: table;
   }
+}
+
+@mixin count{
+  position: relative;
+  float: right;
+  font-family: 'Open Sans','Open Sans Regular',sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1;
+  color: #fff;
+  background-color: #000;
+  display: inline-block;
+  min-width: 17px;
+  padding: 3px 4px 4px 5px;
+  position: relative;
+}
+
+@mixin data{
+    color: #767676;
+    display: inline-block;
+    position: relative;
+    font-size: 11px;
+}
+
+@mixin author{
+  color: #000;
+  text-decoration: none;
+  font-family: 'Open Sans','Open Sans Regular',sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  margin-right: 5px;
+}
+
+@mixin author-data{
+  display: flex;
+  align-items: baseline;
+}
+
+@mixin body{
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: #767676;
+  font-family: 'Open Sans', 'Open Sans Regular', sans-serif;
+  line-height: 21px;
+  display: block;
+  margin: 14px 0 0;
+}
+
+@mixin title{
+  font-size: 22px !important;
+  line-height: 1.3 !important;
+  margin: 0 0 6px 0;
+  color: var(--td_text_color, #111111);
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  display: block;
+  margin-left: auto;
 }
 
 $outer-container-break: $small;

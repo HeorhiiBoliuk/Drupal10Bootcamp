@@ -18,8 +18,8 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          ebc9c766-7278-4a51-8ddf-85c2f54a3143:
-            uuid: ebc9c766-7278-4a51-8ddf-85c2f54a3143
+          b43619c8-4554-4de7-9d9f-012370c17254:
+            uuid: b43619c8-4554-4de7-9d9f-012370c17254
             region: content
             configuration:
               id: 'extra_field_block:menu_link_content:social-network-footer:children'
@@ -28,8 +28,8 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 0
             additional: {  }
-          8c45339d-9504-42c2-91a1-762d58284373:
-            uuid: 8c45339d-9504-42c2-91a1-762d58284373
+          d6d913e4-d3e8-41b0-b285-fc996f8cc550:
+            uuid: d6d913e4-d3e8-41b0-b285-fc996f8cc550
             region: content
             configuration:
               id: 'field_block:menu_link_content:social-network-footer:field_social_network_footer_imag'
@@ -41,9 +41,9 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_entity_view
-                label: hidden
+                label: above
                 settings:
-                  view_mode: default
+                  view_mode: url
                 third_party_settings: {  }
             weight: 1
             additional: {  }
@@ -59,11 +59,9 @@ content:
     weight: 1
     region: content
   field_social_network_footer_imag:
-    type: entity_reference_entity_view
+    type: entity_reference_entity_id
     label: above
-    settings:
-      view_mode: default
-      link: false
+    settings: {  }
     third_party_settings: {  }
     weight: 2
     region: content

@@ -13,7 +13,7 @@ _core:
 id: my_awesome_theme_main_menu
 theme: my_awesome_theme
 region: header
-weight: 1
+weight: 3
 provider: null
 plugin: 'system_menu_block:main'
 settings:

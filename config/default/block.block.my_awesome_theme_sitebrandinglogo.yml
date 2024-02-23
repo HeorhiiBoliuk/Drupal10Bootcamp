@@ -1,6 +1,6 @@
 uuid: fd8172e7-5b22-4685-832f-948e4a70b60c
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -9,7 +9,7 @@ dependencies:
 id: my_awesome_theme_sitebrandinglogo
 theme: my_awesome_theme
 region: header
-weight: -13
+weight: -9
 provider: null
 plugin: system_branding_block
 settings:

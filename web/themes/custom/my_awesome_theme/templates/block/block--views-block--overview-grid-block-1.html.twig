@@ -9,7 +9,7 @@
   {% set category_url_alias = path('entity.taxonomy_term.canonical', {'taxonomy_term': category_term.tid.value}) %}
 
 
-  {% include '@molecules/block-category-media-title.twig' with {
+  {% include '@molecules/block-category-media-title/block-category-media-title.twig' with {
     block_category_media_text_title: title,
     block_category_media_category: category_name,
     block_category_media_image_src: image_url,
