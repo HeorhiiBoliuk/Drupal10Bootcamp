@@ -570,8 +570,8 @@ display:
           value:
             article: article
           group: 1
-        field_category_target_id:
-          id: field_category_target_id
+        field_category_target_id_1:
+          id: field_category_target_id_1
           table: node__field_category
           field: field_category_target_id
           relationship: none
@@ -580,22 +580,22 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            4: 4
             19: 19
             21: 21
             22: 22
             20: 20
+            4: 4
           group: 1
           exposed: true
           expose:
-            operator_id: field_category_target_id_op
-            label: 'Lifestyle News'
+            operator_id: field_category_target_id_1_op
+            label: 'Category (field_category)'
             description: ''
             use_operator: false
-            operator: field_category_target_id_op
+            operator: field_category_target_id_1_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_category_target_id
+            identifier: field_category_target_id_1
             required: false
             remember: false
             multiple: false
@@ -607,23 +607,20 @@ display:
             reduce: false
           is_grouped: false
           group_info:
-            label: 'Category (field_category)'
-            description: null
-            identifier: field_category_target_id
+            label: ''
+            description: ''
+            identifier: ''
             optional: true
             widget: select
             multiple: false
             remember: false
             default_group: All
             default_group_multiple: {  }
-            group_items:
-              1: {  }
-              2: {  }
-              3: {  }
+            group_items: {  }
           reduce_duplicates: false
           vid: news
           type: select
-          hierarchy: true
+          hierarchy: false
           limit: true
           error_message: true
       filter_groups:
@@ -703,12 +700,12 @@ display:
               secondary_open: false
               reset_button_always_show: false
             filter:
-              field_category_target_id:
+              field_category_target_id_1:
                 plugin_id: bef_links
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: '- Any - | All'
+                    filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
                 select_all_none: false
