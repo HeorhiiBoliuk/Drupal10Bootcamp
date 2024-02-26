@@ -9,6 +9,8 @@
       {% set article_entity = view.result[0]._entity %}
       {% set image_url = file_url(article_entity.field_image.entity.uri.value) %}
       {% set body = article_entity.body.value %}
+      {% set node_id = article['#row']._entity.id %}
+      {% set node_url = path('entity.node.canonical', {'node': node_id}) %}
 
 
       {% set comment_count = last_row['#row']['comment_entity_statistics_comment_count'] %}
@@ -29,6 +31,7 @@
           block_full_text_data: created_date,
           block_full_body: body|striptags|slice(0, 140),
           block_full_comment_count: comment_count_value,
+          block_article_url: node_url,
         } %}
       {% else %}
         {% include '@molecules/block-with-media-t-d/block-with-media-t-d.twig' with {

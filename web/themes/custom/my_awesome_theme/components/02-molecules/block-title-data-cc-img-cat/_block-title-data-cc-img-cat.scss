@@ -1,13 +1,43 @@
+.latest-article-title{
+  @include title_block;
+  border-color: #000000;
+  span{
+    background-color: #000000;
+  }
+}
+
 .latest-articles{
   display: grid;
   grid-template-columns: repeat(2, 348px);
   .block-title-data-cc-img-cat{
+    position: relative;
     margin: 0 20px;
     width: 324px;
-
+    .category {
+      @include category;
+      top: 71px;
+      left: 0;
+      a{
+        -webkit-transition: background-color 0.2s ease;
+        padding: 3px 7px;
+        background-color: rgba(0, 0, 0, 0.7);
+        font-family: 'Roboto', sans-serif;
+        line-height: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        pointer-events: auto;
+        color: #ffffff;
+      }
+      a:hover {
+        background-color: #0a7bc1;
+      }
+    }
     .column{
       .content{
         @include title;
+        a:hover{
+          color: #0a7bc1;
+        }
       }
     }
     .media{

@@ -3,11 +3,15 @@
 <div {{ add_attributes(text_with_media__attributes) }}>
   <div {{ bem('inner', [], text_with_media__base_class) }}>
     <div {{ bem('image', [], text_with_media__base_class) }}>
-      <img src="{{ block_image_src }}" alt="{{ block_text_title }}">
+      <a href="{{ block_title_url }}">
+        <img src="{{ block_image_src }}" alt="{{ block_text_title }}">
+      </a>
   </div>
   <div {{ bem('column', [], text_with_media__base_class) }}>
     <div {{ bem('content', [], text_with_media__base_class) }}>
-    {{ block_text_title }}
+      <a href="{{ block_title_url }}">
+        {{ block_text_title }}
+      </a>
   </div>
   <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
     {{ block_text_data }}

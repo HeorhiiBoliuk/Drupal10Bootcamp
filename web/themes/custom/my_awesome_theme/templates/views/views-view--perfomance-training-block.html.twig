@@ -14,6 +14,7 @@
       {% set image_url = file_url(article_entity.field_image.entity.uri.value) %}
       {% set body = article_entity.body.value %}
 
+
       {% set comment_count = article['#row']['comment_entity_statistics_comment_count'].getValue() %}
 
       {% set author_entity = article_entity.getOwner() %}
@@ -29,6 +30,7 @@
         block_full_text_data: created_date,
         block_full_body: body|striptags|slice(0, 140),
         block_full_comment_count: comment_count,
+        block_article_url: node_url,
       } %}
     {% endfor %}
   {% endfor %}

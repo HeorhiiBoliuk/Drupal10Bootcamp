@@ -43,10 +43,48 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 }
 
 .layout--twocol-section {
+  margin-top: 48px;
   display: flex;
   flex-wrap: nowrap;
 }
 
+.comments-front-page{
+  .item-list{
+    ul{
+      li{
+        margin-top: 0 !important;
+        padding: 0 0 15px !important;
+        border-bottom-color: #eaeaea;
+        display: block;
+        line-height: 21px;
+        .views-field-name{
+          text-align: left;
+          a{
+            line-height: 21px;
+            font-family: 'Open Sans','Open Sans Regular',sans-serif;
+            font-size: 12px;
+            color: #444;
+          }
+        }
+        .views-field-subject{
+          display: inline !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          a{
+            font-style: italic;
+            font-size: 13px;
+            font-weight: 600;
+            color: #111;
+            text-decoration: none;
+          }
+          a:hover{
+            color: #0a7bc1;
+          }
+        }
+      }
+    }
+  }
+}
 
 
 .trending-now-field{
