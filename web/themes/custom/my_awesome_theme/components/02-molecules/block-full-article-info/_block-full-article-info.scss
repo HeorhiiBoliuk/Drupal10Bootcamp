@@ -1,15 +1,14 @@
 .dont-miss{
   .block-full-article{
+    position: relative;
     width: 372px;
     height: 392px;
     padding-left: 24px;
     padding-right: 24px;
-    .block-full-article__content{
-      font-size: 21px;
-      line-height: 25px;
-      margin: 0 0 6px 0;
-      color: var(--td_text_color,#111111);
-      text-decoration: none;
+    .block-full-article__column{
+      .block-full-article__content{
+        @include title;
+      }
     }
     .block-full-article__author{
       @include author;
@@ -37,6 +36,14 @@
         position: absolute;
       }
     }
+  }
+}
+
+.perf-training-title{
+  @include title_block;
+  border-color: #0a0a0a;
+  span{
+    background-color: #0a0a0a;
   }
 }
 
@@ -92,13 +99,22 @@
 
 .lifestyle-news{
   display: flex;
+  position: relative;
   .block-full-article{
+    position: relative;
     width: 372px;
-    height: 392px;
     padding-left: 24px;
     padding-right: 24px;
     .block-full-article__content{
       @include body;
+    }
+    .block-full-article__column{
+      .block-full-article__content{
+        @include title;
+        a:hover{
+          color: #0a7bc1;
+        }
+      }
     }
     .block-full-article__author-data {
       display: flex;
@@ -117,22 +133,22 @@
       @include body;
     }
     .block-full-article__category{
-      left: 0;
-      position: absolute;
-      z-index: 2;
-      bottom: 0;
-      font-family: 'Open Sans','Open Sans Regular',sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1;
-      background-color: var(--td_black,#222222);
-      color: #fff;
-      margin-right: 5px;
-      padding: 3px 6px 4px;
-      display: block;
-      vertical-align: top;
-      transition: all 0.2s ease;
-      -webkit-transition: all 0.2s ease;
+      @include category;
+      top: 211px;
+      a{
+        -webkit-transition: background-color 0.2s ease;
+        padding: 3px 7px;
+        background-color: rgba(0, 0, 0, 0.7);
+        font-family: 'Roboto', sans-serif;
+        line-height: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        pointer-events: auto;
+        color: #ffffff;
+      }
+      a:hover {
+        background-color: #0a7bc1;
+      }
     }
     .block-full-article__image{
       position: relative;
@@ -151,8 +167,12 @@
 .holiday-recipes{
   .block-full-article{
     .block-full-article__content {
+      position: relative;
       .block-full-article__column{
         @include title;
+        a:hover{
+          color: #0a7bc1;
+        }
       }
       .block-full-article__author-data {
         @include author-data;
@@ -176,6 +196,21 @@
 
       .block-full-article__category {
         @include category;
+        top: -20px;
+        left: 0;
+        a{
+          -webkit-transition: background-color 0.2s ease;
+          padding: 3px 7px;
+          font-family: 'Roboto', sans-serif;
+          line-height: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          pointer-events: auto;
+          color: #ffffff;
+        }
+        a:hover {
+          background-color: #0a7bc1;
+        }
       }
     }
     .block-full-article__inner{
@@ -194,19 +229,29 @@
   }
   }
   .holiday-title{
+    @include title_block;
+    border-color: #8954c1;
+    span{
+      background-color: #8954c1;
+    }
+  }
+.views-exposed-form{
+  display: flex;
+  border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+  .h2{
     text-align: left;
     font-family: 'Roboto',sans-serif;
     font-size: 14px;
-    line-height: 1;
-    margin-top: 10px;
-    margin-bottom: 26px;
-    border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
-    border-color: #8954c1;
-    span{
-      color: #ffffff;
-      background-color: #8954c1;
-      padding: 7px 12px 4px;
+    line-height: 1.4;
+    color: #0a0a0a;
+    padding: 7px 12px 4px;
+    background-color: #f9c100;
+  }
+  form{
+    .js-form-item{
+      max-width: 100%;
     }
+  }
   }
 
 #edit-field-category-target-id--4{
@@ -263,17 +308,9 @@
 
 
   .title-house-design{
-    text-align: left;
-    font-family: 'Roboto',sans-serif;
-    font-size: 14px;
-    line-height: 1;
-    margin-top: 10px;
-    margin-bottom: 26px;
-    border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+    @include title_block;
     border-color: #5d7987;
     span{
-      padding: 7px 12px 4px;
-      color: #ffffff;
       background-color: #5d7987;
     }
   }
@@ -281,15 +318,34 @@
   display: grid;
   grid-template-columns: repeat(3, 220px);
   gap: 20px;
+  position: relative;
   .block-full-article{
     margin: 0 20px 20px 20px;
     .block-full-article__column{
       .block-full-article__content{
         @include title;
+        a:hover{
+          color: #0a7bc1;
+        }
       }
     }
     .block-full-article__category{
-
+      @include category;
+      top: 134px;
+      a{
+        -webkit-transition: background-color 0.2s ease;
+        padding: 3px 7px;
+        background-color: rgba(0,0,0,0.7);
+        font-family: 'Roboto',sans-serif;
+        line-height: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        pointer-events: auto;
+        color: #ffffff;
+      }
+      a:hover{
+        background-color: #0a7bc1;
+      }
     }
     .block-full-article__image{
       width: 218px;

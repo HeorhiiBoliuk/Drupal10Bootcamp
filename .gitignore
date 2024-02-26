@@ -8,3 +8,4 @@
 /web/themes/contrib
 /web/core
 /node_modules
+/.ddev/.ddev-docker-compose-full.yaml

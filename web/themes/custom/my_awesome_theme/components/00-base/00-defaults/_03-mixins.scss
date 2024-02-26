@@ -47,6 +47,20 @@
   -webkit-transition: all 0.2s ease;
 }
 
+@mixin title_block{
+  text-align: left;
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 10px;
+  margin-bottom: 26px;
+  border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+  span{
+    color: #ffffff;
+    padding: 7px 12px 4px;
+  }
+}
+
 @mixin clearfix {
   &::after {
     clear: both;
@@ -112,6 +126,10 @@
   font-weight: 400;
   display: block;
   margin-left: auto;
+  a{
+    color: #0a0a0a;
+    text-decoration: none;
+  }
 }
 
 $outer-container-break: $small;

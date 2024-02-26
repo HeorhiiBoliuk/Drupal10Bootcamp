@@ -1,6 +1,8 @@
 <div class="most-popular-block">
-  <h2>
-    {{ content['#title']['#markup'] }}
+  <h2 class="most-popular-title">
+    <span>
+      {{ content['#title']['#markup'] }}
+    </span>
   </h2>
   {% for row in content['#view'].result %}
     {% set article = row._entity %}
@@ -14,7 +16,8 @@
     {% include '@molecules/block-with-media-t-d/block-with-media-t-d.twig' with {
       block_text_title: title,
       block_text_data: created_date,
-      block_image_src: image_url
+      block_image_src: image_url,
+      block_title_url: title_url,
     } %}
   {% endfor %}
 </div>

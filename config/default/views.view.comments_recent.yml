@@ -250,6 +250,7 @@ display:
           field: node
           plugin_id: standard
           required: true
+      css_class: comments-front-page
       display_extenders: {  }
     cache_metadata:
       max-age: -1
