@@ -1,0 +1,21 @@
+<div  class="recent-posts">
+  <h4>
+    <span>
+      RECENT POSTS
+    </span>
+  </h4>
+</div>
+
+<div class="recent-posts-item-list">
+  {% for row in rows %}
+    <ul>
+      {% for article in row['#rows'] %}
+        <li>
+          <a href="{{ path('entity.node.canonical', {'node': article['#row']._entity.id}) }}">
+            {{ article['#row']._entity.fields['title'].value }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>

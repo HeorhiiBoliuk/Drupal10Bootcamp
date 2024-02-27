@@ -11,7 +11,7 @@ _core:
 id: my_awesome_theme_content
 theme: my_awesome_theme
 region: content
-weight: -13
+weight: -12
 provider: null
 plugin: system_main_block
 settings:
