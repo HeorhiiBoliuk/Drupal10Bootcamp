@@ -1,15 +1,11 @@
-<div class="latest-article-title">
-  <span>
-    {{ 'Latest Articles'|t }}
-  </span>
-</div>
-<div class="latest-articles">
+<div class="mobile-phones-articles-page">
   {% for row in rows %}
     {% for article in row['#rows'] %}
       {% set field_article = article['#row']._entity.fields %}
       {% set title = field_article.title.value %}
       {% set created_timestamp = field_article.created.value %}
       {% set created_date = created_timestamp|date('F j, Y') %}
+      {% set image_uri = field_article.field_image.entity.uri.value %}
       {% set image_url = file_url(field_article.field_image.entity.uri.value) %}
       {% set body = field_article.body.value %}
       {% set node_id = article['#row']._entity.id %}
@@ -23,18 +19,15 @@
       {% set category_entity = field_article.field_category.entity %}
       {% set category_name = category_entity.name.value %}
 
-      {% include '@molecules/block-title-data-cc-img-cat/block-title-data-cc-img-cat.twig' with {
-        block_title: title,
-        block_category: category_name,
-        block_image_src: image_url,
-        block_category_url: category_url_alias,
-        block_comment_count: comment_count,
-        block_data: created_date,
+      {% include '@molecules/block-full-article-info.twig' with {
+        block_full_text_title: title,
+        block_full_category: category_name,
+        block_full_block_full_image_src: image_url,
+        block_full_category_url: category_url_alias,
+        block_full_text_data: created_date,
+        block_full_body: body|striptags|slice(0, 140),
         block_article_url: node_url,
       } %}
-
     {% endfor %}
   {% endfor %}
 </div>
-
-{{ pager }}

@@ -18,6 +18,7 @@
 
       {% set category_entity = field_article.field_category.entity %}
       {% set category_name = category_entity.name.value %}
+      {% set cat = category_entity.field_tax_term_ident.value %}
 
       {% include '@molecules/block-full-article-info.twig' with {
         block_full_text_title: title,
@@ -31,3 +32,5 @@
     {% endfor %}
   {% endfor %}
 </div>
+
+{{ pager }}

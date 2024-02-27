@@ -1,0 +1,30 @@
+uuid: 1d562986-35fe-4804-ab30-aade5a15209f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.news.field_tax_term_ident
+    - taxonomy.vocabulary.news
+  module:
+    - options
+    - text
+id: taxonomy_term.news.default
+targetEntityType: taxonomy_term
+bundle: news
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_tax_term_ident:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

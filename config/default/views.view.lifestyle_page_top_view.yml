@@ -177,6 +177,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: lifestyle-taxonomy
       header:
         area_text_custom:
           id: area_text_custom

@@ -1,9 +1,9 @@
-<div class="latest-article-title">
+<div class="must-read-title">
   <span>
-    {{ 'Latest Articles'|t }}
+    {{ 'Must Read'|t }}
   </span>
 </div>
-<div class="latest-articles">
+<div class="must-read">
   {% for row in rows %}
     {% for article in row['#rows'] %}
       {% set field_article = article['#row']._entity.fields %}
@@ -25,16 +25,12 @@
 
       {% include '@molecules/block-title-data-cc-img-cat/block-title-data-cc-img-cat.twig' with {
         block_title: title,
-        block_category: category_name,
         block_image_src: image_url,
-        block_category_url: category_url_alias,
-        block_comment_count: comment_count,
         block_data: created_date,
         block_article_url: node_url,
+        block_author: author_name,
       } %}
 
     {% endfor %}
   {% endfor %}
 </div>
-
-{{ pager }}
