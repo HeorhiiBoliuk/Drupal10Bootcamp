@@ -1,0 +1,26 @@
+{% set block_full_article_info__base_class = 'block-data-title' %}
+
+<div class="{{ block_full_article_info__base_class }}">
+  <div {{ bem ('content', [], block_full_article_info__base_class) }}>
+    <div {{ bem('column', [], block_full_article_info__base_class ) }}>
+      <div {{ bem('content', [], block_full_article_info__base_class ) }}>
+        <a href="{{ block_article_url }}">
+          {{ block_full_text_title }}
+        </a>
+      </div>
+    </div>
+    <div {{ bem('category-author', [], block_full_article_info__base_class) }}>
+      <div {{ bem('author', [], block_full_article_info__base_class ) }}>
+        {{ block_full_author }}
+      </div>
+      <div {{ bem('category', [], block_full_article_info__base_class ) }}>
+        <a class="category" href="{{ block_full_category_url }}">
+          {{ block_full_category }}
+        </a>
+      </div>
+    </div>
+    <div {{ bem('data', [], block_full_article_info__base_class ) }}>
+      {{ block_full_text_data }}
+    </div>
+  </div>
+</div>

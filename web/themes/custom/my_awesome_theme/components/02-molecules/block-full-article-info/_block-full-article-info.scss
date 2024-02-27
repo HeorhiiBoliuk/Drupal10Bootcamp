@@ -1,3 +1,20 @@
+.block-full-article{
+  .block-full-article__column{
+    .block-full-article__content{
+      @include title;
+    }
+  }
+  .block-full-article__author{
+    @include author;
+  }
+  .block-full-article__data{
+    @include data;
+  }
+  .block-full-article__body{
+    @include body;
+  }
+}
+
 .dont-miss{
   .block-full-article{
     position: relative;
@@ -5,22 +22,8 @@
     height: 392px;
     padding-left: 24px;
     padding-right: 24px;
-    .block-full-article__column{
-      .block-full-article__content{
-        @include title;
-      }
-    }
-    .block-full-article__author{
-      @include author;
-    }
-    .block-full-article__data{
-      @include data;
-    }
     .block-full-article__count{
       @include count;
-    }
-    .block-full-article__body{
-      @include body;
     }
     .block-full-article__category{
       @include category;
@@ -73,25 +76,9 @@
     }
 
     .block-full-article__content {
-      .block-full-article__column{
-        .block-full-article__content{
-          @include title;
-        }
-      }
-      .block-full-article__body {
-        @include body;
-      }
       .block-full-article__author-data {
         @include author-data;
-        .block-full-article__author {
-          @include author;
-        }
-
-        .block-full-article__data {
-          @include data;
-        }
       }
-
     }
   }
 }
@@ -105,9 +92,6 @@
     width: 372px;
     padding-left: 24px;
     padding-right: 24px;
-    .block-full-article__content{
-      @include body;
-    }
     .block-full-article__column{
       .block-full-article__content{
         @include title;
@@ -119,18 +103,9 @@
     .block-full-article__author-data {
       display: flex;
       align-items: baseline;
-      .block-full-article__author{
-        @include author;
-      }
-      .block-full-article__data{
-        @include data;
-      }
     }
     .block-full-article__count{
       @include count
-    }
-    .block-full-article__body{
-      @include body;
     }
     .block-full-article__category{
       @include category;
@@ -176,22 +151,13 @@
       }
       .block-full-article__author-data {
         @include author-data;
-        .block-full-article__author {
-          @include author;
-        }
-
         .block-full-article__data {
-          @include data;
           font-size: 11px;
         }
       }
 
       .block-full-article__count {
         @include count
-      }
-
-      .block-full-article__body {
-        @include body;
       }
 
       .block-full-article__category {
