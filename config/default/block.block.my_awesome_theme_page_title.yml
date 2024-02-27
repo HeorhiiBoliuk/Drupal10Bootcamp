@@ -9,7 +9,7 @@ _core:
 id: my_awesome_theme_page_title
 theme: my_awesome_theme
 region: header
-weight: -2
+weight: -4
 provider: null
 plugin: page_title_block
 settings:

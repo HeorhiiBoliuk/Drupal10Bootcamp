@@ -177,20 +177,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: '<h1> {{ name }} </h1>'
-            format: basic_html
-          tokenize: true
+      header: {  }
       footer:
         area_text_custom:
           id: area_text_custom

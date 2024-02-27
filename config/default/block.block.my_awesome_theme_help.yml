@@ -11,7 +11,7 @@ _core:
 id: my_awesome_theme_help
 theme: my_awesome_theme
 region: header
-weight: -6
+weight: -8
 provider: null
 plugin: help_block
 settings:

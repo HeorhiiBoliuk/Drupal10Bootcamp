@@ -11,7 +11,7 @@ dependencies:
 id: my_awesome_theme_navbarcategorys
 theme: my_awesome_theme
 region: header
-weight: -13
+weight: -14
 provider: null
 plugin: 'system_menu_block:navbar-categorys'
 settings:

@@ -1,6 +1,6 @@
 uuid: 97cbed6f-e68e-4a17-bb46-ebd350b0226a
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - my_awesome_theme
@@ -8,8 +8,8 @@ _core:
   default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
 id: my_awesome_theme_primary_local_tasks
 theme: my_awesome_theme
-region: header
-weight: 0
+region: content
+weight: -13
 provider: null
 plugin: local_tasks_block
 settings:
