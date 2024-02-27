@@ -9,7 +9,7 @@ _core:
 id: my_awesome_theme_secondary_local_tasks
 theme: my_awesome_theme
 region: header
-weight: -7
+weight: -9
 provider: null
 plugin: local_tasks_block
 settings:

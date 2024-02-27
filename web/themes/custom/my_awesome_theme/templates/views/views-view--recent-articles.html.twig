@@ -1,0 +1,29 @@
+<div  class="recent-articles">
+  <h2>
+    <span>
+      {% trans %}
+        RECENT ARTICLES
+      {% endtrans %}
+    </span>
+  </h2>
+</div>
+{% for row in rows %}
+  {% for article in row['#rows'] %}
+    {% set field_article = article['#row']._entity.fields %}
+    {% set title = field_article.title.value %}
+    {% set created_timestamp = field_article.created.value %}
+    {% set created_date = created_timestamp|date('F j, Y') %}
+    {% set node_id = article['#row']._entity.id %}
+    {% set node_url = path('entity.node.canonical', {'node': node_id}) %}
+    {% set category_entity = field_article.field_category.entity %}
+    {% set category_name = category_entity.name.value %}
+
+    {% include '@molecules/block-data-title-category-or-author/block-data-title-category-or-author.twig' with {
+      block_full_text_title: title,
+      block_full_category: category_name,
+      block_full_category_url: category_url_alias,
+      block_full_text_data: created_date,
+      block_article_url: node_url,
+    } %}
+  {% endfor %}
+{% endfor %}

@@ -177,32 +177,9 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: '<h1> {{ name }} </h1>'
-            format: basic_html
-          tokenize: true
-      footer:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text_custom
-          empty: false
-          content: '<a> Custom category description. You must learn one thing. The world was made to be free in. Give up all the other worlds Except the one in which you belong. </a>'
-          tokenize: false
+      css_class: technology-taxonomy
+      header: {  }
+      footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
