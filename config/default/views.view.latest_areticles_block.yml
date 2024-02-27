@@ -427,7 +427,7 @@ display:
           offset: 0
           items_per_page: 8
           total_pages: null
-          id: 0
+          id: 1
           tags:
             next: ' ›'
             previous: '‹ '

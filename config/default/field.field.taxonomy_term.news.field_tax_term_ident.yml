@@ -1,0 +1,21 @@
+uuid: f289e77f-ac29-465d-b1ec-4c872d1c54ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tax_term_ident
+    - taxonomy.vocabulary.news
+  module:
+    - options
+id: taxonomy_term.news.field_tax_term_ident
+field_name: field_tax_term_ident
+entity_type: taxonomy_term
+bundle: news
+label: tax_term_ident
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

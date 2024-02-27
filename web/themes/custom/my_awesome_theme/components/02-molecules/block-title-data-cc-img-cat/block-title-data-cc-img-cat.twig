@@ -23,6 +23,9 @@
   <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
     {{ block_data }}
   </div>
+  <div {{ bem('author', text_with_media__modifiers, text_with_media__base_class) }}>
+    {{ block_author }}
+  </div>
   <div {{ bem('count', [], text_with_media__base_class) }}>
     {{ block_comment_count }}
   </div>

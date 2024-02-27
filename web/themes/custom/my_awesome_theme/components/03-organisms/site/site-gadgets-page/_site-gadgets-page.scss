@@ -1,4 +1,6 @@
-/**.layout--onecol{
+/**
+@todo use this code for fashion taxonomy page
+.layout--onecol{
   margin-bottom: 48px;
   position: relative;
   clear: both;
@@ -96,92 +98,23 @@
 }
 **/
 
-article[data-history-node-id="10"]{
-  .layout--onecol{
-    .block{
-      text-align: left;
-      span{
-        font-size: 36px;
-        line-height: 1;
-        font-weight: 700;
-        text-transform: none;
-        display: inline-block;
-        position: relative;
-        margin: 0;
-        word-wrap: break-word;
-        font-family: 'Roboto',sans-serif;
-        color: var(--td_text_color,#111111);
-      }
-    }
-    .technology-taxonomy{
-      display: flex;
-      .views-row{
-        .views-field-name{
-          .field-content{
-            transition: opacity 0.2s ease 0s;
-            opacity: 1;
-            margin: 0 6px 0 0;
-            display: inline-block;
-            line-height: 1;
-            list-style: none;
-            font-size: 10px;
-            a{
-              font-family: 'Open Sans','Open Sans Regular',sans-serif;
-              color: #0a7bc1;
-              padding: 0;
-              line-height: 1;
-              text-transform: uppercase;
-              position: relative;
-              font-size: 11px;
-              margin: 0 5px 0 0;
-              background-color: transparent;
-              pointer-events: auto;
-              white-space: nowrap;
-              display: inline-block;
-              text-decoration: none;
-            }
-            a:hover{
-              color: #0a0a0a;
-            }
-          }
-        }
-      }
-    }
-  }
+
+.technology{
+  @include layout-onecol-technology;
 }
 
 .gadgets-articles-page{
-  .block-full-article{
-    display: flex;
-    flex-direction: row-reverse;
-    margin: 0 20px 20px 0;
-    .block-full-article__inner{
-      .block-full-article__image{
-        a{
-          display: block;
-          position: relative;
-          img{
-            height: 250px;
-            width: 417px;
-          }
-        }
-      }
-    }
-    .block-full-article__content{
-      .block-full-article__category{
-        .category{
-          color: #0a7bc1;
-          text-decoration: none;
-          font-family: 'Open Sans','Open Sans Regular',sans-serif;
-          text-transform: uppercase;
-          font-size: 12px;
-        }
-      }
-      .block-full-article__column{
-        a:hover{
-          color: #0a7bc1;
-        }
-      }
-    }
-  }
+  @include technology-page-articles;
+}
+
+.mobile-phones-articles-page{
+  @include technology-page-articles;
+}
+
+.photography-articles-page{
+  @include technology-page-articles;
+}
+
+.reviews-articles-page{
+  @include technology-page-articles;
 }
