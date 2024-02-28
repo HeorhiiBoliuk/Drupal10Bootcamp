@@ -1,32 +1,31 @@
 {% set block_title_data_cc_img_cat__base_class = 'block-title-data-cc-img-cat' %}
 
 <div class="{{ block_title_data_cc_img_cat__base_class }}">
-  <div {{ bem('inner', [], text_with_media__base_class) }}>
-    <div {{ bem('image', [], text_with_media__base_class) }}>
-      <a href="{{ block_article_url }}">
-        <img src="{{ block_image_src }}" alt="{{ block_title }}">
-      </a>
-    </div>
-  </div>
-  <div {{ bem('category', [], text_with_media__base_class) }}>
-    <a class="category" href="{{ block_category_url }}">
-      {{ block_category }}
+  <div {{ bem('image', [], text_with_media__base_class) }}>
+    <a href="{{ block_article_url }}">
+        <span>
+          <img src="{{ block_image_src }}" alt="{{ block_title }}">
+        </span>
     </a>
   </div>
-  <div {{ bem('column', [], text_with_media__base_class) }}>
-    <div {{ bem('content', [], text_with_media__base_class) }}>
-      <a href="{{ block_article_url }}">
-        {{ block_title }}
+  <div {{ bem('inner', [], text_with_media__base_class) }}>
+    <div {{ bem('category', [], text_with_media__base_class) }}>
+      <a class="category" href="{{ block_category_url }}">
+        {{ block_category }}
       </a>
     </div>
-  </div>
-  <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
-    {{ block_data }}
-  </div>
-  <div {{ bem('author', text_with_media__modifiers, text_with_media__base_class) }}>
-    {{ block_author }}
-  </div>
-  <div {{ bem('count', [], text_with_media__base_class) }}>
-    {{ block_comment_count }}
+    <div {{ bem('column', [], text_with_media__base_class) }}>
+      <div {{ bem('content', [], text_with_media__base_class) }}>
+        <a href="{{ block_article_url }}">
+          {{ block_title }}
+        </a>
+      </div>
+    </div>
+    <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
+      {{ block_data }}
+    </div>
+    <div {{ bem('count', [], text_with_media__base_class) }}>
+      {{ block_comment_count }}
+    </div>
   </div>
 </div>

@@ -1,0 +1,134 @@
+.video{
+  .layout--onecol{
+    .layout__region--content{
+      .block{
+        .h2{
+          display: inline-block;
+          position: relative;
+          margin: 0;
+          word-wrap: break-word;
+          font-size: 30px;
+          line-height: 38px;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+      }
+      .text-long{
+        margin: 0 0 15px;
+        font-family: 'Open Sans','Open Sans Regular',sans-serif;
+        font-size: 16px;
+        font-style: italic;
+        line-height: 26px;
+        color: $grey;
+        p{
+          margin-bottom: 0;
+        }
+      }
+      .overview-video{
+        .item-list{
+          ul{
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-gap: 10px;
+            list-style: none;
+            li{
+              position: relative;
+              .views-field-field-youtube-video-embed{
+
+              }
+              .views-field-field-category{
+                top: 65%;
+                @include category;
+                a{
+                  color: $white;
+                }
+              }
+              .views-field-field-category:hover{
+                background-color: $blue;
+              }
+              .views-field-title{
+                position: absolute;
+                top: 70%;
+                @include title;
+                a{
+                  color: $white;
+                  font-family: 'Roboto',sans-serif;
+                  font-size: 27px;
+                  font-weight: 500;
+                  line-height: 34px;
+                  margin: 0 0 9px 0;
+                }
+              }
+              .views-field-title:hover a {
+                color: $blue;
+              }
+              .views-field-uid{
+                position: absolute;
+                left: 100px;
+                top: 78.5%;
+                a{
+                  color: $white;
+                }
+                @include author;
+              }
+              .views-field-created{
+                position: absolute;
+                top: 78.5%;
+                color: $white;
+                @include data;
+              }
+            }
+          }
+        }
+      }
+      .overview-video:hover a {
+        color: $blue;
+      }
+    }
+  }
+  .layout--twocol-section--67-33{
+    .overview-video{
+      .item-list{
+        ul{
+          display: grid;
+          grid-template-columns: repeat(2, 47%);
+          grid-gap: 10px;
+          list-style: none;
+          li{
+            position: relative;
+            .views-field-field-youtube-video-embed{
+
+            }
+            .views-field-field-category{
+              bottom: 89px;
+              @include category;
+              a{
+                color: $white;
+              }
+            }
+            .views-field-field-category:hover{
+              background-color: $blue;
+            }
+            .views-field-title{
+              @include title;
+            }
+            .views-field-title:hover a {
+              color: $blue;
+            }
+            .views-field-uid{
+              @include author;
+              float: left;
+              a{
+                color: $black;
+              }
+            }
+            .views-field-created{
+              @include data;
+              float: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
