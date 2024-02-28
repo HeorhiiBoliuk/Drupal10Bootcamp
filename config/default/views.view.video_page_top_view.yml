@@ -80,12 +80,14 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: video_embed_field_video
+          type: video_embed_field_lazyload
           settings:
             autoplay: false
             responsive: true
             width: 854
             height: 480
+            image_style: ''
+            link_image_to: ''
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -473,7 +475,14 @@ display:
           limit: true
           error_message: true
       style:
-        type: grid
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
@@ -485,6 +494,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: overview-video
       header: {  }
       footer: {  }
       display_extenders: {  }

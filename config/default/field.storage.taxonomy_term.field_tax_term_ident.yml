@@ -20,6 +20,9 @@ settings:
     -
       value: lifestyle
       label: Lifestyle
+    -
+      value: video
+      label: Video
   allowed_values_function: ''
 module: options
 locked: false
