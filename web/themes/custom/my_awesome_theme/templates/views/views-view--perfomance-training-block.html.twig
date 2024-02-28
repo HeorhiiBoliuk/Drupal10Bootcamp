@@ -13,6 +13,7 @@
       {% set article_entity = article['#node'] %}
       {% set image_url = file_url(article_entity.field_image.entity.uri.value) %}
       {% set body = article_entity.body.value %}
+      {% set node_url = path('entity.node.canonical', {'node': article_entity.id}) %}
 
 
       {% set comment_count = article['#row']['comment_entity_statistics_comment_count'].getValue() %}

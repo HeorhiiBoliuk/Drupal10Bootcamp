@@ -13,7 +13,7 @@
       {% set node_url = path('entity.node.canonical', {'node': node_id}) %}
 
 
-      {% set comment_count = last_row['#row']['comment_entity_statistics_comment_count'] %}
+      {% set comment_count = article['#row'].comment_entity_statistics_comment_count  %}
 
       {% set author_entity = article_entity.getOwner() %}
       {% set author_name = author_entity is not null ? author_entity.name.value : 'Unknown' %}
