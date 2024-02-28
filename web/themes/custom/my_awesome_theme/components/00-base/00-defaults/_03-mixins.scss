@@ -8,7 +8,6 @@
 */
 
 @mixin body-copy {
-  font-family: $font-body;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -24,7 +23,7 @@
   a {
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
-    color: #767676;
+    color: $grey;
     line-height: 1;
     text-decoration: none;
   }
@@ -37,8 +36,8 @@
   font-size: 10px;
   font-weight: 600;
   line-height: 1;
-  background-color: var(--td_black, #222222);
-  color: #fff;
+  background-color: $black;
+  color: $white;
   margin-right: 5px;
   padding: 3px 6px 4px;
   display: block;
@@ -54,9 +53,9 @@
   line-height: 1.4;
   margin-top: 10px;
   margin-bottom: 26px;
-  border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
+  border-bottom: 2px solid $black;
   span{
-    color: #ffffff;
+    color: $white;
     padding: 7px 12px 4px;
   }
 }
@@ -77,8 +76,8 @@
   font-weight: 600;
   text-align: center;
   line-height: 1;
-  color: #fff;
-  background-color: #000;
+  color: $white;
+  background-color: $black;
   display: inline-block;
   min-width: 17px;
   padding: 3px 4px 4px 5px;
@@ -86,14 +85,14 @@
 }
 
 @mixin data{
-    color: #767676;
+    color: $grey;
     display: inline-block;
     position: relative;
     font-size: 11px;
 }
 
 @mixin author{
-  color: #000;
+  color: $black;
   text-decoration: none;
   font-family: 'Open Sans','Open Sans Regular',sans-serif;
   font-size: 11px;
@@ -109,7 +108,7 @@
 @mixin body{
   overflow-wrap: anywhere;
   font-size: 13px;
-  color: #767676;
+  color: $grey;
   font-family: 'Open Sans', 'Open Sans Regular', sans-serif;
   line-height: 21px;
   display: block;
@@ -120,15 +119,55 @@
   font-size: 22px !important;
   line-height: 1.3 !important;
   margin: 0 0 6px 0;
-  color: var(--td_text_color, #111111);
+  color: $black;
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   display: block;
   margin-left: auto;
   a{
-    color: #0a0a0a;
+    color: $black;
     text-decoration: none;
+  }
+}
+
+@mixin lifestyle-page-articles{
+  .block-title-data-cc-img-cat{
+    position: relative;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    .image{
+      img{
+        width: 244px;
+        height: 158px;
+        margin-right: 20px;
+      }
+    }
+    .inner{
+      .category{
+        a{
+          left: 0;
+          bottom: 6px;
+          @include category;
+        }
+      }
+      .column{
+        .content{
+          @include title;
+        }
+      }
+      .media{
+        @include data;
+      }
+      .author{
+        @include author;
+      }
+      .count{
+        max-height: 18px;
+        @include count;
+      }
+    }
   }
 }
 
@@ -152,7 +191,7 @@
     .block-full-article__content{
       .block-full-article__category{
         .category{
-          color: #0a7bc1;
+          color: $blue;
           text-decoration: none;
           font-family: 'Open Sans','Open Sans Regular',sans-serif;
           text-transform: uppercase;
@@ -161,7 +200,7 @@
       }
       .block-full-article__column{
         a:hover{
-          color: #0a7bc1;
+          color: $blue;
         }
       }
     }
@@ -183,7 +222,7 @@
         margin: 0;
         word-wrap: break-word;
         font-family: 'Roboto',sans-serif;
-        color: var(--td_text_color,#111111);
+        color: $black;
       }
     }
     .technology-taxonomy{
@@ -200,7 +239,7 @@
             font-size: 10px;
             a{
               font-family: 'Open Sans','Open Sans Regular',sans-serif;
-              color: #0a7bc1;
+              color: $blue;
               padding: 0;
               line-height: 1;
               text-transform: uppercase;
@@ -214,7 +253,7 @@
               text-decoration: none;
             }
             a:hover{
-              color: #0a0a0a;
+              color: $black;
             }
           }
         }
@@ -236,15 +275,17 @@
           line-height: 38px;
           font-weight: 700;
           font-family: 'Roboto',sans-serif;
-          color: var(--td_text_color,#111111);
+          color: $black;
           text-align: left;
         }
       }
       footer{
+        margin: 26px 0 0 !important;
         @include body;
       }
       .lifestyle-taxonomy{
         .views-row{
+          float: left;
           .views-field-name{
             .field-content{
               transition: opacity 0.2s ease 0s;
@@ -255,8 +296,8 @@
               font-size: 10px;
               text-align: left;
               border-width: 1px;
-              background-color: #ffffff;
-              border-color: #eaeaea ;
+              background-color: $white;
+              border-color: $black;
               border-style: solid;
               margin: 0 5px 0 0;
               a{
@@ -265,17 +306,17 @@
                 padding: 4px 8px 5px 8px;
                 background-color: transparent;
                 pointer-events: auto;
-                color: #000000;
+                color: $black;
                 white-space: nowrap;
                 text-decoration: none;
                 font-family: 'Open Sans','Open Sans Regular',sans-serif;
               }
               a:hover{
-                color: #fff;
+                color: $white;
               }
             }
             .field-content:hover{
-              background-color: #0a0a0a;
+              background-color: $black;
             }
           }
         }

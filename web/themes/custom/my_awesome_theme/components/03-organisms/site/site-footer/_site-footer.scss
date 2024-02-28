@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  background-color: #111111 !important;
+  background-color: $black;
   left: 50% !important;
   transform: translateX(-50%) !important;
   &__inner {
@@ -50,7 +50,7 @@
   }
   div{
     h2{
-      color: #ffffff;
+      color: $white;
       font-family: "HelveticaNeue","Helvetica","Arial",sans-serif;
       font-weight: 700;
       font-style: normal;
@@ -64,7 +64,7 @@
         .block{
           .text-long{
             p{
-              color: #ffffff;
+              color: $white;
             }
           }
         }
@@ -77,24 +77,24 @@
       margin-right: 10px;
     }
     .block-with-media__content{
-      color: #ffffff;
+      color: $white;
     }
   }
   .views-element-container {
     div {
       h2{
-        color: #ffffff;
+        color: $white;
       }
       div {
         .views-row:hover{
           div {
-            color: #4DB2EC;;
+            color: $blue;
             flex: 1;
             margin: 0 5px;
 
             a {
               text-decoration: none;
-              color: #4DB2EC;
+              color: $blue;
             }
           }
         }
@@ -102,12 +102,12 @@
           display: flex;
           flex-direction: row;
           div {
-            color: #ffffff;
+            color: $white;
             flex: 1;
             margin: 0 5px;
             a{
               text-decoration: none;
-              color: #ffffff;
+              color: $white;
             }
           }
         }

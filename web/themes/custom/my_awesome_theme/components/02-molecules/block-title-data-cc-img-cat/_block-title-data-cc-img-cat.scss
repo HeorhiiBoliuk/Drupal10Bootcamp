@@ -1,8 +1,8 @@
 .latest-article-title{
   @include title_block;
-  border-color: #000000;
+  border-color: $black;
   span{
-    background-color: #000000;
+    background-color: $black;
   }
 }
 
@@ -13,52 +13,52 @@
     position: relative;
     margin: 0 20px;
     width: 324px;
-    .category {
-      @include category;
-      top: 71px;
-      left: 0;
-      a{
-        -webkit-transition: background-color 0.2s ease;
-        padding: 3px 7px;
-        background-color: rgba(0, 0, 0, 0.7);
-        font-family: 'Roboto', sans-serif;
-        line-height: 13px;
-        font-weight: 500;
-        text-transform: uppercase;
-        pointer-events: auto;
-        color: #ffffff;
-      }
-      a:hover {
-        background-color: #0a7bc1;
-      }
-    }
-    .column{
-      .content{
-        @include title;
-        a:hover{
-          color: #0a7bc1;
-        }
-      }
-    }
-    .media{
-      color: #767676;
-      display: inline-block;
-      position: relative;
-      top: 2px;
-    }
+
     .inner{
-      .image{
-        img{
-          position: relative;
-          flex: 0 0 auto;
-          width: 100%;
-          height: 162px;
+      .category {
+        @include category;
+        top: 71px;
+        left: 0;
+        a{
+          -webkit-transition: background-color 0.2s ease;
+          padding: 3px 7px;
+          background-color: rgba(0, 0, 0, 0.7);
+          font-family: 'Roboto', sans-serif;
+          line-height: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          pointer-events: auto;
+          color: $white;
+        }
+        a:hover {
+          background-color: $blue;
         }
       }
+      .column{
+        .content{
+          @include title;
+          a:hover{
+            color: $blue;
+          }
+        }
+      }
+      .media{
+        color: $grey;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+      }
+      .count{
+        @include count;
+      }
     }
-    .count{
-      @include count;
+    .image{
+      img{
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        height: 162px;
+      }
     }
   }
-
 }

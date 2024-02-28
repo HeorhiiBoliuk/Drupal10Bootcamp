@@ -81,7 +81,13 @@
       }
     }
   }
+  .block-full-article:hover .block-full-article__content .block-full-article__column{
+    a{
+      color: $blue;
+    }
+  }
 }
+
 
 
 .lifestyle-news{
@@ -146,7 +152,7 @@
       .block-full-article__column{
         @include title;
         a:hover{
-          color: #0a7bc1;
+          color: $blue;
         }
       }
       .block-full-article__author-data {
@@ -172,10 +178,10 @@
           font-weight: 500;
           text-transform: uppercase;
           pointer-events: auto;
-          color: #ffffff;
+          color: $white;
         }
         a:hover {
-          background-color: #0a7bc1;
+          background-color: $blue;
         }
       }
     }
@@ -196,9 +202,9 @@
   }
   .holiday-title{
     @include title_block;
-    border-color: #8954c1;
+    border-color: $purple;
     span{
-      background-color: #8954c1;
+      background-color: $light-purple
     }
   }
 .views-exposed-form{
@@ -211,7 +217,7 @@
     line-height: 1.4;
     color: #0a0a0a;
     padding: 7px 12px 4px;
-    background-color: #f9c100;
+    background-color: $yellow-dark;
   }
   form{
     .js-form-item{
@@ -232,7 +238,7 @@
       @include element_a;
 
       a:hover {
-        color: #3a863d;
+        color: $green-dark;
       }
 
       &:nth-child(n + 7) {
@@ -258,7 +264,7 @@
       @include element_a;
 
       a:hover {
-        color: #f9c100;
+        color: $yellow-dark;
       }
 
       &:nth-child(n + 7) {
@@ -275,9 +281,9 @@
 
   .title-house-design{
     @include title_block;
-    border-color: #5d7987;
+    border-color: $dirty-blue;
     span{
-      background-color: #5d7987;
+      background-color: $dirty-blue;
     }
   }
 .house-design{
@@ -291,7 +297,7 @@
       .block-full-article__content{
         @include title;
         a:hover{
-          color: #0a7bc1;
+          color: $blue;
         }
       }
     }
@@ -307,10 +313,10 @@
         font-weight: 500;
         text-transform: uppercase;
         pointer-events: auto;
-        color: #ffffff;
+        color: $white;
       }
       a:hover{
-        background-color: #0a7bc1;
+        background-color: $blue;
       }
     }
     .block-full-article__image{
