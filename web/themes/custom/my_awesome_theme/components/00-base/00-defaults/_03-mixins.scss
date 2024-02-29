@@ -324,6 +324,15 @@
     }
   }
 
+@mixin overview-a{
+  padding: 3px 7px;
+  font-family: 'Roboto',sans-serif;
+  text-transform: uppercase;
+  pointer-events: auto;
+  color: $white;
+  text-decoration: none;
+}
+
 
 
 $outer-container-break: $small;
