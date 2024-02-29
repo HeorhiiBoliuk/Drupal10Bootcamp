@@ -6,6 +6,7 @@
  * Adds clearfix based on http://bourbon.io/docs/#clearfix
  * use example =   @include cleafix
 */
+@import "../01-colors/colors-vars";
 
 @mixin body-copy {
   font-size: 1rem;
@@ -297,7 +298,7 @@
               text-align: left;
               border-width: 1px;
               background-color: $white;
-              border-color: $black;
+              border-color: $light-grey;
               border-style: solid;
               margin: 0 5px 0 0;
               a{
@@ -331,6 +332,186 @@
   pointer-events: auto;
   color: $white;
   text-decoration: none;
+}
+
+@mixin fashion-page-tax{
+  .layout--onecol{
+    .fashion-taxonomy{
+      margin: 0 0 0 298px;
+      header{
+        h1{
+          text-transform: uppercase;
+          display: inline-block;
+          position: relative;
+          margin: 0;
+          word-wrap: break-word;
+          font-size: 30px;
+          line-height: 38px;
+          font-weight: 700;
+          font-family: 'Roboto',sans-serif;
+          color: $white;
+          text-align: left;
+        }
+      }
+      .views-row:nth-child(3) .views-field-name .field-content a {
+        background-color: #f96945;
+      }
+
+      .views-row:nth-child(4) .views-field-name .field-content a {
+        background-color: #f24d4d;
+      }
+
+      .views-row:nth-child(5) .views-field-name .field-content a {
+        background-color: #e8436c;
+      }
+
+      .views-row:nth-child(6) .views-field-name .field-content a {
+        background-color: #ce2d70;
+      }
+      .views-row {
+        float: left;
+
+        .views-field-name {
+          white-space: nowrap;
+          display: inline-block;
+          vertical-align: top;
+          overflow: visible;
+          height: auto;
+          margin-bottom: 0;
+
+          .field-content {
+            transition: opacity 0.2s ease 0s;
+            display: inline-block;
+            line-height: 1;
+            opacity: 1;
+
+            a {
+              position: relative;
+              font-size: 11px;
+              margin: 0 5px 0 0;
+              padding: 4px 8px 5px 8px;
+              pointer-events: auto;
+              color: $white;
+              display: inline-block;
+              border-width: 1px;
+              border-color: rgba(255, 255, 255, 0);
+            }
+            a:hover {
+              background-color: $black;
+            }
+          }
+        }
+      }
+      footer{
+        margin: 20px 0 0 !important;
+        @include body;
+        a{
+          color: $white;
+        }
+      }
+    }
+    width: calc(100vw - 20px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    .layout__region--content{
+      height: 445px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      background-color: $black;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      .block{
+        margin-bottom: 100px;
+        text-align: left;
+        color: $white;
+        font-family: 'Open Sans','Open Sans Regular',sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        position: relative;
+        clear: both;
+        nav{
+          margin: 0 0 0 298px;
+          .breadcrumb{
+            .breadcrumb__item{
+              .breadcrumb__link{
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .layout__region--content:before{
+      content: '';
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: 0;
+      opacity: 0.47;
+      background-size: cover;
+      background-position: center top;
+    }
+  }
+}
+
+.fashion-page{
+  display: grid;
+  grid-template-columns: repeat(2, 47%);
+  grid-gap: 20px;
+  margin-top: 30px;
+
+  .block-full-article{
+    position: relative;
+    .block-full-article__inner{
+      .block-full-article__image{
+        img{
+          width: 328px;
+          height: 164px;
+        }
+      }
+    }
+    .block-full-article__content{
+      .block-full-article__category{
+        top: 146px;
+        @include category;
+        a{
+          color: $white;
+        }
+
+      }
+      .block-full-article__category:hover{
+        background-color: $blue;
+      }
+      .block-full-article__column{
+        .block-full-article__content{
+          @include title;
+        }
+      }
+      .block-full-article__author_data{
+        @include author-data;
+        .block-full-article__author{
+          @include author;
+        }
+        .block-full-article__data{
+          @include data;
+        }
+      }
+      .block-full-article__count{
+        @include count;
+      }
+    }
+  }
+  .block-full-article:hover .block-full-article__column .block-full-article__content{
+    a{
+      color: $blue;
+    }
+  }
 }
 
 

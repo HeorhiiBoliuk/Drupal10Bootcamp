@@ -477,15 +477,17 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
           items_per_page: 6
           total_pages: null
-          id: 6
+          id: 10
           tags:
             next: ' ›'
             previous: '‹ '
+            first: «
+            last: »
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -494,6 +496,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 0
       exposed_form:
         type: bef
         options:
@@ -589,7 +592,7 @@ display:
           exposed: true
           expose:
             operator_id: field_category_target_id_1_op
-            label: 'Category (field_category)'
+            label: 'Lifestyle News'
             description: ''
             use_operator: false
             operator: field_category_target_id_1_op

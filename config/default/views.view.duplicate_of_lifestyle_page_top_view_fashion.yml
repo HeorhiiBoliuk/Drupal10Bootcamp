@@ -1,24 +1,24 @@
-uuid: fd867414-6018-46a6-9eac-59e83a6639fb
+uuid: 431885eb-26e1-4d6b-8c05-fb5a0d22e7ed
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser_with_title_and_category
-    - node.type.article
     - taxonomy.vocabulary.news
   content:
-    - 'taxonomy_term:news:32fdf377-6d52-433b-8e05-0bb49ef3afca'
+    - 'taxonomy_term:news:1a2e7589-77e4-4592-87e8-3d6b1cc71bf2'
+    - 'taxonomy_term:news:1db29071-36de-4e7d-ae33-6cd14658f9b2'
+    - 'taxonomy_term:news:80a7dfa3-c95e-46ee-8cb1-31c306a6ba6f'
+    - 'taxonomy_term:news:96fbb732-42a6-41db-8e2c-ec56754d08f2'
   module:
-    - node
     - taxonomy
     - user
-id: house_design_block
-label: 'House Design block'
+id: duplicate_of_lifestyle_page_top_view_fashion
+label: 'Fashion Page top view'
 module: views
 description: ''
 tag: ''
-base_table: node_field_data
-base_field: nid
+base_table: taxonomy_term_field_data
+base_field: tid
 display:
   default:
     id: default
@@ -26,44 +26,28 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'House Design block'
+      title: 'Lifestyle Page top view'
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: field
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
           label: ''
           exclude: false
           alter:
             alter_text: false
-            text: ''
             make_link: false
-            path: ''
             absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
+            word_boundary: false
+            ellipsis: false
             strip_tags: false
             trim: false
-            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -91,27 +75,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          convert_spaces: false
       pager:
-        type: full
+        type: some
         options:
           offset: 0
-          items_per_page: 3
-          total_pages: null
-          id: 12
-          tags:
-            next: ›
-            previous: '‹ '
-            first: «
-            last: »
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 0
+          items_per_page: 4
       exposed_form:
         type: basic
         options:
@@ -130,57 +99,36 @@ display:
         type: tag
         options: {  }
       empty: {  }
-      sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          order: DESC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-          granularity: second
+      sorts: {  }
       arguments: {  }
       filters:
         status:
           id: status
-          table: node_field_data
+          table: taxonomy_term_field_data
           field: status
-          entity_type: node
+          entity_type: taxonomy_term
           entity_field: status
           plugin_id: boolean
           value: '1'
           group: 1
           expose:
             operator: ''
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          value:
-            article: article
-        term_node_tid_depth:
-          id: term_node_tid_depth
-          table: node_field_data
-          field: term_node_tid_depth
+        tid:
+          id: tid
+          table: taxonomy_term_field_data
+          field: tid
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          plugin_id: taxonomy_index_tid_depth
+          entity_type: taxonomy_term
+          entity_field: tid
+          plugin_id: taxonomy_index_tid
           operator: or
           value:
-            - 23
+            - 6
+            - 7
+            - 8
+            - 9
           group: 1
           exposed: false
           expose:
@@ -213,17 +161,13 @@ display:
           reduce_duplicates: false
           vid: news
           type: textfield
-          hierarchy: false
+          hierarchy: true
           limit: true
           error_message: true
-          depth: 1
       style:
         type: default
       row:
-        type: 'entity:node'
-        options:
-          relationship: none
-          view_mode: teaser_with_title_and_category
+        type: fields
       query:
         type: views_query
         options:
@@ -233,16 +177,37 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header: {  }
-      footer: {  }
+      css_class: fashion-taxonomy
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<h1> Fashion </h1>'
+          tokenize: false
+      footer:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: '<a> Custom category description. You must learn one thing. The world was made to be free in. Give up all the other worlds Except the one in which you belong. </a>'
+          tokenize: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
-        - 'user.node_grants:view'
         - user.permissions
       tags: {  }
   block_1:
@@ -257,7 +222,5 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
-        - 'user.node_grants:view'
         - user.permissions
       tags: {  }

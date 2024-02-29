@@ -72,6 +72,7 @@
         padding: 10px;
         .block-category-media-title__content{
           a {
+            @include overview-a;
           font-size: 27px;
           font-weight: 500;
           line-height: 34px;
