@@ -59,22 +59,20 @@
                   margin: 0 0 9px 0;
                 }
               }
-              .views-field-title:hover a {
-                color: $blue;
-              }
               .views-field-uid{
                 position: absolute;
                 left: 100px;
-                top: 78.5%;
+                top: 90.5%;
+
                 a{
                   color: $white;
                 }
                 @include author;
               }
               .views-field-created{
-                position: absolute;
-                top: 78.5%;
-                color: $white;
+                position: absolute !important;
+                top: 90.5%;
+                color: $white !important;
                 @include data;
               }
             }

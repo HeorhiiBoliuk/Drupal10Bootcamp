@@ -15,6 +15,9 @@
       .column {
         .content {
           @include title;
+          a:hover{
+            color: $blue;
+          }
         }
       }
 
@@ -55,58 +58,36 @@
 
 .lifestyle-overview {
   display: grid;
-  grid-template-columns: repeat(4, 24%);
-  grid-gap: 20px;
-  width: calc(100vw - 20px);
+  grid-template-columns: repeat(4, 24.95%);
+  grid-gap: 1px;
+  width: calc(100vw - 1px);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 30px;
 
 
   .block-title-data-cc-img-cat {
     position: relative;
     width: 100%;
-    height: 313px;
-
-    &:nth-child(1) span::before {
-      background: linear-gradient(20deg, rgba(65,12,188,0.6), rgba(255,111,49,0.6));
-    }
-
-    &:nth-child(2) span::before {
-      background: linear-gradient(20deg, rgba(244,136,13,0.6), rgba(112,255,153,0.6));
-    }
-
-    &:nth-child(3) span::before {
-      background: linear-gradient(20deg, rgba(196,15,121,0.6), rgba(126,191,255,0.6));
-    }
-
-    &:nth-child(4) span::before {
-      background: linear-gradient(20deg, rgba(0,22,190,0.6), rgba(42,236,116,0.6));
-    }
+    height: 450px;
 
     .image {
-      span {
-        position: relative;
-        display: block;
-        overflow: hidden;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: hidden;
 
+      span{
         img {
           width: 100%;
-          height: 313px;
+          height: 100%;
           display: block;
           transition: opacity 0.3s, transform 0.3s;
-          background-position: center;
-          background-size: cover;
-          z-index: 1;
           object-fit: cover;
         }
-        &:hover {
-          img {
-            transform: scale(1.1);
-          }
-        }
       }
-
       span::before {
         content: '';
         position: absolute;
@@ -118,7 +99,28 @@
         z-index: 0;
       }
     }
-    .inner{
+
+    &:nth-child(1) .image span::before {
+      background: linear-gradient(20deg, rgba(65,12,188,0.6), rgba(255,111,49,0.6));
+    }
+
+    &:nth-child(2) .image span::before {
+      background: linear-gradient(20deg, rgba(244,136,13,0.6), rgba(112,255,153,0.6));
+    }
+
+    &:nth-child(3) .image span::before {
+      background: linear-gradient(20deg, rgba(196,15,121,0.6), rgba(126,191,255,0.6));
+    }
+
+    &:nth-child(4) .image span::before {
+      background: linear-gradient(20deg, rgba(0,22,190,0.6), rgba(42,236,116,0.6));
+    }
+
+    .image span:hover::before img{
+      transform: scale(1.1);
+    }
+
+  .inner{
       position: absolute;
       bottom: 0;
       .category {
@@ -126,9 +128,8 @@
           left: 0;
           bottom: 0;
           @include category;
-          a{
-            color: $white;
-          }
+          color: $white;
+          background-color: transparent;
         }
       }
       .column {

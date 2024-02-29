@@ -144,3 +144,48 @@
     }
   }
 }
+
+.title-make-it-modern{
+  @include title_block;
+  span{
+    background-color: $black;
+  }
+}
+
+.make-it-modern{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 48%);
+  grid-gap: 20px;
+  .block-full-article{
+    position: relative;
+    .block-full-article__inner{
+      .block-full-article__image{
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .block-full-article__content{
+      .block-full-article__category{
+        @include category;
+        top: 85px;
+        a{
+          color: $white;
+        }
+        a:hover{
+          color: $blue;
+        }
+      }
+    }
+    .block-full-article__column{
+      .block-full-article__content{
+        @include title;
+        a:hover{
+          color: $blue;
+        }
+      }
+    }
+  }
+}

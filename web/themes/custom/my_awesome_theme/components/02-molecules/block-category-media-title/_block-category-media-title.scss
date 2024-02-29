@@ -71,12 +71,12 @@
         width: 528px;
         padding: 10px;
         .block-category-media-title__content{
-          a{
+          a {
             @include overview-a;
-            font-size: 27px;
-            font-weight: 500;
-            line-height: 34px;
-          }
+          font-size: 27px;
+          font-weight: 500;
+          line-height: 34px;
+        }
         }
       }
     }

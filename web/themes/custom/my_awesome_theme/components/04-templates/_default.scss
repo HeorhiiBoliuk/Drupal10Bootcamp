@@ -47,7 +47,6 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
   display: flex;
   flex-wrap: nowrap;
 }
-
 /*
  * Layout Using CSS Grid (NO IE11 support)
  * Remove Flexbox code above and uncomment this section to use CSS Grid.
