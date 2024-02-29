@@ -7,7 +7,67 @@
 
 .trending-now-block{
   display: flex;
-  margin: 20px 0;
+  align-items: center;
+  position: relative;
+  transform: translate3d(0px,0px,0px);
+  overflow: hidden;
+  margin: 10px auto;
+  .trending-now-title{
+    line-height: 21px;
+  }
+
+  .view-content {
+    @include title;
+    padding: 0 0 0 15px;
+    margin: 0;
+  }
+  .view-content:hover a{
+    color: $blue;
+  }
+
+  .view-pager {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left: auto;
+    align-items: center;
+    ul{
+      list-style: none;
+      display: flex;
+      li{
+        margin: 10px;
+      }
+      li:hover{
+        background-color: $blue;
+      }
+      li:nth-child(2){
+        display: none;
+      }
+      li:first-child{
+        display: inline-block;
+        margin-right: 7px;
+        width: 25px;
+        height: 25px;
+        border: 1px solid $grey;
+        line-height: 24px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 7px;
+        color: $white;
+      }
+      li:last-child{
+        display: inline-block;
+        margin-right: 7px;
+        width: 25px;
+        height: 25px;
+        border: 1px solid $grey;
+        line-height: 24px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 7px;
+        color: $white;
+      }
+    }
+  }
   .item-list{
     ul{
       list-style: none;
