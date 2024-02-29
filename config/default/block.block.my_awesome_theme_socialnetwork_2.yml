@@ -16,8 +16,8 @@ provider: null
 plugin: 'system_menu_block:social-network'
 settings:
   id: 'system_menu_block:social-network'
-  label: 'Social Network'
-  label_display: '0'
+  label: 'FOLLOW US'
+  label_display: visible
   provider: system
   level: 1
   depth: 0

@@ -23,6 +23,18 @@ settings:
     -
       value: video
       label: Video
+    -
+      value: new_look
+      label: New-Look
+    -
+      value: street_fashion
+      label: Street-Fashion
+    -
+      value: vogue
+      label: Vogue
+    -
+      value: style_hunter
+      label: Style-Hunter
   allowed_values_function: ''
 module: options
 locked: false

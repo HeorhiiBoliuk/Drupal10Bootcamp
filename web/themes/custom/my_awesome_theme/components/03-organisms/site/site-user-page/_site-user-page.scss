@@ -1,0 +1,85 @@
+.user-page{
+  padding-top: 80px;
+  padding-bottom: 80px;
+  .latest-articles{
+    display: grid;
+    grid-template-columns: repeat(3, 33%) !important;
+  }
+
+  .latest-article-title{
+    display: none;
+  }
+
+  .user-picture{
+    margin: auto;
+    text-align: center;
+    img{
+      width: 200px;
+      height: 200px;
+      background-position: center 50%;
+      overflow: hidden;
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  .user-description{
+    text-align: center;
+    color: $grey;
+    font-size: 15px ;
+    line-height: 1.6;
+  }
+  .user-name{
+    font-family: Lato, serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
+  .user-email{
+    text-align: center;
+    margin-bottom: 25px;
+    a{
+      display: block;
+      font-style: italic;
+      color: $grey;
+      font-size: 11px;
+      line-height: 21px;
+    }
+  }
+  nav{
+    text-align: center;
+    margin-bottom: 80px;
+    .social_list{
+      display: inline-block!important;
+      float: none !important;
+      ul{
+        a{
+          display: inline-block;
+          margin: calc(14px / 2) 14px 0 0;
+          transform: translateZ(0);
+          transition: all 0.2s;
+          position: relative;
+          color: $blue;
+          img{
+            background-color: $blue;
+            background-position: center 50%;
+            overflow: hidden;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          img:hover{
+            background-color: $black;
+          }
+        }
+      }
+    }
+  }
+}
