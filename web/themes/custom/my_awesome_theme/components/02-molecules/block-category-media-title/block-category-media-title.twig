@@ -3,7 +3,9 @@
 <div class="{{ block_category_media_title__base_class }}">
   <div {{ bem('inner', [], block_category_media_title__base_class) }}>
     <div {{ bem('image', [], block_category_media_title__base_class) }}>
-    <img src="{{ block_category_media_image_src }}" alt="{{ block_category_media_text_title }}">
+        <a href="{{ block_category_media_title_url }}">
+          <img src="{{ block_category_media_image_src }}" alt="{{ block_category_media_text_title }}">
+        </a>
     </div>
   </div>
   <div {{ bem('category', [], block_category_media_title__base_class) }}>
@@ -13,7 +15,9 @@
   </div>
   <div {{ bem('column', [], block_category_media_title__base_class) }}>
     <div {{ bem('content', [], block_category_media_title__base_class) }}>
-    {{ block_category_media_text_title }}
+      <a href="{{ block_category_media_title_url }}">
+            {{ block_category_media_text_title }}
+      </a>
   </div>
 </div>
 </div>

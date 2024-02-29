@@ -30,7 +30,7 @@
           block_full_author: author_name,
           block_full_text_data: created_date,
           block_full_body: body|striptags|slice(0, 140),
-          block_full_comment_count: comment_count_value,
+          block_full_comment_count: comment_count,
           block_article_url: node_url,
         } %}
       {% else %}
@@ -44,3 +44,5 @@
     {% endfor %}
   {% endfor %}
 </div>
+
+{{ pager }}

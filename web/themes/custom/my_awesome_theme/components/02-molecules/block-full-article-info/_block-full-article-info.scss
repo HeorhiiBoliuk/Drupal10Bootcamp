@@ -26,7 +26,16 @@
       @include count;
     }
     .block-full-article__category{
+      bottom: 162px;
+      a{
+        color: $white;
+      }
       @include category;
+    }
+    .block-full-article__content{
+      a:hover{
+        color: $blue;
+      }
     }
     .block-full-article__image{
       position: relative;
@@ -226,7 +235,7 @@
   }
 }
 
-#edit-field-category-target-id-1{
+#views-exposed-form-lifestyle-news-block-block-1{
   ul {
     list-style: none;
     margin: 0;
