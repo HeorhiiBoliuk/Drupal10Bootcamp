@@ -17,7 +17,7 @@
     {% set author_entity = article_entity.getOwner() %}
     {% set author_name = author_entity.name.value %}
 
-    {% set category_entity = article_entity.field_category.entity %}
+    {% set category_entity = field_article.field_category.entity %}
     {% set category_name = category_entity.name.value %}
 
     {% if loop_counter  == 0 %}
@@ -43,4 +43,8 @@
     {% endif %}
     {% set loop_counter = loop_counter + 1 %}
   {% endfor %}
+</div>
+
+<div class="pager">
+  {{ pager }}
 </div>

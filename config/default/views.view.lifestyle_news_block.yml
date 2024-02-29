@@ -482,7 +482,7 @@ display:
           offset: 0
           items_per_page: 6
           total_pages: null
-          id: 0
+          id: 6
           tags:
             next: ' ›'
             previous: '‹ '

@@ -9,6 +9,21 @@
 
   {# Output the view content #}
   <div class="view-content">
+    {% for row in rows %}
+      {% for article in row['#rows'] %}
+        <div class="trending-article">
+          {% set field_article = article['#row']._entity.fields %}
+          {% set title = field_article.title.value %}
+          {% set node_id = article['#row']._entity.id %}
+          {% set node_url = path('entity.node.canonical', {'node': node_id}) %}
+
+
+          <div class="trending-article-details">
+            <a href="{{ node_url }}">{{ title }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
   </div>
 
   {# Output the pager #}
@@ -16,3 +31,4 @@
     {{ pager }}
   </div>
 </div>
+

@@ -78,7 +78,16 @@
       {% if counter < 1 %}
         {% set tax_term_id = item.content.view_build['#rows'][0]['#rows'][0]['#row']._entity.fields.field_category.entity.field_tax_term_ident.value %}
         <div class="{{ tax_term_id }}">
-          {{ content }}
+          {% if node.gettype != 'page' %}
+            <div class="header-node">
+              {{ content["_layout_builder"][0] }}
+            </div>
+            <div class="content-node">
+              {{ content["_layout_builder"][1] }}
+            </div>
+          {% else %}
+            {{ content }}
+          {% endif %}
         </div>
         {% set counter = counter + 1 %}
       {% endif %}

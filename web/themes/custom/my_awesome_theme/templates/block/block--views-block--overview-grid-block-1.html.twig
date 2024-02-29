@@ -7,6 +7,8 @@
   {% set category_term = article.field_category.entity %}
   {% set category_name = category_term.name.value %}
   {% set category_url_alias = path('entity.taxonomy_term.canonical', {'taxonomy_term': category_term.tid.value}) %}
+  {% set node_url = path('entity.node.canonical', {'node': row.nid}) %}
+
 
 
   {% include '@molecules/block-category-media-title/block-category-media-title.twig' with {
@@ -14,6 +16,7 @@
     block_category_media_category: category_name,
     block_category_media_image_src: image_url,
     block_category_url: category_url_alias,
+    block_category_media_title_url: node_url,
   } %}
 {% endfor %}
 </div>
