@@ -11,11 +11,13 @@
       {% set title = article.title.value %}
       {% set created_timestamp = article.created.value %}
       {% set created_date = created_timestamp | date('F j, Y') %}
+      {% set node_url = path('entity.node.canonical', {'node': article.id}) %}
 
       {% include '@molecules/block-with-media-t-d/block-with-media-t-d.twig' with {
         block_text_title: title,
         block_text_data: created_date,
-        block_image_src: image_url
+        block_image_src: image_url,
+        block_title_url: node_url,
       } %}
     {% endfor %}
   </div>

@@ -4,8 +4,6 @@
 
 .pager__items {
   @include list-reset;
-
-  text-align: center;
 }
 
 .pager__item {
@@ -21,11 +19,13 @@
   padding: 0.5em;
   color: clr(text);
   text-decoration: none;
+  border: 1px solid $grey;
+
 
   &.is-active,
   &:hover,
   &:focus {
-    background-color: clr(text);
+    background-color: $blue;
     color: clr(text-inverse);
   }
 
@@ -46,5 +46,19 @@
   &:focus {
     background-color: transparent;
     color: clr(accent);
+  }
+}
+
+.pager{
+  .pager__item--last, .pager__item--ellipsis, .pager__item--first{
+    display: none;
+  }
+  .pager__item--next, .pager__item--prev{
+    span{
+      padding: 3px 10px;
+    }
+    span:hover{
+      background-color: $blue;
+    }
   }
 }

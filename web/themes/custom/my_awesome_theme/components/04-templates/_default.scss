@@ -44,6 +44,7 @@ $main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
 
 .layout--twocol-section {
   margin-top: 48px;
+  gap: 40px;
   display: flex;
   flex-wrap: nowrap;
 }
