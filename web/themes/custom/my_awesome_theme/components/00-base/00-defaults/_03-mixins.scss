@@ -168,10 +168,16 @@
           bottom: 6px;
           @include category;
         }
+        a:hover{
+          background: $blue;
+        }
       }
       .column{
         .content{
           @include title;
+          a:hover{
+            color: $blue;
+          }
         }
       }
       .media{

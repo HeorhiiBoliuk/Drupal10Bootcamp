@@ -22,12 +22,13 @@
 
       {% set category_entity = field_article.field_category.entity %}
       {% set category_name = category_entity.name.value %}
+      {% set category_url = path('entity.taxonomy_term.canonical', {'taxonomy_term': category_entity.id}) %}
 
       {% include '@molecules/block-title-data-cc-img-cat/block-title-data-cc-img-cat.twig' with {
         block_title: title,
         block_category: category_name,
         block_image_src: image_url,
-        block_category_url: category_url_alias,
+        block_category_url: category_url,
         block_comment_count: comment_count,
         block_data: created_date,
         block_article_url: node_url,
