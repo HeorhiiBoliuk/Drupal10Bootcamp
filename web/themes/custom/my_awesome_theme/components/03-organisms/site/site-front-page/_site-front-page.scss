@@ -5,6 +5,15 @@
   }
 }
 
+.sticky{
+  height: 880px;
+  div{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+}
+
 .trending-now-block{
   display: flex;
   align-items: center;
@@ -152,6 +161,17 @@
   }
 }
 
+.layout__region--second{
+  .most-popular-block{
+    height: 880px;
+    .most-popular{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+  }
+}
+
 .make-it-modern{
   width: 100%;
   display: grid;
@@ -170,7 +190,7 @@
     .block-full-article__content{
       .block-full-article__category{
         @include category;
-        top: 85px;
+        top: -24px;
         a{
           color: $white;
         }

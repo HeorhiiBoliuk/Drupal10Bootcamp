@@ -9,6 +9,7 @@ body {
   font-size: 14px;
   line-height: 21px;
   @include body-copy;
+  overflow-x: hidden;
 }
 
 *,

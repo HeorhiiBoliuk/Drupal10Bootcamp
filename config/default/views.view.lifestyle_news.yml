@@ -1,4 +1,4 @@
-uuid: c4edd801-d4cd-4265-bdb9-dd8120995c57
+uuid: d99d98a2-eefc-410d-8df3-c780b6bff544
 langcode: en
 status: true
 dependencies:
@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_category
     - field.storage.node.field_image
+    - field.storage.node.field_youtube_video_embed
     - image.style.default_teaser_image
     - node.type.article
     - taxonomy.vocabulary.news
@@ -13,7 +14,6 @@ dependencies:
     - 'taxonomy_term:news:47318690-6871-4bae-ac6d-bd2950f57e68'
     - 'taxonomy_term:news:4cf24081-b9e8-404a-8b1c-501c178302a0'
     - 'taxonomy_term:news:4dfd42e7-f53c-487e-a548-e2df0e78faac'
-    - 'taxonomy_term:news:6e175ae6-f946-4cc6-9600-4aeccd90f832'
     - 'taxonomy_term:news:7f4d6d7f-3250-4b29-b011-9a280e040a87'
   module:
     - better_exposed_filters
@@ -22,8 +22,9 @@ dependencies:
     - taxonomy
     - text
     - user
-id: lifestyle_news_block
-label: 'Lifestyle news block'
+    - video_embed_field
+id: lifestyle_news
+label: 'Lifestyle News'
 module: views
 description: ''
 tag: ''
@@ -36,8 +37,74 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Lifestyle news block'
+      title: 'Lifestyle News'
       fields:
+        field_youtube_video_embed:
+          id: field_youtube_video_embed
+          table: node__field_youtube_video_embed
+          field: field_youtube_video_embed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: video_embed_field_video
+          settings:
+            autoplay: false
+            responsive: true
+            width: 854
+            height: 480
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_image:
           id: field_image
           table: node__field_image
@@ -174,19 +241,35 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: field
           label: ''
           exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
-            word_boundary: false
-            ellipsis: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -480,12 +563,12 @@ display:
         type: full
         options:
           offset: 0
-          items_per_page: 6
+          items_per_page: 5
           total_pages: null
-          id: 10
+          id: 2
           tags:
-            next: ' ›'
-            previous: '‹ '
+            next: ›
+            previous: ‹
             first: «
             last: »
           expose:
@@ -498,7 +581,7 @@ display:
             offset_label: Offset
           quantity: 0
       exposed_form:
-        type: bef
+        type: basic
         options:
           submit_button: Apply
           reset_button: false
@@ -507,24 +590,6 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Select any filter and click on Apply to see results'
-          text_input_required_format: null
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_textfield_delay: 500
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-              secondary_open: false
-              reset_button_always_show: false
-            sort:
-              plugin_id: default
-            filter:
-              term_node_tid_depth:
-                plugin_id: default
       access:
         type: perm
         options:
@@ -583,16 +648,15 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value:
-            19: 19
-            21: 21
-            22: 22
-            20: 20
-            4: 4
+            - 19
+            - 20
+            - 21
+            - 22
           group: 1
-          exposed: true
+          exposed: false
           expose:
             operator_id: field_category_target_id_1_op
-            label: 'Lifestyle News'
+            label: 'Category (field_category)'
             description: ''
             use_operator: false
             operator: field_category_target_id_1_op
@@ -622,8 +686,59 @@ display:
             group_items: {  }
           reduce_duplicates: false
           vid: news
+          type: textfield
+          hierarchy: true
+          limit: true
+          error_message: true
+        field_category_target_id:
+          id: field_category_target_id
+          table: node__field_category
+          field: field_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_category_target_id_op
+            label: ''
+            description: ''
+            use_operator: false
+            operator: field_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: 'Category (field_category)'
+            description: null
+            identifier: field_category_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1: {  }
+              2: {  }
+              3: {  }
+          reduce_duplicates: false
+          vid: news
           type: select
-          hierarchy: false
+          hierarchy: true
           limit: true
           error_message: true
       filter_groups:
@@ -631,20 +746,20 @@ display:
         groups:
           1: AND
       style:
-        type: html_list
-        options:
-          row_class: ''
-          default_row_class: true
-          uses_fields: false
-          type: ul
-          wrapper_class: item-list
-          class: ''
+        type: default
       row:
         type: fields
         options:
           default_field_elements: true
           inline:
+            field_youtube_video_embed: field_youtube_video_embed
+            field_image: field_image
+            field_category: field_category
             title: title
+            uid: uid
+            created: created
+            comment_count: comment_count
+            body: body
           separator: ''
           hide_empty: false
       query:
@@ -656,6 +771,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: exposed_filters_dont_miss
       use_ajax: true
       header: {  }
       footer: {  }
@@ -673,6 +789,7 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_youtube_video_embed'
   block_1:
     id: block_1
     display_title: Block
@@ -684,9 +801,9 @@ display:
         options:
           submit_button: Apply
           reset_button: false
-          reset_button_label: Reset
+          reset_button_label: All
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
           text_input_required: 'Select any filter and click on Apply to see results'
@@ -701,19 +818,23 @@ display:
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
-              reset_button_always_show: false
+              reset_button_always_show: true
             filter:
-              field_category_target_id_1:
+              field_category_target_id:
                 plugin_id: bef_links
                 advanced:
                   sort_options: false
                   rewrite:
-                    filter_rewrite_values: ''
+                    filter_rewrite_values: '- Any - | All'
                   collapsible: false
                   is_secondary: false
                 select_all_none: false
+      arguments: {  }
       defaults:
         exposed_form: false
+        arguments: false
+        filters: true
+        filter_groups: true
       exposed_block: true
       display_extenders: {  }
     cache_metadata:
@@ -729,3 +850,4 @@ display:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_image'
+        - 'config:field.storage.node.field_youtube_video_embed'

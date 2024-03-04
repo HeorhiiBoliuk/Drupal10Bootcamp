@@ -1,7 +1,8 @@
 .lifestyle{
   @include layout-onecol-lifestyle;
-  @include sticky_sidebar
+  @include sticky_sidebar;
 }
+
 .must-read-title{
   @include title_block;
   span{
