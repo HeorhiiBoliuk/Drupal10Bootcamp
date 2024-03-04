@@ -236,8 +236,8 @@ display:
         type: entity_pager
         options:
           grouping: {  }
-          link_next: 'next >'
-          link_prev: '< prev'
+          link_next: 'Next article'
+          link_prev: 'Previous article'
           display_all: false
           link_all_url: '<front>'
           link_all_text: Home
