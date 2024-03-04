@@ -30,16 +30,35 @@
 }
 
 @media (min-width: 768px) and (max-width: 1018px) {
-  .top-header__wrapper {
+  .top-header{
+    .top-header__wrapper {
+      width: 740px;
+      margin: 0 auto;
+    }
+  }
+  .header__menu{
     width: 740px;
-    margin: 0 auto;
   }
 }
 
 @media (max-width: 767px) {
+  .header{
+    background-color: $light-black;
+  }
   .top-header {
     display: none;
   }
+  nav{
+    #toggle-expand{
+      width: 100px;
+      top: 4px;
+    }
+    .main-nav--open{
+      height: 100%;
+      background: url("/themes/custom/my_awesome_theme/assets/images/mobile-bg1.jpg");
+    }
+  }
+
   .header__menu, .header__menu nav, .header__menu .logo, .header__menu nav a {
     max-height: 58px;
     line-height: 58px;

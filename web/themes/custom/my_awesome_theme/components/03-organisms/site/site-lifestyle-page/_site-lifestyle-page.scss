@@ -1,5 +1,6 @@
 .lifestyle{
   @include layout-onecol-lifestyle;
+  @include sticky_sidebar
 }
 .must-read-title{
   @include title_block;
@@ -156,6 +157,123 @@
           position: relative;
           color: $white;
 
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .lifestyle {
+    .lifestyle-overview {
+      display: block !important;
+    }
+
+    .layout--twocol-section {
+      .layout__region--first {
+        .fashion-page {
+          .block-full-article {
+            display: flex;
+            width: 100%;
+
+            .block-full-article__inner {
+              width: 35%;
+              height: 100%;
+            }
+
+            .block-full-article__content {
+              .block-full-article__author-data {
+                @include author-data;
+              }
+
+              .block-full-article__category {
+                display: none;
+              }
+
+              .block-full-article__count {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .layout__region--second {
+        .must-read {
+          img{
+            width: 100% !important;
+            height: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1018px){
+  .lifestyle{
+    width: 740px;
+    margin-right: auto;
+    margin-left: auto;
+
+    .layout--twocol-section {
+      .layout__region--first {
+        .lifestyle-page, .fashion-page{
+          display: block !important;
+          .block-full-article {
+            display: flex;
+            width: 100%;
+            position: relative;
+            .block-full-article__inner {
+              width: 35%;
+              height: 100%;
+              .block-full-article__image{
+                img{
+                  width: 100%;
+                  height: auto;
+                }
+              }
+            }
+
+            .block-full-article__content {
+              .block-full-article__author-data {
+                @include author-data;
+              }
+              .block-full-article__category{
+                position: relative;
+                top: 0;
+                z-index: 2;
+                font-family: "Open Sans","Open Sans Regular",sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                line-height: 1;
+                background-color: transparent;
+                color: transparent;
+                margin-right: 0;
+                padding: 0;
+                display: block;
+                a{
+                  font-size: 10px;
+                  font-weight: 600;
+                  line-height: 1;
+                  background-color: #111;
+                  color: #fff;
+                  margin-right: 5px;
+                  padding: 3px 6px 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .layout__region--second {
+        .must-read {
+          img{
+            width: 100% !important;
+            height: 100% !important;
+          }
         }
       }
     }

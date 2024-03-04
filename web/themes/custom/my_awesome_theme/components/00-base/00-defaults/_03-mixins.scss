@@ -90,6 +90,10 @@
     display: inline-block;
     position: relative;
     font-size: 11px;
+  @media (min-width: 768px) and (max-width: 1018px){
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
 }
 
 @mixin author{
@@ -99,6 +103,10 @@
   font-size: 11px;
   line-height: 1;
   margin-right: 5px;
+  @media (min-width: 768px) and (max-width: 1018px){
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
 }
 
 @mixin author-data{
@@ -114,6 +122,10 @@
   line-height: 21px;
   display: block;
   margin: 14px 0 0;
+  @media (min-width: 768px) and (max-width: 1018px){
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
 }
 
 @mixin title{
@@ -129,6 +141,10 @@
   a{
     color: $black;
     text-decoration: none;
+  }
+  @media (min-width: 768px) and (max-width: 1018px){
+    font-size: 17px !important;
+    line-height: 22px !important;
   }
 }
 
@@ -204,6 +220,19 @@
           color: $blue;
         }
       }
+    }
+  }
+}
+
+@mixin sticky_sidebar{
+  .layout__region--second{
+    .views-element-container{
+      height: 100%;
+    }
+    .views-element-container > :not([class]):only-child {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
   }
 }
@@ -368,6 +397,9 @@
       .views-row:nth-child(6) .views-field-name .field-content a {
         background-color: #ce2d70;
       }
+      &.is-active{
+        background-color: $black;
+      }
       .views-row {
         float: left;
 
@@ -491,6 +523,7 @@
       .block-full-article__column{
         .block-full-article__content{
           @include title;
+
         }
       }
       .block-full-article__author_data{

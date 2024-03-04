@@ -12,7 +12,6 @@
     /* Only top level */
     &:not(.main-menu__item--sub):focus-within,
     &:not(.main-menu__item--sub):hover {
-      background-color: #ffffff;
       border-bottom: 2px;
 
       > .main-menu__link {
@@ -35,8 +34,6 @@
   position: relative;
   display: block;
   width: 20%;
-  background-color: #ffffff;
-  color: clr(text-inverse);
   cursor: pointer;
 
   @include medium {
@@ -61,8 +58,6 @@
 
   /* See main-menu.js */
   &--open {
-    background-color: #ffffff;
-    color: clr(muted);
 
     &::after {
       margin-top: -20px;

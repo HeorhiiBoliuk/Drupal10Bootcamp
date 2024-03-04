@@ -429,7 +429,7 @@ display:
           total_pages: null
           id: 1
           tags:
-            next: 'Next ›'
+            next: '>'
             previous: '‹ Previous'
             first: '« First'
             last: 'Last »'

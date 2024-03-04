@@ -140,3 +140,12 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1018px){
+  .footer__inner{
+    width: 740px;
+    .footer__wrapper{
+      width: 768px;
+    }
+  }
+}
+

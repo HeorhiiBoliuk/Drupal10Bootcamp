@@ -79,10 +79,10 @@ display:
           offset: 0
           items_per_page: 1
           total_pages: null
-          id: 4
+          id: 8
           tags:
-            next: ›
-            previous: ‹
+            next: »
+            previous: '« '
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'

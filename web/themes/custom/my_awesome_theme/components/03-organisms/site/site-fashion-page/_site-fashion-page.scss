@@ -5,6 +5,7 @@
       background: url("/themes/custom/my_awesome_theme/assets/images/38.jpg");
     }
   }
+  @include sticky_sidebar;
 }
 .new_look{
   @include fashion-page-tax;
@@ -13,6 +14,8 @@
       background: url("/themes/custom/my_awesome_theme/assets/images/6.jpg");
     }
   }
+  @include sticky_sidebar;
+
 }
 .street_fashion{
   @include fashion-page-tax;
@@ -21,6 +24,8 @@
       background: url("/themes/custom/my_awesome_theme/assets/images/21.jpg");
     }
   }
+  @include sticky_sidebar;
+
 }
 .style_hunter{
   @include fashion-page-tax;
@@ -29,12 +34,110 @@
       background: url("/themes/custom/my_awesome_theme/assets/images/8.jpg");
     }
   }
+  @include sticky_sidebar;
+
 }
 .vogue{
   @include fashion-page-tax;
   .layout--onecol{
     .layout__region--content:before{
       background: url("/themes/custom/my_awesome_theme/assets/images/12.jpg");
+    }
+  }
+  @include sticky_sidebar;
+
+}
+
+@media (max-width: 767px) {
+  .layout--onecol{
+    .layout__region--content{
+      nav{
+        margin: 0 0 0 28px !important;
+        width: 100%;
+      }
+      .fashion-taxonomy{
+        margin: 0 0 0 28px;
+        width: 100%;
+      }
+    }
+  }
+  .layout--twocol-section{
+    display: block !important;
+    flex-wrap: wrap !important;
+    .layout__region--first{
+      width: 100%;
+      .fashion-page{
+        display: block;
+        .block-full-article{
+          .block-full-article__inner{
+            .block-full-article__image{
+              img{
+                width: 100%!important;
+                height: 100% !important;
+
+              }
+            }
+            }
+        }
+      }
+    }
+    .layout__region--second{
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1018px) {
+  .fashion, .vogue, .style-hunter, .street_fashion, .new_look {
+    .layout--onecol {
+      .layout__region--content {
+        .block {
+          nav {
+            margin-right: auto !important;
+            margin-left: auto !important;
+            width: 740px;
+          }
+        }
+
+        .fashion-taxonomy {
+          margin-right: auto;
+          margin-left: auto;
+          width: 740px;
+        }
+      }
+    }
+
+    .layout--twocol-section {
+      width: 740px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .layout__region--first {
+        width: 100%;
+
+        .fashion-page {
+          .block-full-article {
+            .block-full-article__inner {
+              .block-full-article__image {
+                img {
+                  width: 100% !important;
+                  height: 100% !important;
+
+                }
+              }
+            }
+            .block-full-article__content{
+              .block-full-article__category{
+                top: 47%;
+              }
+            }
+          }
+        }
+      }
+
+      .layout__region--second {
+        width: 100%;
+      }
     }
   }
 }

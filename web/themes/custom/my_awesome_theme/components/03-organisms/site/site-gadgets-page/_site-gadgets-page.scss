@@ -1,106 +1,7 @@
-/**
-@todo use this code for fashion taxonomy page
-.layout--onecol{
-  margin-bottom: 48px;
-  position: relative;
-  clear: both;
-  background-image: url('/themes/custom/my_awesome_theme/assets/images/38.jpg');
-  .layout__region--content{
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-bottom: 445px;
-    transform: translateZ(0);
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    .block{
-      nav{
-        .breadcrumb{
-          .breadcrumb__item{
-            .breadcrumb__link{
-              text-align: left;
-              color: #ffffff;
-              font-family: 'Open Sans','Open Sans Regular',sans-serif;
-              font-size: 12px;
-              line-height: 18px;
-            }
-          }
-        }
-      }
-    }
-    .views-element-container{
-          .views-row{
-            .views-field-name{
-              transition: opacity 0.2s ease 0s;
-              opacity: 1;
-              font-family: 'Open Sans','Open Sans Regular',sans-serif;
-              font-size: 10px;
-              white-space: nowrap;
-              text-align: left;
-              display: inline-block;
-              line-height: 1;
-              span{
-                background-color: #ce2d70;
-                border-width: 1px;
-                border-color: rgba(255,255,255,0);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border-style: solid;
-                z-index: -1;
-                transition: all 0.3s ease;
-                font-size: 11px;
-                a{
-                  position: relative;
-                  font-size: 11px;
-                  margin: 0 5px 0 0;
-                  padding: 4px 8px 5px 8px;
-                  background-color: transparent;
-                  pointer-events: auto;
-                  color: #fff;
-                  white-space: nowrap;
-                  display: inline-block;
-                  text-decoration: none;
-                  box-sizing: border-box;
-                  line-height: 1;
-                  list-style: none;
-                  font-family: 'Open Sans','Open Sans Regular',sans-serif;
-                  text-align: left;
-                }
-                a:before{
-                  background-color: rgba(0,0,0,0.25);
-                  content: '';
-                  width: 100%;
-                  height: 100%;
-                  left: 0;
-                  top: 0;
-                  position: absolute;
-                  z-index: -1;
-                  opacity: 0;
-                  transition: opacity 0.3s ease;
-                  font-size: 11px;
-                  pointer-events: auto !important;
-                  color: #fff;
-                  white-space: nowrap;
-
-            }
-          }
-        }
-      }
-    }
-  }
-}
-**/
-
 
 .technology{
   @include layout-onecol-technology;
+  @include sticky_sidebar;
 }
 
 .gadgets-articles-page{
@@ -117,4 +18,54 @@
 
 .reviews-articles-page{
   @include technology-page-articles;
+}
+
+@media (max-width: 767px) {
+  .technology{
+    .technology-taxonomy{
+      justify-content: center !important;
+    }
+    .layout--onecol{
+      .layout__region--content{
+        .block{
+          text-align: center !important;
+        }
+      }
+    }
+    .block-full-article{
+      display: block;
+      width: 100%;
+      .block-full-article__inner {
+        .block-full-article__image {
+          img {
+            width: 100% !important;
+            height: 100% !important;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1018px) and (min-width: 768px) {
+  .technology{
+    width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    .block-full-article{
+      .block-full-article__inner {
+        .block-full-article__image {
+          img {
+            width: 100% !important;
+            height: 100% !important;
+
+          }
+        }
+      }
+      .block-full-article__body{
+        display: none;
+      }
+    }
+  }
 }
