@@ -148,6 +148,43 @@
   }
 }
 
+@mixin pager_node{
+  display: block;
+  min-height: 1px;
+  float: left;
+  padding-right: 24px;
+  padding-left: 24px;
+  width: 50%;
+  box-sizing: border-box;
+  display: block;
+  font-size: 12px;
+  color: #c1c1c1;
+  margin-bottom: 7px;
+  box-sizing: border-box;
+  font-family: 'Roboto',sans-serif;
+  word-break: break-word;
+  .entity-title {
+    display: block;
+    font-size: 15px;
+    color: #222;
+    line-height: 21px;
+    margin-bottom: 43px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    word-break: break-word;
+    box-sizing: border-box;
+  }
+  .entity-title:hover{
+    color: #0a7bc1;
+  }
+  .link_pager{
+    display: block;
+    font-size: 12px;
+    color: $light-grey;
+    margin-bottom: 7px;
+  }
+}
+
 @mixin lifestyle-page-articles{
   .block-title-data-cc-img-cat{
     position: relative;

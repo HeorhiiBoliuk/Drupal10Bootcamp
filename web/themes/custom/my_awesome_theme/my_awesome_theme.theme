@@ -4,3 +4,35 @@
  * @file
  * Functions to support theming.
  */
+/**
+ * Implements hook_preprocess_HOOK() for entity_pager.
+ */
+use Drupal\node\Entity\Node;
+
+function my_awesome_theme_preprocess_entity_pager(&$variables) {
+  $previous_url = $variables["links"]["prev"]["#url"];
+  $next_url = $variables["links"]["next"]["#url"];
+
+  $previous_params = $previous_url->getRouteParameters();
+  $next_params = $next_url->getRouteParameters();
+
+  $previous_node_id = $previous_params['node'];
+  $next_node_id = $next_params['node'];
+
+  $previous_node = Node::load($previous_node_id);
+  $next_node = Node::load($next_node_id);
+
+  $previous_title = $previous_node ? $previous_node->getTitle() : '';
+  $next_title = $next_node ? $next_node->getTitle() : '';
+
+  $variables['title'] = [
+    'prev' => [
+      '#markup' => $previous_title,
+    ],
+    'next' => [
+      '#markup' => $next_title,
+    ],
+  ];
+}
+
+
