@@ -53,9 +53,9 @@
 
 .perf-training-title{
   @include title_block;
-  border-color: #0a0a0a;
+  border-color: $black;
   span{
-    background-color: #0a0a0a;
+    background-color: $black;
   }
 }
 
@@ -102,16 +102,16 @@
 .lifestyle-news{
   display: flex;
   position: relative;
+  flex-wrap: wrap;
+  padding: 0 24px;
   .block-full-article{
     position: relative;
-    width: 372px;
-    padding-left: 24px;
-    padding-right: 24px;
+    width: 50%;
     .block-full-article__column{
       .block-full-article__content{
         @include title;
         a:hover{
-          color: #0a7bc1;
+          color: $blue;
         }
       }
     }
@@ -134,10 +134,10 @@
         font-weight: 500;
         text-transform: uppercase;
         pointer-events: auto;
-        color: #ffffff;
+        color: $white;
       }
       a:hover {
-        background-color: #0a7bc1;
+        background-color: $blue;
       }
     }
     .block-full-article__image{
@@ -216,28 +216,28 @@
       background-color: $light-purple
     }
   }
-.views-exposed-form{
-  display: flex;
-  border-bottom: 2px solid var(--td_header_color,var(--td_black,#222222));
-  .h2{
-    text-align: left;
-    font-family: 'Roboto',sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #0a0a0a;
-    padding: 7px 12px 4px;
-    background-color: $yellow-dark;
-    margin: 0;
-  }
-  form{
-    .js-form-item{
-      max-width: 100%;
+  .views-exposed-form[data-drupal-selector="views-exposed-form-don-t-miss-block-1"]  {
+    @include expose_style;
+
+    .h2 {
+      background-color: $yellow-dark;
     }
   }
-}
 
-#views-exposed-form-lifestyle-news-block-block-1{
+  .views-exposed-form[data-drupal-selector="views-exposed-form-lifestyle-news-block-1"]{
+    @include expose_style;
+
+    .h2 {
+      background-color: $green-dark;
+    }
+  }
+
+
+#edit-field-category-target-id--4{
+
   ul {
+    float: left;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -245,14 +245,27 @@
     flex-wrap: wrap;
 
     li {
+      #edit-field-category-target-id-1--2{
+        display: none;
+      }
+      ul{
+        li:nth-child(5) {
+          display: block;
+          ul{
+            li{
+              display: inline-block !important;
+            }
+          }
+        }
+
+        li:not(:nth-child(5)) {
+          display: none;
+        }
+      }
       @include element_a;
 
       a:hover {
         color: $green-dark;
-      }
-
-      &:nth-child(n + 7) {
-        display: none;
       }
 
       &:hover {
