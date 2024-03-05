@@ -6,7 +6,7 @@
 }
 
 .sticky{
-  height: 880px;
+  height: 1100px;
   div{
     position: sticky;
     top: 0;
@@ -163,7 +163,7 @@
 
 .layout__region--second{
   .most-popular-block{
-    height: 880px;
+    height: 1300px;
     .most-popular{
       position: sticky;
       top: 0;
@@ -234,6 +234,12 @@
     .layout__region--first{
       width: 494px !important;
       margin-right: 10px;
+      #views-exposed-form-lifestyle-news-block-1{
+        display: block ruby;
+      }
+      .views-exposed-form{
+        height: 34px;
+      }
       #edit-field-category-target-id--2 {
         li{
           &:nth-child(n + 5) {
@@ -246,44 +252,7 @@
       width: 246px !important;
 
     }
-      .lifestyle-news{
-        width: 100%;
-        height: 100%;
-        display: block;
-        div{
-          .block-with-media__inner{
-            width: 100%;
-            height: 100%;
-            .block-with-media__image{
-              img{
-                position: relative;
-              }
-            }
-          }
-        }
-        .block-full-article{
-          padding: 0;
-          width: 100%;
-          height: 100%;
-          .block-full-article__inner{
-            width: 100%;
-            height: 100%;
-            .block-full-article__image{
-              width: 100%;
-              height: 100%;
-              img{
-                width: 100%;
-                height: 100%;
-                background-size: cover;
-                position: relative;
-              }
-            }
-          }
-        }
-        .pager{
-          width: 100%;
-        }
-      }
+
       .pager{
         width: 100%;
       }
@@ -364,11 +333,54 @@
         .block-full-article{
           .block-full-article__content{
             .block-full-article__category{
-              top: 61px;
+              top: -26px;
             }
           }
         }
       }
+
+    .lifestyle-news{
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: 20px;
+      div{
+        .block-with-media__inner{
+          width: 100%;
+          .block-with-media__image{
+            img{
+              position: relative;
+            }
+          }
+        }
+      }
+      .block-full-article{
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        .block-full-article__inner{
+          width: 100%;
+          height: auto;
+          .block-full-article__image{
+            width: 100%;
+            height: auto;
+            img{
+              width: 100%;
+              height: 135px;
+              background-size: cover;
+              position: relative;
+            }
+          }
+        }
+        .block-full-article__content{
+          .block-full-article__category{
+            top: 115px;
+          }
+        }
+      }
+    }
       .dont-miss{
         width: 100%;
         height: 100%;
@@ -418,6 +430,19 @@
     }
 
 @media (max-width: 767px) {
+
+  .sticky{
+    height: 100%;
+    div{
+      position: relative;
+    }
+  }
+  .most-popular-block{
+    height: 100% !important;
+    .most-popular{
+      position: relative !important;
+    }
+  }
   .trending-now-block{
     height: 70px;
     display: flex;
@@ -588,6 +613,49 @@
         }
       }
     }
+    .lifestyle-news{
+        width: 100%;
+        height: 100%;
+        display: block;
+        div{
+          .block-with-media__inner{
+            width: 100%;
+            height: 100%;
+            .block-with-media__image{
+              img{
+                position: relative;
+              }
+            }
+          }
+        }
+        .block-full-article{
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          .block-full-article__inner{
+            width: 100%;
+            height: 100%;
+            .block-full-article__image{
+              width: 100%;
+              height: 100%;
+              img{
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                position: relative;
+              }
+            }
+          }
+          .block-full-article__content{
+            .block-full-article__category{
+              top: 381px;
+            }
+          }
+        }
+        .pager{
+          width: 100%;
+        }
+    }
     .dont-miss{
       width: 100%;
       height: 100%;
@@ -619,6 +687,11 @@
               background-size: cover;
               position: relative;
             }
+          }
+        }
+        .block-full-article__content{
+          .block-full-article__category{
+            bottom: 124px;
           }
         }
       }
