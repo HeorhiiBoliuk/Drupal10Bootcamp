@@ -11,6 +11,7 @@
           line-height: 38px;
           font-weight: 700;
           text-transform: uppercase;
+          color: $black;
         }
       }
       .text-long{
@@ -86,6 +87,12 @@
   }
   .layout--twocol-section--67-33{
     .layout__region--second{
+      @media (max-width: 767px){
+        .most-popular-block{
+          height: 100%;
+          position: relative !important;
+        }
+      }
       .most-popular-block{
         position: sticky;
         top: 0;

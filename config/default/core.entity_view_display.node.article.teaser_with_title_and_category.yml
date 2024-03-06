@@ -19,7 +19,6 @@ dependencies:
     - field_layout
     - image
     - layout_builder
-    - layout_discovery
     - user
 third_party_settings:
   field_layout:
@@ -35,63 +34,38 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          58b5c661-383d-4f56-8032-2d6da0f04867:
-            uuid: 58b5c661-383d-4f56-8032-2d6da0f04867
+          34d3442f-114b-4fd9-9d61-3ea67fc678e4:
+            uuid: 34d3442f-114b-4fd9-9d61-3ea67fc678e4
             region: content
             configuration:
               id: 'field_block:node:article:field_image'
-              label: Image
               label_display: '0'
-              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
                 type: image
                 label: hidden
                 settings:
-                  image_link: content
-                  image_style: 219x153
+                  image_link: ''
+                  image_style: wide
                   image_loading:
                     attribute: eager
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          1c545250-095b-4d5b-9d6c-122433f54a79:
-            uuid: 1c545250-095b-4d5b-9d6c-122433f54a79
+          d8a70062-e28b-46bb-a7fc-908bb88d0da3:
+            uuid: d8a70062-e28b-46bb-a7fc-908bb88d0da3
             region: content
             configuration:
               id: 'field_block:node:article:field_category'
-              label: Category
               label_display: '0'
-              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
-                view_mode: view_mode
               formatter:
                 type: entity_reference_label
                 label: hidden
                 settings:
                   link: true
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          73de8c62-1e2d-427c-a46a-f66d26831327:
-            uuid: 73de8c62-1e2d-427c-a46a-f66d26831327
-            region: content
-            configuration:
-              id: 'field_block:node:article:title'
-              label: Title
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: true
                 third_party_settings: {  }
             weight: 1
             additional: {  }
@@ -105,7 +79,7 @@ mode: teaser_with_title_and_category
 content:
   field_category:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

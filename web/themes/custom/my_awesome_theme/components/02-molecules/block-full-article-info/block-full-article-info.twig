@@ -3,17 +3,18 @@
 <div class="{{ block_full_article_info__base_class }}">
   <div {{ bem('inner', [], block_full_article_info__base_class ) }}>
     <div {{ bem('image', [], block_full_article_info__base_class ) }}>
+      <div {{ bem('category', [], block_full_article_info__base_class ) }}>
+        <a class="category" href="{{ block_full_category_url }}">
+          {{ block_full_category }}
+        </a>
+      </div>
       <a href="{{ block_article_url }}">
         <img src="{{ block_full_block_full_image_src }}"  alt="{{ block_full_text_title }}">
       </a>
   </div>
   </div>
   <div {{ bem ('content', [], block_full_article_info__base_class) }}>
-    <div {{ bem('category', [], block_full_article_info__base_class ) }}>
-      <a class="category" href="{{ block_full_category_url }}">
-        {{ block_full_category }}
-      </a>
-    </div>
+
     <div {{ bem('column', [], block_full_article_info__base_class ) }}>
       <div {{ bem('content', [], block_full_article_info__base_class ) }}>
         <a href="{{ block_article_url }}">
