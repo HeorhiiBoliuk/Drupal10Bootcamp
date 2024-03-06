@@ -12,7 +12,7 @@
 
       {% set comment_count = article['#row'].comment_entity_statistics_comment_count %}
 
-      {% set author_entity = article_entity.getOwner() %}
+      {% set author_entity = article['#row']._entity.getOwner() %}
       {% set author_name = author_entity.name.value %}
 
       {% set category_entity = field_article.field_category.entity %}
@@ -26,6 +26,7 @@
         block_comment_count: comment_count,
         block_data: created_date,
         block_article_url: node_url,
+        block_author: author_name,
       } %}
 
     {% endfor %}

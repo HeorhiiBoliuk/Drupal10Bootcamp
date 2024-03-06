@@ -16,11 +16,18 @@
 }
 
 .pager__link {
-  padding: 0.5em;
-  color: clr(text);
-  text-decoration: none;
-  border: 1px solid $grey;
-
+  padding: 5px 11px;
+  border: 1px solid #e3e3e3;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 8px;
+  min-width: 33px;
+  text-align: center;
+  color: #666;
+  line-height: 21px;
+  float: left;
+  font-family: 'Open Sans','Open Sans Regular',sans-serif;
+  font-size: 12px;
 
   &.is-active,
   &:hover,
@@ -39,26 +46,29 @@
 .pager__link--prev,
 .pager__link--first,
 .pager__link--last {
-  display: block;
-  padding: 0;
+  padding: 5px 11px;
+  border: 1px solid #e3e3e3;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 8px;
+  min-width: 33px;
+  text-align: center;
+  color: #666;
+  line-height: 21px;
+  float: left;
+  font-family: 'Open Sans','Open Sans Regular',sans-serif;
+  background-color: transparent;
+  font-size: 12px;
 
   &:hover,
   &:focus {
-    background-color: transparent;
     color: clr(accent);
+    background-color: $blue;
   }
 }
 
 .pager{
   .pager__item--last, .pager__item--ellipsis, .pager__item--first{
     display: none;
-  }
-  .pager__item--next, .pager__item--prev{
-    span{
-      padding: 3px 10px;
-    }
-    span:hover{
-      background-color: $blue;
-    }
   }
 }

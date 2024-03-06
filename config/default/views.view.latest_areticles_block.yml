@@ -430,7 +430,7 @@ display:
           id: 1
           tags:
             next: '>'
-            previous: '‹ Previous'
+            previous: '<'
             first: '« First'
             last: 'Last »'
           expose:

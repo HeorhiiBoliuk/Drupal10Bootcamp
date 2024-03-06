@@ -38,7 +38,7 @@
 
               }
               .views-field-field-category{
-                top: 65%;
+                bottom: 89px !important;
                 @include category;
                 a{
                   color: $white;
@@ -103,8 +103,8 @@
       .item-list{
         ul{
           display: grid;
-          grid-template-columns: repeat(2, 47%);
-          grid-gap: 10px;
+          grid-template-columns: repeat(2, calc(50% - 24px));
+          grid-gap: 48px;
           list-style: none;
           li{
             position: relative;
@@ -112,7 +112,7 @@
 
             }
             .views-field-field-category{
-              bottom: 89px;
+              bottom: 89px !important;
               @include category;
               a{
                 color: $white;

@@ -3,20 +3,11 @@
 <footer {{ bem(footer__base_class) }}>
   <div {{ bem('inner', [], footer__base_class) }}>
     <div {{ bem('wrapper', [], footer__base_class) }}>
-      <div {{ bem('social', [], footer__base_class) }}>
-        {% block footer__social %}
-          {% include "@molecules/menus/social-menu/social-menu.twig" %}
-        {% endblock %}
-      </div>
       <div {{ bem('menu', [], footer__base_class) }}>
         {% block footer__menu %}
           {% include "@molecules/menus/inline/inline-menu.twig" %}
         {% endblock %}
-        {% include "@molecules/logo/logo.twig" %}
-      </div>
-      <div {{ bem('branding', [], footer__base_class) }}>
       </div>
     </div>
-
   </div>
 </footer>
