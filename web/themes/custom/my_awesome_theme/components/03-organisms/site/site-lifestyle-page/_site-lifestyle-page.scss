@@ -81,6 +81,16 @@
       display: block;
       overflow: hidden;
 
+      .category {
+        a {
+          left: 0;
+          bottom: 0;
+          @include category;
+          color: $white;
+          background-color: transparent;
+        }
+      }
+
       span{
         img {
           width: 100%;
@@ -125,15 +135,6 @@
   .inner{
       position: absolute;
       bottom: 0;
-      .category {
-        a {
-          left: 0;
-          bottom: 0;
-          @include category;
-          color: $white;
-          background-color: transparent;
-        }
-      }
       .column {
         .content {
           @include title;

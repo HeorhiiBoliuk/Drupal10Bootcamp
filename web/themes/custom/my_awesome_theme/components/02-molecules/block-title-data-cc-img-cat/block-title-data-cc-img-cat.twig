@@ -14,7 +14,6 @@
     </a>
   </div>
   <div {{ bem('inner', [], text_with_media__base_class) }}>
-
     <div {{ bem('column', [], text_with_media__base_class) }}>
       <div {{ bem('content', [], text_with_media__base_class) }}>
         <a href="{{ block_article_url }}">
@@ -22,8 +21,13 @@
         </a>
       </div>
     </div>
-    <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
-      {{ block_data }}
+    <div {{ bem('author-data', text_with_media__modifiers, text_with_media__base_class) }}>
+      <div {{ bem('author', text_with_media__modifiers, text_with_media__base_class) }}>
+        {{ block_author }}
+      </div>
+      <div {{ bem('media', text_with_media__modifiers, text_with_media__base_class) }}>
+        {{ block_data }}
+      </div>
     </div>
     <div {{ bem('count', [], text_with_media__base_class) }}>
       {{ block_comment_count }}

@@ -194,23 +194,26 @@
     margin-bottom: 40px;
     display: flex;
     .image{
-      img{
-        width: 244px;
-        height: 158px;
-        margin-right: 20px;
-      }
-    }
-    .inner{
+      flex: 0 0 33%;
+      position: relative;
+      margin-right: 20px;
       .category{
         a{
-          left: 0;
-          bottom: 6px;
+          left: 236px !important;
+          bottom: 134px !important;
           @include category;
         }
         a:hover{
           background: $blue;
         }
       }
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .inner{
+      margin-top: 20px;
       .column{
         .content{
           @include title;
@@ -219,11 +222,14 @@
           }
         }
       }
-      .media{
-        @include data;
-      }
-      .author{
-        @include author;
+      .author-data{
+        @include author-data;
+        .media{
+          @include data;
+        }
+        .author{
+          @include author;
+        }
       }
       .count{
         max-height: 18px;
@@ -240,6 +246,7 @@
     flex-direction: row-reverse;
     margin: 0 20px 20px 0;
     .block-full-article__inner{
+      position: static;
       .block-full-article__image{
         .block-full-article__category{
           .category{
@@ -265,6 +272,7 @@
     }
     .block-full-article__content{
       margin-top: 20px;
+      padding: 0 24px 0 0;
       .block-full-article__column{
         a:hover{
           color: $blue;
@@ -358,6 +366,7 @@
 @mixin expose_style{
   display: flex;
   border-bottom: 2px solid var(--td_header_color, var(--td_black, #222222));
+  margin-bottom: 26px;
   .h2 {
     text-align: left;
     font-family: 'Roboto', sans-serif;
@@ -431,6 +440,7 @@
 
 @mixin layout-onecol-lifestyle{
     .layout--onecol{
+      padding-top: 22px !important;
       header{
         h1{
           text-transform: uppercase;
@@ -451,6 +461,7 @@
         @include body;
       }
       .lifestyle-taxonomy{
+        padding-bottom: 18px !important;
         .views-row{
           float: left;
           .views-field-name{
@@ -631,8 +642,8 @@
 
 .fashion-page{
   display: grid;
-  grid-template-columns: repeat(2, 47%);
-  grid-gap: 20px;
+  grid-template-columns: repeat(2, calc(50% - 24px));
+  grid-gap: 48px;
   margin-top: 30px;
 
   .block-full-article{
