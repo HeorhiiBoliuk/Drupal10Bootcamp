@@ -8,17 +8,41 @@
 
 .latest-articles{
   display: grid;
-  grid-template-columns: repeat(2, 348px);
+  column-gap: 48px;
+  grid-template-columns: repeat(2, calc(50% - 24px));
   .block-title-data-cc-img-cat{
     position: relative;
-    margin: 0 20px;
-    width: 324px;
-
+    width: 100%;
+    margin-bottom: 18px;
     .inner{
+      .column{
+        .content{
+          @include title;
+          font-size: 21px;
+          line-height: 25px;
+          word-wrap: break-word;
+          font-family: 'Roboto',sans-serif;
+          a:hover{
+            color: $blue;
+          }
+        }
+      }
+      .media{
+        color: $grey;
+        display: inline-block;
+        position: relative;
+        top: 2px;
+        font-size: 11px;
+      }
+      .count{
+        @include count;
+      }
+    }
+    .image{
+      position: relative;
       .category {
         @include category;
-        top: 71px;
-        left: 0;
+        bottom: 4px;
         a{
           -webkit-transition: background-color 0.2s ease;
           padding: 3px 7px;
@@ -34,25 +58,6 @@
           background-color: $blue;
         }
       }
-      .column{
-        .content{
-          @include title;
-          a:hover{
-            color: $blue;
-          }
-        }
-      }
-      .media{
-        color: $grey;
-        display: inline-block;
-        position: relative;
-        top: 2px;
-      }
-      .count{
-        @include count;
-      }
-    }
-    .image{
       img{
         position: relative;
         flex: 0 0 auto;

@@ -77,14 +77,58 @@
     {% for item in content._layout_builder[1].first %}
       {% if counter < 1 %}
         {% set tax_term_id = item.content.view_build['#rows'][0]['#rows'][0]['#row']._entity.fields.field_category.entity.field_tax_term_ident.value %}
-
         <div class="{{ tax_term_id }}">
           {% if node.gettype != 'page' %}
-            <div class="header-node">
-              {{ content["_layout_builder"][0] }}
-            </div>
-            <div class="content-node">
-              {{ content["_layout_builder"][1] }}
+            {% set node_category = node.field_category.entity %}
+            {% set tax_term_label = node_category.label %}
+            <div class="tax_term_id_{{ tax_term_label }}">
+              {% if tax_term_label == 'Architecture' %}
+                {% set image_entity = node.field_image.entity %}
+                {% set node_image_url = file_url(image_entity.uri.value) %}
+                <div class="my-block" style="background-image: url('{{ node_image_url }}')">
+                  <div class="header-node">
+                    <div class="row-1">
+                      <p>{{ node.field_category.entity.label }}</p>
+                    </div>
+                    <div class="row-2">
+                      <p>{{ node.getTitle() }}</p>
+                    </div>
+                    <div class="row-3">
+                      <p>{{ node.getCreatedTime()|date('F j, Y') }}</p>
+                      <p>{{ '0'|t }}</p>
+                      <p>{{ node.getOwner().getDisplayName() }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="content-node">
+                  {{ content["_layout_builder"][1] }}
+                </div>
+              {% elseif tax_term_label in ['Vogue', 'New Look', 'Style Hunter', 'Street Fashion'] %}
+                <div class="header-node">
+                  {{ content["_layout_builder"][0] }}
+                  <div class="author-info-article">
+                    {% set author = node.getOwner() %}
+                    {% set author_image = author.user_picture.entity %}
+                    {% if author_image %}
+                      {% set author_image_url = file_url(author_image.uri.value) %}
+                      <img src="{{ author_image_url }}" alt="{{ author.user_picture.alt }}">
+                    {% endif %}
+                    <p class="author">{{ author.getDisplayName() }}</p>
+                    <p class="creation">{{ node.getCreatedTime()|date('F j, Y') }}</p>
+                    <p class="cc_article">{{ content.field_comments['#items']|length  }}</p>
+                  </div>
+                </div>
+                <div class="content-node">
+                  {{ content["_layout_builder"][1] }}
+                </div>
+              {% else %}
+              <div class="header-node">
+                {{ content["_layout_builder"][0] }}
+              </div>
+          <div class="content-node">
+            {{ content["_layout_builder"][1] }}
+          </div>
+              {% endif %}
             </div>
           {% else %}
             {{ content }}

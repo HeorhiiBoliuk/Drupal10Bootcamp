@@ -18,9 +18,8 @@
 .dont-miss{
   .block-full-article{
     position: relative;
-    width: 372px;
-    height: 392px;
-    padding-left: 24px;
+    width: 100%;
+    height: 100%;
     padding-right: 24px;
     .block-full-article__count{
       @include count;
@@ -40,12 +39,11 @@
     .block-full-article__image{
       position: relative;
       flex: 0 0 auto;
-      width: 324px;
-      height: 233px;
+      width: 100%;
+      height: 100%;
       img{
         width: 100%;
         height: 100%;
-        position: absolute;
       }
     }
   }
@@ -62,7 +60,9 @@
 .perfomance-training {
   .block-full-article {
     display: flex;
-    margin: 0 20px 20px 20px;
+    padding-right: 20px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
 
     .block-full-article__inner {
       display: flex;
@@ -72,14 +72,13 @@
         display: block;
         order: 0;
         position: relative;
-        width: 227px;
-        height: 155px;
-        margin-right: 15px;
+        width: 100%;
+        height: 100%;
+        margin-right: 26px;
 
         img {
           width: 100%;
           height: 100%;
-          position: absolute;
         }
       }
     }
@@ -100,13 +99,18 @@
 
 
 .lifestyle-news{
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  padding: 0 24px;
+  margin: 20px 0 20px 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: calc(50% - 24px) calc(50% - 24px);
+  column-gap: 48px;
+  .block-with-media__inner{
+    padding-left: 0!important;
+  }
   .block-full-article{
     position: relative;
-    width: 50%;
+    width: 100%;
     .block-full-article__column{
       .block-full-article__content{
         @include title;
@@ -122,39 +126,40 @@
     .block-full-article__count{
       @include count
     }
-    .block-full-article__category{
-      @include category;
-      top: 211px;
-      a{
-        -webkit-transition: background-color 0.2s ease;
-        padding: 3px 7px;
-        background-color: rgba(0, 0, 0, 0.7);
-        font-family: 'Roboto', sans-serif;
-        line-height: 13px;
-        font-weight: 500;
-        text-transform: uppercase;
-        pointer-events: auto;
-        color: $white;
-      }
-      a:hover {
-        background-color: $blue;
-      }
-    }
     .block-full-article__image{
       position: relative;
       flex: 0 0 auto;
-      width: 324px;
-      height: 233px;
+      width: 100%;
+      height: 100%;
+      .block-full-article__category{
+        @include category;
+        a{
+          -webkit-transition: background-color 0.2s ease;
+          padding: 3px 7px;
+          background-color: rgba(0, 0, 0, 0.7);
+          font-family: 'Roboto', sans-serif;
+          line-height: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          pointer-events: auto;
+          color: $white;
+        }
+        a:hover {
+          background-color: $blue;
+        }
+      }
       img{
         width: 100%;
         height: 100%;
-        position: absolute;
       }
     }
   }
 }
 
 .holiday-recipes{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   .block-full-article{
     .block-full-article__content {
       position: relative;
@@ -174,37 +179,34 @@
       .block-full-article__count {
         @include count
       }
-
-      .block-full-article__category {
-        @include category;
-        top: -20px;
-        left: 0;
-        a{
-          -webkit-transition: background-color 0.2s ease;
-          padding: 3px 7px;
-          font-family: 'Roboto', sans-serif;
-          line-height: 13px;
-          font-weight: 500;
-          text-transform: uppercase;
-          pointer-events: auto;
-          color: $white;
-        }
-        a:hover {
-          background-color: $blue;
-        }
-      }
     }
     .block-full-article__inner{
       .block-full-article__image{
+        .block-full-article__category {
+          @include category;
+          bottom: 7px;
+          left: 0;
+          a{
+            -webkit-transition: background-color 0.2s ease;
+            padding: 3px 7px;
+            font-family: 'Roboto', sans-serif;
+            line-height: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            pointer-events: auto;
+            color: $white;
+          }
+          a:hover {
+            background-color: $blue;
+          }
+        }
         position: relative;
         flex: 0 0 auto;
-        width: 324px;
-        height: 233px;
+        width: 100%;
+        height: 100%;
         img{
           width: 100%;
-          height: 100%;
-          position: absolute;
-        }
+          height: 100%;}
       }
     }
   }
@@ -229,6 +231,7 @@
 
     .h2 {
       background-color: $green-dark;
+      color: $white;
     }
   }
 
@@ -311,40 +314,43 @@
   }
 .house-design{
   display: grid;
-  grid-template-columns: repeat(3, 220px);
-  gap: 20px;
+  grid-template-columns: repeat(3, calc(33% - 16px));
+  gap: 24px;
   position: relative;
+  margin-bottom: 48px;
   .block-full-article{
-    margin: 0 20px 20px 20px;
     .block-full-article__column{
       .block-full-article__content{
         @include title;
+        font-size: 15px !important;
+        line-height: 1.3 !important;
+        font-weight: 500 !important;
         a:hover{
           color: $blue;
         }
       }
     }
-    .block-full-article__category{
-      @include category;
-      top: 134px;
-      a{
-        -webkit-transition: background-color 0.2s ease;
-        padding: 3px 7px;
-        background-color: rgba(0,0,0,0.7);
-        font-family: 'Roboto',sans-serif;
-        line-height: 13px;
-        font-weight: 500;
-        text-transform: uppercase;
-        pointer-events: auto;
-        color: $white;
-      }
-      a:hover{
-        background-color: $blue;
-      }
-    }
     .block-full-article__image{
-      width: 218px;
-      height: 153px;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      .block-full-article__category{
+        @include category;
+        a{
+          -webkit-transition: background-color 0.2s ease;
+          padding: 3px 7px;
+          background-color: rgba(0,0,0,0.7);
+          font-family: 'Roboto',sans-serif;
+          line-height: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          pointer-events: auto;
+          color: $white;
+        }
+        a:hover{
+          background-color: $blue;
+        }
+      }
       img{
         width: 100%;
         height: 100%;

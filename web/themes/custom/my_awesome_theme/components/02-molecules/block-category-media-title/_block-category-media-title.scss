@@ -1,7 +1,7 @@
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(4, 306px);
-  grid-template-rows: repeat(2, 192px);
+  grid-template-columns: repeat(4, 24.5%);
+  grid-template-rows: repeat(2, 49.5%);
   grid-gap: 5px;
 
   .block-category-media-title {

@@ -24,6 +24,12 @@ body {
   display: block; /* Fix for IE weirdness */
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+  .header-node, .content-node{
+    max-width: 720px !important;
+  }
+}
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);

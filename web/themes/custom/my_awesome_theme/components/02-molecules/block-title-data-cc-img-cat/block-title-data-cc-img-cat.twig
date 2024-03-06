@@ -2,6 +2,11 @@
 
 <div class="{{ block_title_data_cc_img_cat__base_class }}">
   <div {{ bem('image', [], text_with_media__base_class) }}>
+    <div {{ bem('category', [], text_with_media__base_class) }}>
+      <a class="category" href="{{ block_category_url }}">
+        {{ block_category }}
+      </a>
+    </div>
     <a href="{{ block_article_url }}">
         <span>
           <img src="{{ block_image_src }}" alt="{{ block_title }}">
@@ -9,11 +14,7 @@
     </a>
   </div>
   <div {{ bem('inner', [], text_with_media__base_class) }}>
-    <div {{ bem('category', [], text_with_media__base_class) }}>
-      <a class="category" href="{{ block_category_url }}">
-        {{ block_category }}
-      </a>
-    </div>
+
     <div {{ bem('column', [], text_with_media__base_class) }}>
       <div {{ bem('content', [], text_with_media__base_class) }}>
         <a href="{{ block_article_url }}">
