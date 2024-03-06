@@ -3,7 +3,18 @@
   padding-bottom: 80px;
   .latest-articles{
     display: grid;
-    grid-template-columns: repeat(3, 33%) !important;
+    grid-template-columns: repeat(3, calc(33% - 29px)) !important;
+    .block-title-data-cc-img-cat{
+      .image{
+        a{
+          span{
+            img{
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
   }
 
   .latest-article-title{
@@ -80,6 +91,22 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1019px) and (min-width: 768px) {
+  .user-page{
+    width: 720px;
+  }
+}
+
+@media (max-width: 767px) {
+  .user-page{
+    .latest-articles{
+      margin-top: 24px;
+      display: block !important;
+      margin-bottom: 18px;
     }
   }
 }

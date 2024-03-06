@@ -655,7 +655,7 @@ display:
           hierarchy: false
           limit: true
           error_message: true
-          depth: 2
+          depth: 0
       filter_groups:
         operator: AND
         groups:

@@ -194,6 +194,7 @@
       .block-full-article__image{
         position: relative;
         .block-full-article__category{
+          background-color: $black;
           @include category;
           bottom: 7px;
           left: 0;

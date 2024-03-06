@@ -4,15 +4,18 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_user_description
     - field.field.user.user.layout_builder__layout
     - field.field.user.user.user_picture
     - image.style.thumbnail
+    - system.menu.social-network
   module:
     - field_layout
     - image
     - layout_builder
     - layout_discovery
+    - system
     - user
 third_party_settings:
   field_layout:
@@ -46,6 +49,76 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          6359af32-5255-4593-aa77-caa3de2738b3:
+            uuid: 6359af32-5255-4593-aa77-caa3de2738b3
+            region: content
+            configuration:
+              id: 'field_block:user:user:name'
+              label: Name
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: user_name
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          b2a32548-4d85-4382-bf9f-b0327ccb5940:
+            uuid: b2a32548-4d85-4382-bf9f-b0327ccb5940
+            region: content
+            configuration:
+              id: 'field_block:user:user:mail'
+              label: Email
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: email_mailto
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          6e131912-1ef6-405a-bd04-2bb4e85d4fc2:
+            uuid: 6e131912-1ef6-405a-bd04-2bb4e85d4fc2
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_user_description'
+              label: 'User Description'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          fd3e92c7-9d1b-4634-9b89-ab9e0dab4c00:
+            uuid: fd3e92c7-9d1b-4634-9b89-ab9e0dab4c00
+            region: content
+            configuration:
+              id: 'system_menu_block:social-network'
+              label: 'Social Network'
+              label_display: '0'
+              provider: system
+              context_mapping: {  }
+              level: 1
+              depth: 0
+              expand_all_items: false
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: 00zr_RBdTjPjBGITD3h4c1ESQZimjdVCcHGt1trLqIY
@@ -66,6 +139,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_social_links: true
   field_user_description: true
   layout_builder__layout: true
   member_for: true

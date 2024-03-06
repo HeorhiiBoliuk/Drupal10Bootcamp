@@ -26,6 +26,7 @@
     }
     .block-full-article__category{
       bottom: 162px;
+      background-color: $black;
       a{
         color: $white;
       }
@@ -198,6 +199,7 @@
           @include category;
           bottom: 7px;
           left: 0;
+          background-color: $black;
           a{
             -webkit-transition: background-color 0.2s ease;
             padding: 3px 7px;

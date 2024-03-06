@@ -40,6 +40,7 @@
               .views-field-field-category{
                 bottom: 89px !important;
                 @include category;
+                background-color: $black;
                 a{
                   color: $white;
                 }
@@ -113,6 +114,7 @@
             }
             .views-field-field-category{
               bottom: 89px !important;
+              background-color: $black;
               @include category;
               a{
                 color: $white;
