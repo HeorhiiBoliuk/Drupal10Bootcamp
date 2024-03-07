@@ -190,8 +190,29 @@ article {
     }
   }
 
-
   .editor-teaser-node {
+    .user-page{
+      padding: 0;
+      .layout--onecol{
+        .layout__region--content{
+          nav{
+            margin: 0;
+            text-align: left;
+            margin-left: 96px;
+            .item{
+              a{
+                img{
+                  background-color: $black;
+                }
+                img:hover{
+                  background-color: $blue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     border: 1px solid var(--td_grid_border_color, #ededed);
     padding: 21px;
     margin-bottom: 48px;
@@ -221,15 +242,17 @@ article {
       }
     }
 
-    .views-field-mail {
-      font-size: 11px;
-      font-style: italic;
-      line-height: 21px;
-      margin-bottom: 6px;
+    .block {
+      div{
+        font-size: 11px;
+        font-style: italic;
+        line-height: 21px;
+        margin-bottom: 6px;
 
-      a {
-        color: #444;
-        text-decoration: none;
+        a {
+          color: #444;
+          text-decoration: none;
+        }
       }
     }
 
@@ -240,11 +263,17 @@ article {
       line-height: 21px;
     }
 
-    .views-field-user-picture {
+    .user-picture {
       float: left;
       max-width: 96px;
       height: auto;
       margin-top: 0;
+      img{
+        width: 100%;
+        height: 100%;
+        background: none;
+        margin-right: 30px;
+      }
     }
   }
 

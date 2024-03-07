@@ -61,7 +61,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           e1042c7f-11fb-4327-9d64-468fa6546606:
             uuid: e1042c7f-11fb-4327-9d64-468fa6546606
@@ -91,7 +91,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 2
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -

@@ -37,7 +37,6 @@
   font-size: 10px;
   font-weight: 600;
   line-height: 1;
-  background-color: $black;
   color: $white;
   margin-right: 5px;
   padding: 3px 6px 4px;
@@ -201,6 +200,7 @@
         a{
           left: 236px !important;
           bottom: 134px !important;
+          background-color: $black;
           @include category;
         }
         a:hover{
@@ -652,6 +652,7 @@
       .block-full-article__image{
         position: relative;
         .block-full-article__category{
+          background-color: $black;
           @include category;
           a{
             color: $white;
