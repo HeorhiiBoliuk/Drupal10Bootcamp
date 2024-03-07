@@ -173,58 +173,74 @@
 }
 
 .holiday-recipes{
-  .block-full-article{
-    .block-full-article__content {
-      position: relative;
-      .block-full-article__column{
-        @include title;
-        a:hover{
-          color:  $light-purple;
-        }
-      }
-      .block-full-article__author-data {
-        @include author-data;
-        .block-full-article__data {
-          font-size: 11px;
-        }
-      }
+  .item-list{
+    ul{
+      list-style: none;
+      li{
+        .block-full-article{
+          .block-full-article__content {
+            position: relative;
+            .block-full-article__column{
+              @include title;
+              a:hover{
+                color:  $light-purple;
+              }
+            }
+            .block-full-article__author-data {
+              @include author-data;
+              .block-full-article__author{
+                span{
+                  a{
+                    @include author;
+                  }
+                }
+              }
+              .block-full-article__data {
+                font-size: 11px;
+              }
+            }
 
-      .block-full-article__count {
-        @include count
-      }
-    }
-    .block-full-article__inner{
-      .block-full-article__image{
-        .block-full-article__category {
-          @include category;
-          bottom: 7px;
-          left: 0;
-          background-color: $black;
-          a{
-            -webkit-transition: background-color 0.2s ease;
-            padding: 3px 7px;
-            font-family: 'Roboto', sans-serif;
-            line-height: 13px;
-            font-weight: 500;
-            text-transform: uppercase;
-            pointer-events: auto;
-            color: $white;
+            .block-full-article__count {
+              @include count;
+            }
           }
-          a:hover {
-            background-color: $blue;
+          .block-full-article__inner{
+            .block-full-article__image{
+              .block-full-article__category {
+                @include category;
+                bottom: 7px;
+                left: 0;
+                background-color: $black;
+                a{
+                  -webkit-transition: background-color 0.2s ease;
+                  padding: 3px 7px;
+                  font-family: 'Roboto', sans-serif;
+                  line-height: 13px;
+                  font-weight: 500;
+                  text-transform: uppercase;
+                  pointer-events: auto;
+                  color: $white;
+                }
+                a:hover {
+                  background-color: $blue;
+                }
+              }
+              position: relative;
+              flex: 0 0 auto;
+              width: 100%;
+              height: 100%;
+              img{
+                width: 100%;
+                height: 100%;}
+            }
           }
         }
-        position: relative;
-        flex: 0 0 auto;
-        width: 100%;
-        height: 100%;
-        img{
-          width: 100%;
-          height: 100%;}
       }
     }
   }
-  }
+  margin-bottom: 48px;
+}
+
   .holiday-title{
     @include title_block;
     border-color: $purple;

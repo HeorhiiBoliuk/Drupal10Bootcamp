@@ -19,6 +19,7 @@ dependencies:
     - field_layout
     - image
     - layout_builder
+    - layout_discovery
     - user
 third_party_settings:
   field_layout:
@@ -68,6 +69,41 @@ third_party_settings:
                   link: true
                 third_party_settings: {  }
             weight: 1
+            additional: {  }
+          4955a051-4613-47f0-b40e-b105d5e1994a:
+            uuid: 4955a051-4613-47f0-b40e-b105d5e1994a
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: wide
+                  image_loading:
+                    attribute: eager
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          d42d3e28-9ba4-4899-93b2-6fc16539ad72:
+            uuid: d42d3e28-9ba4-4899-93b2-6fc16539ad72
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_category'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
 _core:

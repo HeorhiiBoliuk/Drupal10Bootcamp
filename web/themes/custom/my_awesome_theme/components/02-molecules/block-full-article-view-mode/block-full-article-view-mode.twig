@@ -1,0 +1,36 @@
+{% set block_full_article_info__base_class = 'block-full-article' %}
+
+<div class="{{ block_full_article_info__base_class }}">
+  <div {{ bem('inner', [], block_full_article_info__base_class ) }}>
+    <div {{ bem('image', [], block_full_article_info__base_class ) }}>
+      <div {{ bem('category', [], block_full_article_info__base_class ) }}>
+          {{ block_full_category }}
+      </div>
+        {{ block_full_block_full_image_src }}
+    </div>
+  </div>
+  <div {{ bem ('content', [], block_full_article_info__base_class) }}>
+
+    <div {{ bem('column', [], block_full_article_info__base_class ) }}>
+      <div {{ bem('content', [], block_full_article_info__base_class ) }}>
+        <a>
+          {{ block_full_text_title }}
+        </a>
+      </div>
+    </div>
+    <div {{ bem('author-data', [], block_full_article_info__base_class) }}>
+      <div {{ bem('author', [], block_full_article_info__base_class ) }}>
+        {{ block_full_author }}
+      </div>
+      <div {{ bem('data', [], block_full_article_info__base_class ) }}>
+        {{ block_full_text_data }}
+      </div>
+    </div>
+    <div {{ bem('count', [], block_full_article_info__base_class ) }}>
+      {{ block_full_comment_count }}
+    </div>
+    <div {{ bem('body', [], block_full_article_info__base_class ) }}>
+      {{ block_full_body }}
+    </div>
+  </div>
+</div>
