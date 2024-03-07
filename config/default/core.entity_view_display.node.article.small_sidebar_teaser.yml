@@ -13,13 +13,12 @@ dependencies:
     - field.field.node.article.field_tags
     - field.field.node.article.field_youtube_video_embed
     - field.field.node.article.layout_builder__layout
-    - image.style.wide
+    - image.style.97x68
     - node.type.article
   module:
     - field_layout
     - image
     - layout_builder
-    - layout_discovery
     - user
 third_party_settings:
   field_layout:
@@ -27,72 +26,8 @@ third_party_settings:
     settings:
       label: ''
   layout_builder:
-    enabled: true
+    enabled: false
     allow_custom: false
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          d505fbde-b905-4132-af5b-edf6c1f5610b:
-            uuid: d505fbde-b905-4132-af5b-edf6c1f5610b
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_image'
-              label: Image
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: image
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: 152x106
-                  image_loading:
-                    attribute: eager
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          d9b927f7-0a41-491e-a2aa-49c479cfd73a:
-            uuid: d9b927f7-0a41-491e-a2aa-49c479cfd73a
-            region: content
-            configuration:
-              id: 'field_block:node:article:field_category'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: hidden
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          3d755d0a-ce5b-4fb8-8da3-b6856a05747a:
-            uuid: 3d755d0a-ce5b-4fb8-8da3-b6856a05747a
-            region: content
-            configuration:
-              id: 'field_block:node:article:title'
-              label: Title
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: hidden
-                settings:
-                  link_to_entity: true
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-        third_party_settings: {  }
 _core:
   default_config_hash: br6izr-iGEu--JvNbCJNtOBpRnxpFLXfoV5y61U9Nqc
 id: node.article.small_sidebar_teaser
@@ -112,8 +47,8 @@ content:
     type: image
     label: hidden
     settings:
-      image_link: ''
-      image_style: wide
+      image_link: content
+      image_style: 97x68
       image_loading:
         attribute: eager
     third_party_settings: {  }

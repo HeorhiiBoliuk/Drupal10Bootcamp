@@ -95,7 +95,7 @@
                     </div>
                     <div class="row-3">
                       <p>{{ node.getCreatedTime()|date('F j, Y') }}</p>
-                      <p>{{ '0'|t }}</p>
+                      <p>{{ content.field_comments['#items']|length }}</p>
                       <p>{{ node.getOwner().getDisplayName() }}</p>
                     </div>
                   </div>
