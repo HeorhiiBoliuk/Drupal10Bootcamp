@@ -16,6 +16,19 @@
   transform: translate3d(0px,0px,0px);
   overflow: hidden;
   margin: 10px auto;
+  .view-content{
+    .trending-article{
+      .trending-article-details{
+        a{
+          font-size: 15px;
+          line-height: 25px;
+          word-wrap: break-word;
+          font-family: roboto,sans-serif;
+          font-weight: 400;
+        }
+      }
+    }
+  }
   .trending-now-title{
     line-height: 21px;
   }
@@ -100,6 +113,7 @@
     border: none !important;
     margin: 0 10px !important;
     display: inline-block;
+
     span{
       background-color: $black;
       top: 4px;
@@ -220,13 +234,18 @@
           }
           .block-full-article__column{
             .block-full-article__content{
-              @include title;
-              font-size: 13px !important;
-              line-height: 1.3 !important;
-              font-weight: 500 !important;
-              a:hover{
-                color: $blue;
+              a span{
+                transition: all 0.2s ease;
+                font-size: 13px !important;
+                line-height: 1.3 !important;
+                font-weight: 700 !important;
+                word-wrap: break-word;
+                font-family: roboto,sans-serif;
+                &:hover{
+                  color: $blue;
+                }
               }
+
             }
           }
         }

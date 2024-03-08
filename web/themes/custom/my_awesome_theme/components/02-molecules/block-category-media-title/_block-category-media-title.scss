@@ -41,7 +41,7 @@
       .block-category-media-title__category{
         position: absolute;
         overflow-wrap: break-word;
-        bottom: 40px;
+        bottom: 70px;
         color: $white;
         width: 264px;
         padding: 10px;
@@ -65,18 +65,20 @@
         bottom: 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
         max-width: 528px;
-        color: $white;
         width: 528px;
-        padding: 10px;
+        color: $white;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         .block-category-media-title__content{
           a {
             @include overview-a;
           font-size: 27px;
           font-weight: 500;
           line-height: 34px;
-        }
+            word-wrap: break-word;
+          }
         }
       }
     }
@@ -113,7 +115,7 @@
       }
       .block-category-media-title__category{
         position: absolute;
-        bottom: 35px;
+        bottom: 65px;
         overflow-wrap: break-word;
         color: $white;
         width: 264px;
@@ -138,11 +140,12 @@
         bottom: 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
         max-width: 528px;
-        color: $white;
         width: 528px;
-        padding: 10px;
+        color: $white;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         .block-category-media-title__content{
           a{
             @include overview-a;
@@ -188,7 +191,7 @@
       }
       .block-category-media-title__category{
         position: absolute;
-        bottom: 30px;
+        bottom: 40px;
         overflow-wrap: break-word;
         color: $white;
         width: 264px;
@@ -213,13 +216,17 @@
         bottom: 0;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
         max-width: 264px;
-        color: $white;
         width: 264px;
-        padding: 10px;
+        color: $white;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         .block-category-media-title__content{
           a{
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
             font-size: 16px;
             line-height: 21px;
             font-weight: 500;

@@ -1,0 +1,13 @@
+{% set footer__base_class = 'footer_bottom' %}
+
+<footer {{ bem(footer__base_class) }}>
+  <div {{ bem('inner', [], footer__base_class) }}>
+    <div {{ bem('wrapper', [], footer__base_class) }}>
+      <div {{ bem('menu', [], footer__base_class) }}>
+        {% block bottom_footer__menu %}
+          {% include "@molecules/menus/inline/inline-menu.twig" %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</footer>
