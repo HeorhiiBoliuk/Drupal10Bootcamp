@@ -6,11 +6,11 @@
   height: 40px;
   background-color: #007bff;
   cursor: pointer;
-  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  .icon-angle-up{
+  display: none;
+  .svg-inline--fa{
     font-family: 'newspaper';
     speak: none;
     font-style: normal;
@@ -23,12 +23,11 @@
     -moz-osx-font-smoothing: grayscale;
     color: #fff;
     font-size: 24px;
-    &::before{
-      content: '\f106';
-    }
   }
 }
-
+.open{
+  display: flex;
+}
 
 .scroll-top {
   z-index: 9999;

@@ -1,26 +1,27 @@
 /**
  * Back to Top scrolling.
  */
-(function ($, Drupal) {
-  Drupal.behaviors.backToTop = {
-    attach: function (context) {
-      let scrollThreshold = 275;
 
-      $(window).on('scroll', function () {
-        if ($(this).scrollTop() > scrollThreshold) {
-          if (!$('.scroll-top', context).length) {
-            let scrollTopButton = $('<div class="scroll-top"><i class="sfdc-icon icon-angle-up"></i></div>');
-            $('body', context).append(scrollTopButton);
-            scrollTopButton.on('click', function (event) {
-              event.preventDefault();
-              $('html, body', context).animate({scrollTop: 0}, 'slow');
-              return false;
-            });
-          }
-        } else {
-          $('.scroll-top', context).remove();
+(function (Drupal, once){
+  Drupal.behaviors.backToTop = { attach:function (context) {
+    once("backToTop", '.scroll-top', context).forEach( function (element){
+      element.addEventListener('click', function (e){
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+
+      window.addEventListener('scroll', function (e) {
+        let high = window.innerHeight;
+        let scrollProgress = window.scrollY;
+        if (scrollProgress > high * 0.1){
+          element.classList.add('open');
+        }
+        else{
+          element.classList.remove('open');
         }
       });
-    }
-  };
-})(jQuery, Drupal);
+    });
+    }};
+}(Drupal, once));
