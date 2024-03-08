@@ -1,0 +1,55 @@
+.footer_bottom__inner {
+  width: 1068px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .footer_bottom__menu {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+
+    #block-my-awesome-theme-cnewspaperwordpressthemebytagdiv{
+      .h2{
+        font-weight: 100;
+        color: #cccccc;
+        font-size: 12px !important;
+        line-height: 21px !important;
+        transform: translateZ(0);
+        font-family: open sans,open sans regular,sans-serif;
+        margin-bottom: 0;
+        margin-top: 0;
+        text-align: left !important;
+      }
+    }
+
+    nav {
+      .menu {
+        .menu__item {
+          display: flex;
+          float: left;
+          margin-right: 16px;
+          position: relative;
+          list-style: none;
+          a {
+            justify-content: flex-start;
+            font-size: 12px !important;
+            line-height: 21px !important;
+            list-style: none;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            font-family: open sans, open sans regular, sans-serif;
+            color: #cccccc;
+            &:hover {
+              color: #1aa4ce;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.footer_bottom{
+  background-color: $black;
+}

@@ -23,6 +23,9 @@
   &:hover::after{
     width: 200%;
   }
+  &:active::after{
+    width: 200%;
+  }
 
   &--with-sub {
     width: 80%;
@@ -44,8 +47,12 @@
     padding: $space;
     width: auto;
     border-bottom: none;
-    font-size: 1.1rem;
-    text-transform: none;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: $black;
+    font-family: 'Open Sans','Open Sans Regular',sans-serif;
+    text-transform: uppercase;
 
     &::after {
       display: inline-block;
@@ -65,13 +72,21 @@
 /* A (Nested) */
 .main-menu__link--sub {
   padding-left: $space-triple;
-  color: clr(accent);
+  display: block;
+  font-size: 13px;
+  color: #333;
+  position: relative;
+  vertical-align: middle;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 99;
   font-weight: normal;
 
   @include medium {
     display: block;
     padding: $space-one-third $space;
-    color: clr(highlight);
+    color: #333;
   }
 }
 

@@ -56,8 +56,10 @@
   margin-top: 10px;
   margin-bottom: 26px;
   border-bottom: 2px solid $black;
+  text-transform: uppercase;
   span{
     color: $white;
+    font-weight: 500;
     padding: 7px 12px 4px;
   }
 }
@@ -84,6 +86,17 @@
   min-width: 17px;
   padding: 3px 4px 4px 5px;
   position: relative;
+  &:after{
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    border-color: #000 transparent transparent transparent;
+  }
 }
 
 @mixin data{
@@ -104,6 +117,7 @@
   font-size: 11px;
   line-height: 1;
   margin-right: 5px;
+  font-weight: 900;
   @media (min-width: 768px) and (max-width: 1018px){
     font-size: 12px !important;
     line-height: 16px !important;
