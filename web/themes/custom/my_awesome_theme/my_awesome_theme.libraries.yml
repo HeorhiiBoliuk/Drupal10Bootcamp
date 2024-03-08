@@ -14,6 +14,7 @@ top-button:
     assets/scripts/top-button.js: {}
   dependencies:
     - core/drupal
+    - core/once
 
 # IE 11 support for SVG use - disable if not needed.
 # See also components/01-atoms/images/icons/_icon.twig to remove attach_library.
