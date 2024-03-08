@@ -8,6 +8,7 @@ dependencies:
   - drupal:emulsify_twig (^4.0)
 libraries:
   - my_awesome_theme/global
+  - my_awesome_theme/top-button
 ckeditor_stylesheets:
   - dist/css/style.css
 regions:

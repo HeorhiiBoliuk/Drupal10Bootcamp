@@ -1,0 +1,39 @@
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  .icon-angle-up{
+    font-family: 'newspaper';
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    font-size: 24px;
+    &::before{
+      content: '\f106';
+    }
+  }
+}
+
+
+.scroll-top {
+  z-index: 9999;
+}
+
+.scroll-top:hover {
+  background-color: #0056b3;
+}
