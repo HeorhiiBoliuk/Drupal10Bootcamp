@@ -1,0 +1,28 @@
+.scroll {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+  img{
+    width: 20px;
+  }
+}
+
+.open{
+  display: flex;
+}
+
+.scroll-top {
+  z-index: 9999;
+}
+
+.scroll-top:hover {
+  background-color: #0056b3;
+}

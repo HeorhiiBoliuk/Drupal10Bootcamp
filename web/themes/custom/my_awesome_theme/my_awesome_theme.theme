@@ -35,4 +35,8 @@ function my_awesome_theme_preprocess_entity_pager(&$variables) {
   ];
 }
 
+function my_awesome_theme_preprocess_page(&$variables) {
+  $variables['#attached']['library'][] = 'my_awesome_theme/top-button';
+}
+
 
