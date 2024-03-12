@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function weather_block_info(): array {
+  $blocks['my_custom_block'] = [
+    'info' => t('Weather Block'),
+  ];
+  return $blocks;
+}
+
+/**
+ * Implement hook_theme().
+ */
+function weather_block_theme(): array {
+  return [
+    'weather_block_template' => [
+      'variables' => [
+        'content' => NULL,
+        'weather_type' => NULL,
+      ],
+    ],
+  ];
+}
+

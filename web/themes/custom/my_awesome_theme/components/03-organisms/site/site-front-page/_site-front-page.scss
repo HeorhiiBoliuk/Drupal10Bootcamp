@@ -191,8 +191,8 @@
   }
 }
 
-.sticky{
-  margin-bottom: 48px !important;
+.make-it-modern, .holiday-recipes{
+  @include sticky;
 }
 
 .make-it-modern{

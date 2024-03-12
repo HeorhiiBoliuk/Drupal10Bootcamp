@@ -1,0 +1,25 @@
+uuid: 5a244b93-1cf6-4f39-a869-b2f1a1d2bf36
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:82c557e6-f254-42fb-85cb-4450556396fe'
+  module:
+    - block_content
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_cnewspaperwordpressthemebytagdiv
+theme: my_awesome_theme
+region: bottom_footer
+weight: -15
+provider: null
+plugin: 'block_content:82c557e6-f254-42fb-85cb-4450556396fe'
+settings:
+  id: 'block_content:82c557e6-f254-42fb-85cb-4450556396fe'
+  label: '© Newspaper WordPress Theme by TagDiv'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

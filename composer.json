@@ -30,7 +30,10 @@
         "drupal/menu_item_extras": "^3.0",
         "drupal/paragraphs": "^1.17",
         "drupal/twig_tweak": "^3.2",
-        "drupal/video_embed_field": "^2.5"
+        "drupal/video_embed_field": "^2.5",
+        "drupal/svg_image": "^3.0",
+        "drupal/fontawesome": "^2.26",
+        "enshrined/svg-sanitize": "^0.18"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -105,8 +108,12 @@
             ]
         }
     },
+    "scripts": {
+        "phpcs": "phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md"
+    },
     "require-dev": {
         "drupal/core-dev": "^10.2",
-        "drush/drush": "^12.4"
+        "drush/drush": "^12.4",
+        "squizlabs/php_codesniffer": "@stable"
     }
 }

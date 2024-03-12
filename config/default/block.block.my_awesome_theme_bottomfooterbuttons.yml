@@ -1,0 +1,25 @@
+uuid: 9c2f192e-7bad-4c2b-b3f2-65e2d322676c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.bottom-footer-buttons
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_bottomfooterbuttons
+theme: my_awesome_theme
+region: bottom_footer
+weight: -14
+provider: null
+plugin: 'system_menu_block:bottom-footer-buttons'
+settings:
+  id: 'system_menu_block:bottom-footer-buttons'
+  label: 'bottom footer buttons'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

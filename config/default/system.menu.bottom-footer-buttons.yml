@@ -1,0 +1,8 @@
+uuid: 85f6fd95-e8e0-42d7-9b15-ed0e9d235691
+langcode: en
+status: true
+dependencies: {  }
+id: bottom-footer-buttons
+label: 'bottom footer buttons'
+description: ''
+locked: false

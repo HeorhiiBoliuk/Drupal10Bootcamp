@@ -1,0 +1,20 @@
+uuid: 647684fe-15db-45de-a0a8-bd26f44000b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - weather_block
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_weatherblock
+theme: my_awesome_theme
+region: top_header
+weight: -15
+provider: null
+plugin: weather_block
+settings:
+  id: weather_block
+  label: 'Weather block'
+  label_display: '0'
+  provider: weather_block
+visibility: {  }

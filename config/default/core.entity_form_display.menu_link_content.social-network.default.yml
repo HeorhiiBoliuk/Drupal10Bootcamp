@@ -23,7 +23,7 @@ mode: default
 content:
   field_social_network_images:
     type: media_library_widget
-    weight: 2
+    weight: 21
     region: content
     settings:
       media_types: {  }
