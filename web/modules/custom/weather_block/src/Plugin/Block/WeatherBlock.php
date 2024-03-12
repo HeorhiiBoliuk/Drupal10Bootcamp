@@ -6,12 +6,11 @@ use Drupal\Core\Block\BlockBase;
 
 /**
  * Provides a 'WeatherBlock' block.
- *
- * @Block(
- *   id = "weather_block",
- *   admin_label = @Translation("Weather block"),
- * )
  */
+#[Block(
+  id: "weather_block",
+  admin_label: new TranslatableMarkup("Weather block"),
+)]
 class WeatherBlock extends BlockBase {
 
   /**
@@ -20,12 +19,11 @@ class WeatherBlock extends BlockBase {
   public function build(): array {
     $api_data = $this->getDataFromAPI();
     $formatted_data = $this->formatData($api_data);
-    $weather_type = $this->getDataFromAPI();
 
     return [
       '#theme' => 'weather_block_template',
       '#content' => $formatted_data,
-      '#weather_type' => $weather_type,
+      '#weather_type' => $api_data,
     ];
   }
 
