@@ -1,0 +1,18 @@
+uuid: b185902c-7e8c-4fec-95af-4bde6ddfb6d4
+langcode: en
+status: false
+dependencies:
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_pagetitle
+theme: my_awesome_theme
+region: top_header
+weight: -11
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

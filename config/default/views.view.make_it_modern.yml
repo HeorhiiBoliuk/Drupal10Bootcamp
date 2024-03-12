@@ -347,6 +347,7 @@ display:
           query_tags: {  }
       relationships: {  }
       css_class: make-it-modern
+      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }

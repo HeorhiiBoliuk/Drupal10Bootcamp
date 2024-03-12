@@ -562,10 +562,10 @@ display:
           total_pages: null
           id: 2
           tags:
-            next: ›
-            previous: ‹
-            first: «
-            last: »
+            next: '>'
+            previous: '<'
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'

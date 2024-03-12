@@ -1,0 +1,23 @@
+uuid: 03f328a6-4cb2-4c0f-952d-2296a044d274
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_button
+    - field.field.block_content.top_button.field_icon
+  module:
+    - fontawesome
+id: block_content.top_button.default
+targetEntityType: block_content
+bundle: top_button
+mode: default
+content:
+  field_icon:
+    type: fontawesome_icon_formatter
+    label: above
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }
