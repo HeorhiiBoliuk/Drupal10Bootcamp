@@ -11,7 +11,7 @@ dependencies:
 id: my_awesome_theme_weatherdata
 theme: my_awesome_theme
 region: top_header
-weight: -14
+weight: -12
 provider: null
 plugin: 'system_menu_block:weather-data'
 settings:

@@ -1,4 +1,26 @@
 <div class="weather_block">
+  <div class="type-weather">
+    {% if weather_type == "Clouds" %}
+      <a>
+        <img src="/modules/custom/weather_block/assets/clouds-cloud.svg" alt="Clouds">
+      </a>
+    {% endif %}
+    {% if weather_type == "Sunny" %}
+      <a>
+        <img src="/modules/custom/weather_block/assets/reshot-icon-sunny-day-KU6T4VN2DH.svg" alt="Sunny">
+      </a>
+    {% endif %}
+    {% if weather_type == "Rain" %}
+      <a>
+        <img src="/modules/custom/weather_block/assets/reshot-icon-rain-rainy-BEJ7PCQR4A.svg" alt="Rain">
+      </a>
+    {% endif %}
+    {% if weather_type == "Wind" %}
+      <a>
+        <img src="/modules/custom/weather_block/assets/reshot-icon-sunny-and-windy-243V7BJPU6.svg" alt="Wind">
+      </a>
+    {% endif %}
+  </div>
   {% for item in content %}
     <div class="item-weather">
       <a>
@@ -6,15 +28,6 @@
       </a>
     </div>
     <br>
-  {% endfor %}
-  {% for type in weather_type %}
-    <div class="type-weather">
-      {% if type == "Clouds" %}
-        <a>
-          <img src="/modules/custom/weather_block/assets/clouds-cloud.svg" alt="Clouds">
-        </a>
-      {% endif %}
-    </div>
   {% endfor %}
 </div>
 

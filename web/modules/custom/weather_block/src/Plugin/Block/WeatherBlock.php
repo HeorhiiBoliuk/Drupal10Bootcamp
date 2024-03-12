@@ -2,7 +2,12 @@
 
 namespace Drupal\weather_block\Plugin\Block;
 
+use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use GuzzleHttp\Exception\ClientException;
 
 /**
  * Provides a 'WeatherBlock' block.
@@ -11,40 +16,110 @@ use Drupal\Core\Block\BlockBase;
   id: "weather_block",
   admin_label: new TranslatableMarkup("Weather block"),
 )]
-class WeatherBlock extends BlockBase {
+class WeatherBlock extends BlockBase implements BlockPluginInterface {
 
   /**
    * {@inheritdoc}
    */
   public function build(): array {
-    $api_data = $this->getDataFromAPI();
+    $cities = $this->configuration['cities'] ?? $this->getDefaultCities();
+    $api_key = $this->configuration['key'] ?? $this->getDefaultApiKey();
+    $api_data = $this->getDataFromApi($cities, $api_key);
+
+    if ($api_data === ['no key']) {
+      return [];
+    }
+
+    $firstCity = reset($api_data);
+    $weatherType = $firstCity['weather-type'];
     $formatted_data = $this->formatData($api_data);
 
     return [
       '#theme' => 'weather_block_template',
       '#content' => $formatted_data,
-      '#weather_type' => $api_data,
+      '#weather_type' => $weatherType,
     ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $cities = [
+      'Вінниця', 'Дніпро', 'Донецьк', 'Житомир', 'Запоріжжя', 'Івано-Франківськ',
+      'Київ', 'Кропивницький', 'Луганськ', 'Луцьк', 'Львів', 'Миколаїв', 'Одеса',
+      'Полтава', 'Рівне', 'Суми', 'Тернопіль', 'Ужгород', 'Харків', 'Херсон',
+      'Хмельницький', 'Черкаси', 'Чернівці', 'Чернігів', 'Сімферополь',
+    ];
+
+    $form['cities'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Choose a city'),
+      '#options' => array_combine($cities, $cities),
+      '#default_value' => $this->configuration['cities'] ?? reset($cities),
+      '#description' => $this->t('Select the city.'),
+    ];
+    $form['API - key'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Your API key'),
+      '#default_value' => $this->configuration['key'] ?? 'Your API Key',
+      '#description' => $this->t('Enter your API key'),
+    ];
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockSubmit($form, FormStateInterface $form_state): void {
+    $this->configuration['cities'] = array_map('trim', explode(',', $form_state->getValue('cities')));
+    $this->configuration['key'] = trim($form_state->getValue('API - key'));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockValidate($form, FormStateInterface $form_state): void {
+    $api_key = $form_state->getValue('API - key');
+    if (empty($api_key)) {
+      $form_state->setErrorByName('API - key', $this->t('Api Key can not be empty'));
+      $form_state->setValidationEnforced(TRUE);
+    }
+    else {
+      $this->configuration['key'] = $api_key;
+    }
   }
 
   /**
    * Private function for getting array with temperature.
    */
-  private function getDataFromAPI(): array {
-    $cities = ['Луцьк'];
-    $api_key = '8795cf1702a915bf4f6e1c1ca54fed35';
+  private function getDataFromApi(array $cities, string $api_key): array {
     $weather_data = [];
 
     foreach ($cities as $city) {
-      $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . $city . '&appid=' . $api_key;
-      $json = file_get_contents($url);
-      $data = json_decode($json, TRUE);
-      $weather_type = $data['weather'][0]['main'];
-      $weather_data['weather-type'] = $weather_type;
+      try {
+        $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . urlencode($city) . '&appid=' . urlencode($api_key);
+        $response = \Drupal::httpClient()->get($url);
+        $data = json_decode($response->getBody(), TRUE);
+
+      }
+      catch (ClientException $e) {
+        \Drupal::logger('weather_block')->error('Failed to get weather data for city @city: @message', [
+          '@city' => $city,
+          '@message' => $e->getMessage(),
+        ]);
+        continue;
+      }
+
+      if (isset($data['weather'][0]['main'])) {
+        $weather_type = $data['weather'][0]['main'];
+        $weather_data[$city]['weather-type'] = $weather_type;
+      }
 
       if (isset($data['main']['temp'])) {
         $temperature = round($data['main']['temp'] - 273);
-        $weather_data[$city] = $temperature;
+        $weather_data[$city]['temperature'] = $temperature;
       }
     }
 
@@ -57,15 +132,29 @@ class WeatherBlock extends BlockBase {
   private function formatData($weather_data): array {
     $formatted_data = [];
 
-    foreach ($weather_data as $city => $temperature) {
-      if ($city !== 'weather-type') {
+    foreach ($weather_data as $city => $info) {
+      if (isset($info['temperature'])) {
         $formatted_data[] = $this->t('@city: @temperature°C', [
           '@city' => $city,
-          '@temperature' => $temperature,
+          '@temperature' => $info['temperature'],
         ]);
       }
     }
     return $formatted_data;
+  }
+
+  /**
+   * Get default cities.
+   */
+  private function getDefaultCities(): array {
+    return \Drupal::config('weather_block.settings')->get('cities');
+  }
+
+  /**
+   * Get default api key.
+   */
+  private function getDefaultApiKey(): array {
+    return \Drupal::config('api_key.settings')->get('key');
   }
 
 }
