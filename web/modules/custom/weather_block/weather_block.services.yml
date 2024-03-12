@@ -1,0 +1,5 @@
+services:
+  weather_block.block.WeatherBlock:
+    class: Drupal\weather_block\Plugin\Block\WeatherBlock
+    tags:
+      - { name: block }

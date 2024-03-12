@@ -1,0 +1,20 @@
+<div class="weather_block">
+  {% for item in content %}
+    <div class="item-weather">
+      <a>
+        {{ item }}
+      </a>
+    </div>
+    <br>
+  {% endfor %}
+  {% for type in weather_type %}
+    <div class="type-weather">
+      {% if type == "Clouds" %}
+        <a>
+          <img src="/modules/custom/weather_block/assets/clouds-cloud.svg" alt="Clouds">
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
