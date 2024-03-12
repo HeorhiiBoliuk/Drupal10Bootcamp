@@ -6,29 +6,6 @@
     width:1068px;
     display: block;
     margin: auto;
-    .weather_block{
-      float: left;
-      height: 100%;
-      display: flex;
-      .item-weather{
-        a{
-          color: $white;
-          padding: 0;
-          font-size: 11px !important;
-          font-weight: 400 !important;
-          line-height: 28px !important;
-          margin-right: 32px;
-        }
-      }
-      .type-weather{
-        img{
-          margin-right: 7px;
-          width: 28px;
-          height: 28px;
-          filter: brightness(0) invert(1);
-        }
-      }
-    }
     #block-my-awesome-theme-weatherdata, .top_header_buttons{
       float: left;
     }

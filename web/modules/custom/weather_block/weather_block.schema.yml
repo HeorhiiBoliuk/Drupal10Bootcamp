@@ -1,7 +1,7 @@
 block.settings.hello_block:
   type: block_settings
-  label: 'Hello block settings'
+  label: 'Weather block settings'
   mapping:
     hello_block_name:
       type: string
-      label: 'Name of the person to say hello to'
+      label: 'Weather Block'

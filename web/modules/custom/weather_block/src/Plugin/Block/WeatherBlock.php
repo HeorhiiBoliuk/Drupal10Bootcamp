@@ -4,10 +4,13 @@ namespace Drupal\weather_block\Plugin\Block;
 
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use GuzzleHttp\Exception\ClientException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'WeatherBlock' block.
@@ -16,7 +19,41 @@ use GuzzleHttp\Exception\ClientException;
   id: "weather_block",
   admin_label: new TranslatableMarkup("Weather block"),
 )]
-class WeatherBlock extends BlockBase implements BlockPluginInterface {
+class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface {
+  /**
+   * The Config Factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected ConfigFactoryInterface $configFactory;
+  /**
+   * The Logger service.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  protected LoggerChannelFactoryInterface $logger;
+
+  /**
+   * Constructor for WeatherBlock.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $configFactory, LoggerChannelFactoryInterface $logger) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->configFactory = $configFactory;
+    $this->logger = $logger;
+  }
+
+  /**
+   * Container for WeatherBlock.
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('config.factory'),
+      $container->get('logger.factory')
+       );
+  }
 
   /**
    * {@inheritdoc}
@@ -105,7 +142,7 @@ class WeatherBlock extends BlockBase implements BlockPluginInterface {
 
       }
       catch (ClientException $e) {
-        \Drupal::logger('weather_block')->error('Failed to get weather data for city @city: @message', [
+        $this->logger->get('weather_block')->error('Failed to get weather data for city @city: @message', [
           '@city' => $city,
           '@message' => $e->getMessage(),
         ]);
@@ -147,14 +184,14 @@ class WeatherBlock extends BlockBase implements BlockPluginInterface {
    * Get default cities.
    */
   private function getDefaultCities(): array {
-    return \Drupal::config('weather_block.settings')->get('cities');
+    return $this->configFactory->get('weather_block.settings')->get('cities');
   }
 
   /**
    * Get default api key.
    */
   private function getDefaultApiKey(): array {
-    return \Drupal::config('api_key.settings')->get('key');
+    return $this->configFactory->get('api_key.settings')->get('key');
   }
 
 }

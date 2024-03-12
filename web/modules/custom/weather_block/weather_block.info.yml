@@ -3,3 +3,6 @@ type: module
 description: 'Displays weather for selected city'
 core_version_requirement: ^9 || ^10
 package: Custom
+
+libraries:
+  - weather_block/weather_block-css
