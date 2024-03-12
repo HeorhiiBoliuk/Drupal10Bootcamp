@@ -59,8 +59,8 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    * {@inheritdoc}
    */
   public function build(): array {
-    $cities = $this->configuration['cities'] ?? $this->getDefaultCities();
-    $api_key = $this->configuration['key'] ?? $this->getDefaultApiKey();
+    $cities = $this->configuration['cities'];
+    $api_key = $this->configuration['key'];
     $api_data = $this->getDataFromApi($cities, $api_key);
 
     if ($api_data === ['no key']) {
