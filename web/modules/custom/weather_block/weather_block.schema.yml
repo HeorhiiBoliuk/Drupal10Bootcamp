@@ -1,7 +1,0 @@
-block.settings.hello_block:
-  type: block_settings
-  label: 'Weather block settings'
-  mapping:
-    hello_block_name:
-      type: string
-      label: 'Weather Block'

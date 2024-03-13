@@ -18,7 +18,7 @@ settings:
   label_display: '0'
   provider: weather_block
   cities:
-    - Херсон
+    - Луцьк
   api:
     - ''
   key: 8795cf1702a915bf4f6e1c1ca54fed35

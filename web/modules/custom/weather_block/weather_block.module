@@ -23,11 +23,3 @@ function weather_block_theme(): array {
     ],
   ];
 }
-
-/**
- * Implements hook_page_attachments_alter().
- */
-function weather_block_page_attachments_alter(array &$attachments) {
-  $attachments['#attached']['library'][] = 'weather_block/weather_block-css';
-}
-

@@ -6,6 +6,7 @@ use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Http\ClientFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -20,30 +21,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
   admin_label: new TranslatableMarkup("Weather block"),
 )]
 class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface {
-  /**
-   * The Config Factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected ConfigFactoryInterface $configFactory;
-  /**
-   * The Logger service.
-   *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
-   */
-  protected LoggerChannelFactoryInterface $logger;
 
   /**
    * Constructor for WeatherBlock.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactoryInterface $configFactory, LoggerChannelFactoryInterface $logger) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, protected ConfigFactoryInterface $configFactory, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->configFactory = $configFactory;
-    $this->logger = $logger;
   }
 
   /**
-   * Container for WeatherBlock.
+   * Creates a new instance of the WeatherBlock block plugin.
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
@@ -51,7 +38,8 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       $plugin_id,
       $plugin_definition,
       $container->get('config.factory'),
-      $container->get('logger.factory')
+      $container->get('logger.factory'),
+      $container->get('http_client_factory'),
        );
   }
 
@@ -71,11 +59,15 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     $weatherType = $firstCity['weather-type'];
     $formatted_data = $this->formatData($api_data);
 
-    return [
+    $build = [
       '#theme' => 'weather_block_template',
       '#content' => $formatted_data,
       '#weather_type' => $weatherType,
     ];
+
+    $build['#attached']['library'][] = 'weather_block/weather_block-css';
+
+    return $build;
   }
 
   /**
@@ -96,12 +88,17 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       '#default_value' => $this->configuration['cities'] ?? reset($cities),
       '#description' => $this->t('Select the city.'),
     ];
-    $form['API - key'] = [
+    $form['settings']['key'] = [
+      '#required' => TRUE,
       '#type' => 'textfield',
       '#title' => $this->t('Your API key'),
       '#default_value' => $this->configuration['key'] ?? 'Your API Key',
       '#description' => $this->t('Enter your API key'),
     ];
+
+    if (!empty($this->configuration['settings']['key'])) {
+      $form['settings']['key']['#default_value'] = $this->configuration['key'];
+    }
 
     return $form;
   }
@@ -111,17 +108,16 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    */
   public function blockSubmit($form, FormStateInterface $form_state): void {
     $this->configuration['cities'] = array_map('trim', explode(',', $form_state->getValue('cities')));
-    $this->configuration['key'] = trim($form_state->getValue('API - key'));
+    $this->configuration['key'] = trim($form_state->getValue(['settings', 'key']));
   }
 
   /**
    * {@inheritdoc}
    */
   public function blockValidate($form, FormStateInterface $form_state): void {
-    $api_key = $form_state->getValue('API - key');
+    $api_key = $form_state->getValue(['settings', 'key']);
     if (empty($api_key)) {
-      $form_state->setErrorByName('API - key', $this->t('Api Key can not be empty'));
-      $form_state->setValidationEnforced(TRUE);
+      $form_state->setErrorByName('settings][key', $this->t('Api Key can not be empty'));
     }
     else {
       $this->configuration['key'] = $api_key;
@@ -133,11 +129,11 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    */
   private function getDataFromApi(array $cities, string $api_key): array {
     $weather_data = [];
-
     foreach ($cities as $city) {
       try {
         $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . urlencode($city) . '&appid=' . urlencode($api_key);
-        $response = \Drupal::httpClient()->get($url);
+        $httpClient = $this->httpClient->fromOptions();
+        $response = $httpClient->get($url);
         $data = json_decode($response->getBody(), TRUE);
 
       }
@@ -178,20 +174,6 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       }
     }
     return $formatted_data;
-  }
-
-  /**
-   * Get default cities.
-   */
-  private function getDefaultCities(): array {
-    return $this->configFactory->get('weather_block.settings')->get('cities');
-  }
-
-  /**
-   * Get default api key.
-   */
-  private function getDefaultApiKey(): array {
-    return $this->configFactory->get('api_key.settings')->get('key');
   }
 
 }
