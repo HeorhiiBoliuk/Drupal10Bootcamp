@@ -59,15 +59,17 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     $weatherType = $firstCity['weather-type'];
     $formatted_data = $this->formatData($api_data);
 
-    $build = [
+    return [
       '#theme' => 'weather_block_template',
       '#content' => $formatted_data,
       '#weather_type' => $weatherType,
+      '#attached' => [
+        'library' => [
+          'weather_block/weather_block-css',
+        ],
+      ],
     ];
 
-    $build['#attached']['library'][] = 'weather_block/weather_block-css';
-
-    return $build;
   }
 
   /**
@@ -92,7 +94,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       '#required' => TRUE,
       '#type' => 'textfield',
       '#title' => $this->t('Your API key'),
-      '#default_value' => $this->configuration['key'] ?? 'Your API Key',
+      '#default_value' => $this->configuration['key'] ?? NULL,
       '#description' => $this->t('Enter your API key'),
     ];
 
