@@ -9,6 +9,7 @@ module:
   big_pipe: 0
   block: 0
   block_content: 0
+  block_example: 0
   breakpoint: 0
   ckeditor5: 0
   comment: 0
@@ -25,12 +26,14 @@ module:
   emulsify_twig: 0
   entity_pager: 0
   entity_reference_revisions: 0
+  examples: 0
   field: 0
   field_layout: 0
   field_ui: 0
   file: 0
   filter: 0
   fontawesome: 0
+  form_api_example: 0
   help: 0
   history: 0
   image: 0
@@ -38,6 +41,7 @@ module:
   jquery_ui_datepicker: 0
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
+  js_example: 0
   layout_builder: 0
   layout_builder_component_attributes: 0
   layout_discovery: 0
@@ -61,6 +65,7 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  theming_example: 0
   token: 0
   toolbar: 0
   twig_tweak: 0
