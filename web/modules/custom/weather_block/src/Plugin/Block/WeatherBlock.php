@@ -4,6 +4,7 @@ namespace Drupal\weather_block\Plugin\Block;
 
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Http\ClientFactory;
@@ -40,7 +41,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       $container->get('config.factory'),
       $container->get('logger.factory'),
       $container->get('http_client_factory'),
-       );
+    );
   }
 
   /**
@@ -49,10 +50,19 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
   public function build(): array {
     $cities = $this->configuration['cities'];
     $api_key = $this->configuration['key'];
-    $api_data = $this->getDataFromApi($cities, $api_key);
 
-    if ($api_data === ['no key']) {
-      return [];
+    $cache_id = 'weather_block_data_' . md5(serialize($cities));
+    if (!$cache = \Drupal::cache()->get($cache_id)) {
+      $api_data = $this->getDataFromApi($cities, $api_key);
+
+      if ($api_data === ['no key']) {
+        return [];
+      }
+
+      \Drupal::cache()->set($cache_id, $api_data, time() + 3600);
+    }
+    else {
+      $api_data = $cache->data;
     }
 
     $firstCity = reset($api_data);
@@ -70,6 +80,15 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       ],
     ];
 
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheTags(): array {
+    $tags = [];
+    $tags[] = 'config:block.block.my_awesome_theme_weatherblock';
+    return Cache::mergeTags(parent::getCacheTags(), $tags);
   }
 
   /**
