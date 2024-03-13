@@ -112,19 +112,6 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function blockValidate($form, FormStateInterface $form_state): void {
-    $api_key = $form_state->getValue(['settings', 'key']);
-    if (empty($api_key)) {
-      $form_state->setErrorByName('settings][key', $this->t('Api Key can not be empty'));
-    }
-    else {
-      $this->configuration['key'] = $api_key;
-    }
-  }
-
-  /**
    * Private function for getting array with temperature.
    */
   private function getDataFromApi(array $cities, string $api_key): array {
