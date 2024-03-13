@@ -1,0 +1,5 @@
+weather_block-css:
+  version: 1.0
+  css:
+    theme:
+      assets/css/weather_block.css: {}

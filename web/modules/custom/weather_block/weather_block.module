@@ -23,4 +23,3 @@ function weather_block_theme(): array {
     ],
   ];
 }
-

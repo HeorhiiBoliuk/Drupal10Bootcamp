@@ -1,4 +1,4 @@
-uuid: 647684fe-15db-45de-a0a8-bd26f44000b9
+uuid: 3ebffa69-2aff-4099-a160-20a0b2a678ef
 langcode: en
 status: true
 dependencies:
@@ -17,4 +17,9 @@ settings:
   label: 'Weather block'
   label_display: '0'
   provider: weather_block
+  cities:
+    - Луцьк
+  api:
+    - ''
+  key: 8795cf1702a915bf4f6e1c1ca54fed35
 visibility: {  }
