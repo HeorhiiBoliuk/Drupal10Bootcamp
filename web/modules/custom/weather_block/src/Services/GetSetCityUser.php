@@ -67,7 +67,7 @@ class GetSetCityUser {
       $this->database->update('weather_block_user_cities')
         ->fields([
           'weather_data' => serialize($weatherData),
-          'cache_expire' => time() + 3600,
+          'cache_expire' => time() + 60 * 60,
         ])
         ->condition('city', $city)
         ->execute();
@@ -78,7 +78,7 @@ class GetSetCityUser {
           'user_id' => \Drupal::currentUser()->id(),
           'city' => $city,
           'weather_data' => serialize($weatherData),
-          'cache_expire' => time() + 3600,
+          'cache_expire' => time() + 60 * 60,
         ])
         ->execute();
     }
