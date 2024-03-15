@@ -1,0 +1,7 @@
+weather_block.input_weather:
+  path: '/weather/select'
+  defaults:
+    _form: '\Drupal\weather_block\Form\InputWeather'
+    _title: 'Select a city'
+  requirements:
+    _permission: 'access content'

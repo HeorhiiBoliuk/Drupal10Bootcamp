@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the weather_block module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function weather_block_schema() {
+  $schema['weather_block_user_cities'] = [
+    'description' => 'Stores selected cities and weather data for each user.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique ID for the record.',
+      ],
+      'user_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'The ID of the user who selected the city.',
+      ],
+      'city' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The selected city.',
+      ],
+      'weather_data' => [
+        'type' => 'text',
+        'size' => 'big',
+        'description' => 'Serialized weather data for the city.',
+        'not null' => FALSE,
+      ],
+      'cache_expire' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Timestamp when the cache expires.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'user_id' => ['user_id'],
+      'cache_expire' => ['cache_expire'],
+    ],
+  ];
+
+  return $schema;
+}
