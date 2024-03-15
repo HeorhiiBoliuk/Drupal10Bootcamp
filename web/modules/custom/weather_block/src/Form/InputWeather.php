@@ -79,7 +79,7 @@ class InputWeather extends FormBase {
     if (!is_null($city_value)) {
       $cities = array_map('trim', explode(',', $city_value));
       $this->cityService->saveCitiesForUser($user_id, $cities);
-      $api_key = $this->configFact->get('block.block.my_awesome_theme_weatherdata')
+      $api_key = $this->configFact->get('block.block.my_awesome_theme_weatherblock')
         ->get('settings.key');
       foreach ($cities as $city) {
         $api_data = $this->apiData->getDataFromApi($city, $api_key);
