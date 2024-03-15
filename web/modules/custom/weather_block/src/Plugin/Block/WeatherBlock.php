@@ -14,8 +14,8 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\weather_block\Services\FetchApiData;
 use Drupal\weather_block\Services\GetSetCityUser;
-use GuzzleHttp\Exception\ClientException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -39,7 +39,8 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     protected ClientFactory $httpClient,
     protected GetSetCityUser $cityService,
     protected CacheBackendInterface $cacheBackend,
-    protected AccountProxyInterface $accountProxy) {
+    protected AccountProxyInterface $accountProxy,
+    protected FetchApiData $apiData) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
 
@@ -55,9 +56,10 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       $container->get('logger.factory'),
       $container->get('database'),
       $container->get('http_client_factory'),
-      $container->get('weather_block.save_cities_for_user'),
+      $container->get('weather_block.get_set_city_user'),
       $container->get('cache.default'),
       $container->get('current_user'),
+      $container->get('weather_block.fetch_api_data'),
     );
   }
 
@@ -66,30 +68,29 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    */
   public function build(): array {
     $user_id = $this->accountProxy->id();
-    $cities = $this->cityService->getSavedCitiesForUser($user_id);
-    $api_key = $this->configFactory->get('block.block.my_awesome_theme_weatherdata')->get('settings.key');
+    $cityArray = $this->cityService->getSavedCityForUser($user_id);
+    $city = implode(', ', $cityArray);
+    $api_key = $this->configuration['settings']['key'];
     $weather_data = [];
 
-    foreach ($cities as $city) {
-      $cache_id = 'weather_block_data_' . md5($city);
+    $cache_id = 'weather_block_data_' . md5($city);
 
-      if (!$cache = $this->cacheBackend->get($cache_id)) {
-        $api_data = $this->cityService->getDataFromApi($city, $api_key);
+    if (!$cache = $this->cacheBackend->get($cache_id)) {
+      $api_data = $this->apiData->getDataFromApi($city, $api_key);
 
-        if ($api_data === ['no key']) {
-          return [];
-        }
-        $tags = $this->getCacheTags();
-
-        $this->cacheBackend->set($cache_id, $api_data, time() + 3600, $tags);
+      if ($api_data === ['no key']) {
+        return [];
       }
-      else {
-        $api_data = $cache->data;
-      }
+      $tags = $this->getCacheTags();
 
-      if (!empty($api_data) && is_array($api_data)) {
-        $weather_data = $api_data;
-      }
+      $this->cacheBackend->set($cache_id, $api_data, time() + 3600, $tags);
+    }
+    else {
+      $api_data = $cache->data;
+    }
+
+    if (!empty($api_data) && is_array($api_data)) {
+      $weather_data = $api_data;
     }
 
     if (!empty($weather_data)) {
@@ -132,7 +133,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     $cities = $this->cityService->getCitiesArray();
 
     $user_id = $this->accountProxy->id();
-    $savedCities = $this->cityService->getSavedCitiesForUser($user_id);
+    $savedCities = $this->cityService->getSavedCityForUser($user_id);
 
     $form['city_selection'] = [
       '#type' => 'fieldset',
@@ -153,16 +154,12 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       '#required' => TRUE,
       '#type' => 'textfield',
       '#title' => $this->t('Your API key'),
-      '#default_value' => $this->configFactory->get('block.block.my_awesome_theme_weatherdata')->get('settings.key') ?? NULL,
+      '#default_value' => $this->configuration['settings']['key'] ?? NULL,
       '#description' => $this->t('Enter your API key'),
     ];
 
     return $form;
   }
-
-  /**
-   * {@inheritdoc}
-   */
 
   /**
    * {@inheritdoc}
@@ -176,50 +173,12 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       'cities',
     ])));
     $this->cityService->saveCitiesForUser($user_id, $cities);
-    $this->configFactory->getEditable('block.block.my_awesome_theme_weatherdata')
-      ->set('settings.key', trim($form_state->getValue([
-        'city_selection',
-        'settings',
-        'key',
-      ])))
-      ->set('users.' . $user_id . '.cities', $cities)
-      ->save();
-
-    $api_key = $this->configFactory->get('block.block.my_awesome_theme_weatherdata')->get('settings.key');
+    $this->configuration['settings']['key'] = trim($form_state->getValue(['city_selection', 'settings', 'key']));
+    $api_key = $this->configuration['settings']['key'];
     foreach ($cities as $city) {
-      $cache_id = 'weather_block_data_' . md5($city);
-      $api_data = $this->cityService->getDataFromApi($city, $api_key);
+      $api_data = $this->apiData->getDataFromApi($city, $api_key);
       $this->cityService->saveWeatherDataForCity($city, $api_data);
     }
-  }
-
-  /**
-   * Private function for getting array with temperature.
-   */
-  private function getDataFromApi(string $cities, string $api_key): array {
-    $weather_data = [];
-
-    try {
-      $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . urlencode($cities) . '&appid=' . urlencode($api_key);
-      $httpClient = $this->httpClient->fromOptions();
-      $response = $httpClient->get($url);
-      $data = json_decode($response->getBody(), TRUE);
-    }
-    catch (ClientException $e) {
-      $this->logger->get('weather_block')->error('Failed to get weather data for city @city: @message', [
-        '@city' => $cities,
-        '@message' => $e->getMessage(),
-      ]);
-    }
-    if (isset($data['weather'][0]['main'])) {
-      $weather_type = $data['weather'][0]['main'];
-      $weather_data[$cities]['weather-type'] = $weather_type;
-    }
-    if (isset($data['main']['temp'])) {
-      $temperature = round($data['main']['temp'] - 273);
-      $weather_data[$cities]['temperature'] = $temperature;
-    }
-    return $weather_data;
   }
 
   /**

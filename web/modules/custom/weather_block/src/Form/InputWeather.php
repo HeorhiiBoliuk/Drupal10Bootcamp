@@ -6,6 +6,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\weather_block\Services\FetchApiData;
 use Drupal\weather_block\Services\GetSetCityUser;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -17,7 +18,12 @@ class InputWeather extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(protected GetSetCityUser $cityService, protected ConfigFactoryInterface $configFact, protected AccountProxyInterface $accountProxy) {
+  public function __construct(
+    protected GetSetCityUser $cityService,
+    protected ConfigFactoryInterface $configFact,
+    protected AccountProxyInterface $accountProxy,
+    protected FetchApiData $apiData,
+  ) {
   }
 
   /**
@@ -25,9 +31,10 @@ class InputWeather extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('weather_block.save_cities_for_user'),
+      $container->get('weather_block.get_set_city_user'),
       $container->get('config.factory'),
       $container->get('current_user'),
+      $container->get('weather_block.fetch_api_data')
     );
   }
 
@@ -75,7 +82,7 @@ class InputWeather extends FormBase {
       $api_key = $this->configFact->get('block.block.my_awesome_theme_weatherdata')
         ->get('settings.key');
       foreach ($cities as $city) {
-        $api_data = $this->cityService->getDataFromApi($city, $api_key);
+        $api_data = $this->apiData->getDataFromApi($city, $api_key);
         $this->cityService->saveWeatherDataForCity($city, $api_data);
       }
     }
