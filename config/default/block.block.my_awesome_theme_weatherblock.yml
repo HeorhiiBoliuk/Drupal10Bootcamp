@@ -1,4 +1,4 @@
-uuid: a735523c-b4dc-48dd-818f-8419c494cd94
+uuid: e78d778d-5f01-430f-b159-a6a2bc8f74ba
 langcode: en
 status: true
 dependencies:
@@ -17,4 +17,6 @@ settings:
   label: 'Weather block'
   label_display: '0'
   provider: weather_block
+  settings:
+    key: 8795cf1702a915bf4f6e1c1ca54fed35
 visibility: {  }
