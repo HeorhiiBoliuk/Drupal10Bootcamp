@@ -81,7 +81,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
         }
         $tags = $this->getCacheTags();
 
-        $this->cacheBackend->set($cache_id, $api_data, time() + 3600, $tags);
+        $this->cacheBackend->set($cache_id, $api_data, time() + 60 * 60, $tags);
       }
       else {
         $api_data = $cache->data;
