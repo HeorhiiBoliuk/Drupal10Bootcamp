@@ -69,14 +69,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
   public function build(): array {
     $build = [];
     $user_id = $this->accountProxy->id();
-    $citySaved = $this->cityService->getSavedCityForUser($user_id);
-    if (empty($citySaved)) {
-      $defaultCity = $this->cityService->getDefaultCity();
-      $city = $defaultCity;
-    }
-    else {
-      $city = $citySaved;
-    }
+    $city = $this->cityService->getSavedCityForUser($user_id) ?? $this->cityService->getDefaultCity();
 
     $cache_id = 'weather_block_city_' . md5($city);
     $cache_tags = ['weather_data'];
@@ -136,10 +129,10 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
 
     $form['city_selection']['default_city'] = [
       '#type' => 'select',
-      '#title' => $this->t('Choose a city'),
+      '#title' => $this->t('Choose a default city'),
       '#options' => array_combine($cities, $cities),
-      '#default_value' => $savedCity ?? $default_city,
-      '#description' => $this->t('Select the city.'),
+      '#default_value' => $default_city,
+      '#description' => $this->t('Select the default city.'),
     ];
 
     $form['city_selection']['settings']['key'] = [

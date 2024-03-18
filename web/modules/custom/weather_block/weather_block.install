@@ -12,46 +12,6 @@ use Drupal\Core\Database\Schema;
  * Implements hook_schema().
  */
 function weather_block_schema() {
-  $schema['weather_block_cities'] = [
-    'description' => 'Stores data for each city.',
-    'fields' => [
-      'id' => [
-        'type' => 'serial',
-        'not null' => TRUE,
-        'description' => 'Primary Key: Unique ID for the city.',
-      ],
-      'name' => [
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'description' => 'Name of the city.',
-      ],
-      'data' => [
-        'type' => 'text',
-        'not null' => TRUE,
-        'description' => 'City data.',
-      ],
-    ],
-    'primary key' => ['id'],
-  ];
-  $schema['weather_block_defaults'] = [
-    'description' => 'Stores the default city for users who did not select any city.',
-    'fields' => [
-      'id' => [
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'description' => 'Primary Key: Unique ID for the default city.',
-      ],
-      'default_city' => [
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'description' => 'Name of the default city.',
-      ],
-    ],
-    'primary key' => ['id'],
-  ];
   $schema['weather_block_city_users'] = [
     'description' => 'Stores relationships between users and cities.',
     'fields' => [
@@ -100,32 +60,6 @@ function weather_block_update_91001(): void {
 
   $connection = Database::getConnection();
 
-  if (!$connection->schema()->tableExists('weather_block_cities')) {
-    $schema = [
-      'description' => 'Stores data for each city.',
-      'fields' => [
-        'id' => [
-          'type' => 'serial',
-          'not null' => TRUE,
-          'description' => 'Primary Key: Unique ID for the city.',
-        ],
-        'name' => [
-          'type' => 'varchar',
-          'length' => 255,
-          'not null' => TRUE,
-          'description' => 'Name of the city.',
-        ],
-        'data' => [
-          'type' => 'text',
-          'not null' => TRUE,
-          'description' => 'City data.',
-        ],
-      ],
-      'primary key' => ['id'],
-    ];
-
-    $connection->schema()->createTable('weather_block_cities', $schema);
-  }
   if (!$connection->schema()->tableExists('weather_block_city_users')) {
     $schema = [
       'description' => 'Stores relationships between users and cities.',

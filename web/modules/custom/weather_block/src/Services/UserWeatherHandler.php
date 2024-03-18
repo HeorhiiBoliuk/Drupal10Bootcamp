@@ -2,6 +2,7 @@
 
 namespace Drupal\weather_block\Services;
 
+use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Http\ClientFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -14,7 +15,7 @@ class UserWeatherHandler {
   /**
    * Initialize a database property.
    */
-  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient) {
+  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
   }
 
   /**
@@ -39,31 +40,21 @@ class UserWeatherHandler {
    * Set a default value of city.
    */
   public function saveDefaultCity($city) {
-    $this->database->delete('weather_block_defaults')
-      ->condition('default_cit', $city)
-      ->execute();
-
-    $this->database->insert('weather_block_defaults')
-      ->fields([
-        'default_city' => $city,
-      ])
-      ->execute();
+    $this->configFactory->getEditable('default_value_of_city.settings')
+      ->set('default_city', $city)->save();
   }
 
   /**
    * Retrieves saved default city name.
    */
-  public function getDefaultCity() {
-    $query = $this->database->select('weather_block_defaults', 'cu');
-    $query->fields('cu', ['default_city']);
-    $cityArray = $query->execute()->fetchAll();
-    return $cityArray[0]->default_city;
+  public function getDefaultCity(): string {
+    return $this->configFactory->get('default_value_of_city.settings')->get('default_city');
   }
 
   /**
    * Retrieves saved cities for a user from the database.
    */
-  public function getSavedCityForUser($userId): ?array {
+  public function getSavedCityForUser($userId): string {
     $query = $this->database->select('weather_block_city_users', 'cu');
     $query->fields('cu', ['city_name']);
     $query->condition('cu.user_id', $userId);

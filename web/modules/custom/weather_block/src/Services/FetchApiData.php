@@ -24,7 +24,7 @@ class FetchApiData {
    */
   public function getDataFromApi(string $cities): array {
     $weather_data = [];
-    $api_key = $this->configFactory->get('api_key.settings')->get('key');
+    $api_key = $this->configFactory->get('api_key_for_weather_data.settings')->get('key');
 
     try {
       $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . urlencode($cities) . '&appid=' . urlencode($api_key);
