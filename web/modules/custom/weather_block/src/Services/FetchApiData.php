@@ -3,7 +3,6 @@
 namespace Drupal\weather_block\Services;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Http\ClientFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;

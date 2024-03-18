@@ -56,7 +56,8 @@ class UserWeatherHandler {
   public function getDefaultCity() {
     $query = $this->database->select('weather_block_defaults', 'cu');
     $query->fields('cu', ['default_city']);
-    return $query->execute()->fetchAll();
+    $cityArray = $query->execute()->fetchAll();
+    return $cityArray[0]->default_city;
   }
 
   /**
@@ -66,7 +67,8 @@ class UserWeatherHandler {
     $query = $this->database->select('weather_block_city_users', 'cu');
     $query->fields('cu', ['city_name']);
     $query->condition('cu.user_id', $userId);
-    return $query->execute()->fetchAll();
+    $cityArray = $query->execute()->fetchAll();
+    return $cityArray[0]->city_name;
   }
 
   /**

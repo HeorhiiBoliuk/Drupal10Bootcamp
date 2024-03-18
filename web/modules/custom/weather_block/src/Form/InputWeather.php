@@ -78,8 +78,6 @@ class InputWeather extends FormBase {
     }
 
     $this->cityService->saveCityForUser($user_id, $city_value);
-    $api_data = $this->apiData->getDataFromApi($city_value);
-    $this->cityService->saveWeatherDataForCity($city_value, $api_data);
   }
 
 }
