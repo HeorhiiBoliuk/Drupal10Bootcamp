@@ -5,4 +5,4 @@ services:
   weather_block.fetch_api_data:
     class: Drupal\weather_block\Services\FetchApiData
     arguments:
-      [ '@database', '@logger.factory', '@http_client_factory' ]
+      [ '@database', '@logger.factory', '@http_client_factory', '@config.factory' ]

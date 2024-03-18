@@ -2,6 +2,8 @@
 
 namespace Drupal\weather_block\Services;
 
+use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Http\ClientFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -13,16 +15,17 @@ use GuzzleHttp\Exception\ClientException;
 class FetchApiData {
 
   /**
-   * Initialize a database property.
+   * Constructor for FetchApiData.
    */
-  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient) {
+  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
   }
 
   /**
-   * Private function for getting array with temperature.
+   * Public function for getting array with temperature and weather type.
    */
-  public function getDataFromApi(string $cities, string $api_key): array {
+  public function getDataFromApi(string $cities): array {
     $weather_data = [];
+    $api_key = $this->configFactory->get('api_key.settings')->get('key');
 
     try {
       $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . urlencode($cities) . '&appid=' . urlencode($api_key);

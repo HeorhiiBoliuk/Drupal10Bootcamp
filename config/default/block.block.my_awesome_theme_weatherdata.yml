@@ -1,0 +1,25 @@
+uuid: b5bb787a-c7a4-489a-8848-2f3a4c00cf29
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.weather-data
+  module:
+    - system
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_weatherdata
+theme: my_awesome_theme
+region: top_header
+weight: -12
+provider: null
+plugin: 'system_menu_block:weather-data'
+settings:
+  id: 'system_menu_block:weather-data'
+  label: weather-data
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

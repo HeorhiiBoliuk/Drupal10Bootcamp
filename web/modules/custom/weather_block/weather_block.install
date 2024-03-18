@@ -34,6 +34,24 @@ function weather_block_schema() {
     ],
     'primary key' => ['id'],
   ];
+  $schema['weather_block_defaults'] = [
+    'description' => 'Stores the default city for users who did not select any city.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique ID for the default city.',
+      ],
+      'default_city' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the default city.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
   $schema['weather_block_city_users'] = [
     'description' => 'Stores relationships between users and cities.',
     'fields' => [

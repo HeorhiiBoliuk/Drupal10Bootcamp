@@ -22,19 +22,41 @@ class UserWeatherHandler {
    *
    * @throws \Exception
    */
-  public function saveCityForUser($userId, $cities): void {
+  public function saveCityForUser($userId, $city): void {
     $this->database->delete('weather_block_city_users')
       ->condition('user_id', $userId)
       ->execute();
 
-    foreach ($cities as $city) {
-      $this->database->insert('weather_block_city_users')
-        ->fields([
-          'user_id' => $userId,
-          'city_name' => $city,
-        ])
-        ->execute();
-    }
+    $this->database->insert('weather_block_city_users')
+      ->fields([
+        'user_id' => $userId,
+        'city_name' => $city,
+      ])
+      ->execute();
+  }
+
+  /**
+   * Set a default value of city.
+   */
+  public function saveDefaultCity($city) {
+    $this->database->delete('weather_block_defaults')
+      ->condition('default_cit', $city)
+      ->execute();
+
+    $this->database->insert('weather_block_defaults')
+      ->fields([
+        'default_city' => $city,
+      ])
+      ->execute();
+  }
+
+  /**
+   * Retrieves saved default city name.
+   */
+  public function getDefaultCity() {
+    $query = $this->database->select('weather_block_defaults', 'cu');
+    $query->fields('cu', ['default_city']);
+    return $query->execute()->fetchAll();
   }
 
   /**
@@ -44,14 +66,7 @@ class UserWeatherHandler {
     $query = $this->database->select('weather_block_city_users', 'cu');
     $query->fields('cu', ['city_name']);
     $query->condition('cu.user_id', $userId);
-    $result = $query->execute()->fetchAll();
-
-    $city = [];
-    foreach ($result as $row) {
-      $city[] = $row->city_name;
-    }
-
-    return $city;
+    return $query->execute()->fetchAll();
   }
 
   /**
@@ -87,31 +102,31 @@ class UserWeatherHandler {
    */
   public function getCitiesArray(): array {
     return [
-      'Vinnytsia' => 'Vinnytsia',
-      'Dnipro' => 'Dnipro',
-      'Donetsk' => 'Donetsk',
-      'Zhytomyr' => 'Zhytomyr',
-      'Zaporizhzhia' => 'Zaporizhzhia',
-      'Ivano-Frankivsk' => 'Ivano-Frankivsk',
-      'Kyiv' => 'Kyiv',
-      'Kropyvnytskyi' => 'Kropyvnytskyi',
-      'Luhansk' => 'Luhansk',
-      'Lutsk' => 'Lutsk',
-      'Lviv' => 'Lviv',
-      'Mykolaiv' => 'Mykolaiv',
-      'Odesa' => 'Odesa',
-      'Poltava' => 'Poltava',
-      'Rivne' => 'Rivne',
-      'Sumy' => 'Sumy',
-      'Ternopil' => 'Ternopil',
-      'Uzhhorod' => 'Uzhhorod',
-      'Kharkiv' => 'Kharkiv',
-      'Kherson' => 'Kherson',
-      'Khmelnytskyi' => 'Khmelnytskyi',
-      'Cherkasy' => 'Cherkasy',
-      'Chernivtsi' => 'Chernivtsi',
-      'Chernihiv' => 'Chernihiv',
-      'Simferopol' => 'Simferopol',
+      'Vinnytsia' => t('Vinnytsia'),
+      'Dnipro' => t('Dnipro'),
+      'Donetsk' => t('Donetsk'),
+      'Zhytomyr' => t('Zhytomyr'),
+      'Zaporizhzhia' => t('Zaporizhzhia'),
+      'Ivano-Frankivsk' => t('Ivano-Frankivsk'),
+      'Kyiv' => t('Kyiv'),
+      'Kropyvnytskyi' => t('Kropyvnytskyi'),
+      'Luhansk' => t('Luhansk'),
+      'Lutsk' => t('Lutsk'),
+      'Lviv' => t('Lviv'),
+      'Mykolaiv' => t('Mykolaiv'),
+      'Odesa' => t('Odesa'),
+      'Poltava' => t('Poltava'),
+      'Rivne' => t('Rivne'),
+      'Sumy' => t('Sumy'),
+      'Ternopil' => t('Ternopil'),
+      'Uzhhorod' => t('Uzhhorod'),
+      'Kharkiv' => t('Kharkiv'),
+      'Kherson' => t('Kherson'),
+      'Khmelnytskyi' => t('Khmelnytskyi'),
+      'Cherkasy' => t('Cherkasy'),
+      'Chernivtsi' => t('Chernivtsi'),
+      'Chernihiv' => t('Chernihiv'),
+      'Simferopol' => t('Simferopol'),
     ];
   }
 

@@ -40,7 +40,8 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     protected UserWeatherHandler $cityService,
     protected CacheBackendInterface $cacheBackend,
     protected AccountProxyInterface $accountProxy,
-    protected FetchApiData $apiData) {
+    protected FetchApiData $apiData
+  ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
 
@@ -67,52 +68,47 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    * {@inheritdoc}
    */
   public function build(): array {
+    $build = [];
     $user_id = $this->accountProxy->id();
     $cityArray = $this->cityService->getSavedCityForUser($user_id);
-    $city = implode(', ', $cityArray);
-    $api_key = $this->configuration['settings']['key'];
-    $weather_data = [];
-
-    $cache_id = 'weather_block_data_' . md5($city);
-
-    if (!$cache = $this->cacheBackend->get($cache_id)) {
-      $api_data = $this->apiData->getDataFromApi($city, $api_key);
-
-      if ($api_data === ['no key']) {
-        return [];
-      }
-      $tags = $this->getCacheTags();
-
-      $this->cacheBackend->set($cache_id, $api_data, time() + 3600, $tags);
+    if (empty($cityArray)) {
+      $defaultCity = $this->cityService->getDefaultCity();
+      $city = $defaultCity[0]->default_city;
     }
     else {
-      $api_data = $cache->data;
+      $city = $cityArray[0]->city_name;
     }
+
+    $cache_id = 'weather_block_city_' . md5($city);
+
+    if ($cache = $this->cacheBackend->get($cache_id)) {
+      return $cache->data;
+    }
+
+    $api_data = $this->apiData->getDataFromApi($city);
 
     if (!empty($api_data) && is_array($api_data)) {
       $weather_data = $api_data;
-    }
-
-    if (!empty($weather_data)) {
       $firstCity = reset($weather_data);
       $weatherType = $firstCity['weather-type'] ?? '';
-    }
-    else {
-      $weatherType = '';
-    }
 
-    $formatted_data = $this->formatData($weather_data);
+      $formatted_data = $this->formatData($weather_data);
 
-    return [
-      '#theme' => 'weather_block_template',
-      '#content' => $formatted_data,
-      '#weather_type' => $weatherType,
-      '#attached' => [
-        'library' => [
-          'weather_block/weather_block-css',
+      $build = [
+        '#theme' => 'weather_block_template',
+        '#content' => $formatted_data,
+        '#weather_type' => $weatherType,
+        '#attached' => [
+          'library' => [
+            'weather_block/weather_block-css',
+          ],
         ],
-      ],
-    ];
+      ];
+      $tags = $this->getCacheTags();
+      $this->cacheBackend->set($cache_id, $build, 60 * 60, $tags);
+    }
+
+    return $build;
   }
 
   /**
@@ -120,8 +116,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    */
   public function getCacheTags(): array {
     $tags = [];
-    $tags[] = 'config:block.block.my_awesome_theme_weatherblock';
-    $tags[] = 'user:' . $this->accountProxy->id();
+    $tags[] = 'api_key.settings';
 
     return Cache::mergeTags(parent::getCacheTags(), $tags);
   }
@@ -133,7 +128,8 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     $cities = $this->cityService->getCitiesArray();
 
     $user_id = $this->accountProxy->id();
-    $savedCities = $this->cityService->getSavedCityForUser($user_id);
+    $savedCity = $this->cityService->getSavedCityForUser($user_id);
+    $default_city = $this->cityService->getDefaultCity($user_id);
 
     $form['city_selection'] = [
       '#type' => 'fieldset',
@@ -142,11 +138,11 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       '#collapsed' => FALSE,
     ];
 
-    $form['city_selection']['cities'] = [
+    $form['city_selection']['city'] = [
       '#type' => 'select',
       '#title' => $this->t('Choose a city'),
       '#options' => array_combine($cities, $cities),
-      '#default_value' => $savedCities,
+      '#default_value' => $savedCity ?? $default_city,
       '#description' => $this->t('Select the city.'),
     ];
 
@@ -154,7 +150,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       '#required' => TRUE,
       '#type' => 'textfield',
       '#title' => $this->t('Your API key'),
-      '#default_value' => $this->configuration['settings']['key'] ?? NULL,
+      '#default_value' => $this->configFactory->get('api_key.settings')->get('key'),
       '#description' => $this->t('Enter your API key'),
     ];
 
@@ -167,18 +163,17 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
    * @throws \Exception
    */
   public function blockSubmit($form, FormStateInterface $form_state): void {
-    $user_id = $this->accountProxy->id();
-    $cities = array_map('trim', explode(',', $form_state->getValue([
+    $userId = $this->accountProxy->id();
+    $city = $form_state->getValue([
       'city_selection',
-      'cities',
-    ])));
-    $this->cityService->saveCityForUser($user_id, $cities);
-    $this->configuration['settings']['key'] = trim($form_state->getValue(['city_selection', 'settings', 'key']));
-    $api_key = $this->configuration['settings']['key'];
-    foreach ($cities as $city) {
-      $api_data = $this->apiData->getDataFromApi($city, $api_key);
-      $this->cityService->saveWeatherDataForCity($city, $api_data);
-    }
+      'city',
+    ]);
+    $this->configFactory->getEditable('api_key.settings')
+      ->set('key', $form_state->getValue(['city_selection', 'settings', 'key']))
+      ->save();
+    $this->cityService->saveDefaultCity($city, $userId);
+    $api_data = $this->apiData->getDataFromApi($city);
+    $this->cityService->saveWeatherDataForCity($city, $api_data);
   }
 
   /**

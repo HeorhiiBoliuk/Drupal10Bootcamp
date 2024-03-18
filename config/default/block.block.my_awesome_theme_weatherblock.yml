@@ -17,10 +17,4 @@ settings:
   label: 'Weather block'
   label_display: '0'
   provider: weather_block
-  settings:
-    key: 8795cf1702a915bf4f6e1c1ca54fed35
-  users:
-    1:
-      cities:
-        - Вінниця
 visibility: {  }

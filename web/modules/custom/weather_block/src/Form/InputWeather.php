@@ -44,15 +44,12 @@ class InputWeather extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $cities = $this->cityService->getCitiesArray();
 
-    $form['description'] = [
-      '#type' => 'item',
-      '#markup' => $this->t('Choose your city'),
-    ];
     $form['city'] = [
       '#type' => 'select',
       '#title' => $this->t('Choose your city'),
       '#options' => array_combine($cities, $cities),
       '#empty_option' => $this->t('-select-'),
+      '#decription' => $this->t('Choose your city'),
     ];
     $form['actions']['submit'] = [
       '#type' => 'submit',
@@ -80,15 +77,9 @@ class InputWeather extends FormBase {
       return;
     }
 
-    $cities = array_map('trim', explode(',', $city_value));
-    $this->cityService->saveCityForUser($user_id, $cities);
-    $config = $this->configFact->get('block.block.my_awesome_theme_weatherblock');
-    $api_key = $config->get('settings.settings.key');
-
-    foreach ($cities as $city) {
-      $api_data = $this->apiData->getDataFromApi($city, $api_key);
-      $this->cityService->saveWeatherDataForCity($city, $api_data);
-    }
+    $this->cityService->saveCityForUser($user_id, $city_value);
+    $api_data = $this->apiData->getDataFromApi($city_value);
+    $this->cityService->saveWeatherDataForCity($city_value, $api_data);
   }
 
 }
