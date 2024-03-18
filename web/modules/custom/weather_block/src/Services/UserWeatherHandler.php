@@ -9,7 +9,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 /**
  * Save cities for users.
  */
-class GetSetCityUser {
+class UserWeatherHandler {
 
   /**
    * Initialize a database property.
@@ -22,7 +22,7 @@ class GetSetCityUser {
    *
    * @throws \Exception
    */
-  public function saveCitiesForUser($userId, $cities): void {
+  public function saveCityForUser($userId, $cities): void {
     $this->database->delete('weather_block_city_users')
       ->condition('user_id', $userId)
       ->execute();
@@ -46,12 +46,12 @@ class GetSetCityUser {
     $query->condition('cu.user_id', $userId);
     $result = $query->execute()->fetchAll();
 
-    $cities = [];
+    $city = [];
     foreach ($result as $row) {
-      $cities[] = $row->city_name;
+      $city[] = $row->city_name;
     }
 
-    return $cities;
+    return $city;
   }
 
   /**
@@ -87,10 +87,31 @@ class GetSetCityUser {
    */
   public function getCitiesArray(): array {
     return [
-      'Вінниця', 'Дніпро', 'Донецьк', 'Житомир', 'Запоріжжя', 'Івано-Франківськ',
-      'Київ', 'Кропивницький', 'Луганськ', 'Луцьк', 'Львів', 'Миколаїв', 'Одеса',
-      'Полтава', 'Рівне', 'Суми', 'Тернопіль', 'Ужгород', 'Харків', 'Херсон',
-      'Хмельницький', 'Черкаси', 'Чернівці', 'Чернігів', 'Сімферополь',
+      'Vinnytsia' => 'Vinnytsia',
+      'Dnipro' => 'Dnipro',
+      'Donetsk' => 'Donetsk',
+      'Zhytomyr' => 'Zhytomyr',
+      'Zaporizhzhia' => 'Zaporizhzhia',
+      'Ivano-Frankivsk' => 'Ivano-Frankivsk',
+      'Kyiv' => 'Kyiv',
+      'Kropyvnytskyi' => 'Kropyvnytskyi',
+      'Luhansk' => 'Luhansk',
+      'Lutsk' => 'Lutsk',
+      'Lviv' => 'Lviv',
+      'Mykolaiv' => 'Mykolaiv',
+      'Odesa' => 'Odesa',
+      'Poltava' => 'Poltava',
+      'Rivne' => 'Rivne',
+      'Sumy' => 'Sumy',
+      'Ternopil' => 'Ternopil',
+      'Uzhhorod' => 'Uzhhorod',
+      'Kharkiv' => 'Kharkiv',
+      'Kherson' => 'Kherson',
+      'Khmelnytskyi' => 'Khmelnytskyi',
+      'Cherkasy' => 'Cherkasy',
+      'Chernivtsi' => 'Chernivtsi',
+      'Chernihiv' => 'Chernihiv',
+      'Simferopol' => 'Simferopol',
     ];
   }
 

@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\weather_block\Services\FetchApiData;
-use Drupal\weather_block\Services\GetSetCityUser;
+use Drupal\weather_block\Services\UserWeatherHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -19,7 +19,7 @@ class InputWeather extends FormBase {
    * {@inheritdoc}
    */
   public function __construct(
-    protected GetSetCityUser $cityService,
+    protected UserWeatherHandler $cityService,
     protected ConfigFactoryInterface $configFact,
     protected AccountProxyInterface $accountProxy,
     protected FetchApiData $apiData,
@@ -48,7 +48,7 @@ class InputWeather extends FormBase {
       '#type' => 'item',
       '#markup' => $this->t('Choose your city'),
     ];
-    $form['favorite'] = [
+    $form['city'] = [
       '#type' => 'select',
       '#title' => $this->t('Choose your city'),
       '#options' => array_combine($cities, $cities),
@@ -76,15 +76,18 @@ class InputWeather extends FormBase {
     $user_id = $this->accountProxy->id();
     $city_value = $form_state->getValue('favorite');
 
-    if (!is_null($city_value)) {
-      $cities = array_map('trim', explode(',', $city_value));
-      $this->cityService->saveCitiesForUser($user_id, $cities);
-      $api_key = $this->configFact->get('block.block.my_awesome_theme_weatherblock')
-        ->get('settings.key');
-      foreach ($cities as $city) {
-        $api_data = $this->apiData->getDataFromApi($city, $api_key);
-        $this->cityService->saveWeatherDataForCity($city, $api_data);
-      }
+    if (is_null($city_value)) {
+      return;
+    }
+
+    $cities = array_map('trim', explode(',', $city_value));
+    $this->cityService->saveCityForUser($user_id, $cities);
+    $api_key = $this->configFact->get('block.block.my_awesome_theme_weatherblock')
+      ->get('settings.key');
+
+    foreach ($cities as $city) {
+      $api_data = $this->apiData->getDataFromApi($city, $api_key);
+      $this->cityService->saveWeatherDataForCity($city, $api_data);
     }
   }
 

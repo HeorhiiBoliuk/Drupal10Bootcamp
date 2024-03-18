@@ -15,7 +15,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\weather_block\Services\FetchApiData;
-use Drupal\weather_block\Services\GetSetCityUser;
+use Drupal\weather_block\Services\UserWeatherHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -37,7 +37,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
     protected LoggerChannelFactoryInterface $logger,
     protected Connection $database,
     protected ClientFactory $httpClient,
-    protected GetSetCityUser $cityService,
+    protected UserWeatherHandler $cityService,
     protected CacheBackendInterface $cacheBackend,
     protected AccountProxyInterface $accountProxy,
     protected FetchApiData $apiData) {
@@ -172,7 +172,7 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
       'city_selection',
       'cities',
     ])));
-    $this->cityService->saveCitiesForUser($user_id, $cities);
+    $this->cityService->saveCityForUser($user_id, $cities);
     $this->configuration['settings']['key'] = trim($form_state->getValue(['city_selection', 'settings', 'key']));
     $api_key = $this->configuration['settings']['key'];
     foreach ($cities as $city) {
