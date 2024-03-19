@@ -1,8 +1,8 @@
 services:
   weather_block.get_set_city_user:
     class: Drupal\weather_block\Services\UserWeatherHandler
-    arguments: ['@database', '@logger.factory', '@http_client_factory', '@config.factory' ]
+    arguments: ['@database', '@config.factory' ]
   weather_block.fetch_api_data:
     class: Drupal\weather_block\Services\FetchApiData
     arguments:
-      [ '@database', '@logger.factory', '@http_client_factory', '@config.factory' ]
+      [ '@logger.factory', '@http_client_factory', '@config.factory' ]

@@ -3,7 +3,6 @@
 namespace Drupal\weather_block\Services;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Database\Connection;
 use Drupal\Core\Http\ClientFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use GuzzleHttp\Exception\ClientException;
@@ -16,7 +15,7 @@ class FetchApiData {
   /**
    * Constructor for FetchApiData.
    */
-  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
+  public function __construct(protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
   }
 
   /**

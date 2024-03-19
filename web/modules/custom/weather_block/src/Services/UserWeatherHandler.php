@@ -4,8 +4,6 @@ namespace Drupal\weather_block\Services;
 
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Http\ClientFactory;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 
 /**
  * Save cities for users.
@@ -15,7 +13,7 @@ class UserWeatherHandler {
   /**
    * Initialize a service property.
    */
-  public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
+  public function __construct(protected Connection $database, protected ConfigFactory $configFactory) {
   }
 
   /**
@@ -39,7 +37,7 @@ class UserWeatherHandler {
   /**
    * Set a default value of city.
    */
-  public function saveDefaultCity($city) {
+  public function saveDefaultCity($city): void {
     $this->configFactory->getEditable('default_value_of_city.settings')
       ->set('default_city', $city)->save();
   }
