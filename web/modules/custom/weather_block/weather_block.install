@@ -1,0 +1,101 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the weather_block module.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Schema;
+
+/**
+ * Implements hook_schema().
+ */
+function weather_block_schema(): array {
+  $schema['weather_block_city_users'] = [
+    'description' => 'Stores relationships between users and cities.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique ID for the relationship.',
+      ],
+      'user_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'ID of the user.',
+      ],
+      'city_name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the city.',
+      ],
+    ],
+    'indexes' => [
+      'user_id' => ['user_id'],
+      'city_name' => ['city_name'],
+    ],
+    'foreign keys' => [
+      'user_id' => [
+        'table' => 'users',
+        'columns' => ['user_id' => 'id'],
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Create the weather_block_cities, weather_block_city_users table.
+ */
+function weather_block_update_91001(): void {
+
+  $connection = Database::getConnection();
+
+  if (!$connection->schema()->tableExists('weather_block_city_users')) {
+    $schema = [
+      'description' => 'Stores relationships between users and cities.',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'Primary Key: Unique ID for the relationship.',
+        ],
+        'user_id' => [
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'ID of the user.',
+        ],
+        'city_name' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'description' => 'Name of the city.',
+        ],
+      ],
+      'indexes' => [
+        'user_id' => ['user_id'],
+        'city_name' => ['city_name'],
+      ],
+      'foreign keys' => [
+        'user_id' => [
+          'table' => 'users',
+          'columns' => ['user_id' => 'id'],
+        ],
+      ],
+      'primary key' => ['id'],
+    ];
+
+    $connection->schema()->createTable('weather_block_city_users', $schema);
+  }
+}

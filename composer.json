@@ -26,13 +26,14 @@
         "drupal/devel": "^5.0",
         "drupal/emulsify_twig": "^4.0",
         "drupal/entity_pager": "^1.0",
+        "drupal/examples": "^4.0",
+        "drupal/fontawesome": "^2.26",
         "drupal/layout_builder_component_attributes": "^2.1",
         "drupal/menu_item_extras": "^3.0",
         "drupal/paragraphs": "^1.17",
+        "drupal/svg_image": "^3.0",
         "drupal/twig_tweak": "^3.2",
         "drupal/video_embed_field": "^2.5",
-        "drupal/svg_image": "^3.0",
-        "drupal/fontawesome": "^2.26",
         "enshrined/svg-sanitize": "^0.18"
     },
     "conflict": {
