@@ -177,3 +177,4 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
   }
 
 }
+
