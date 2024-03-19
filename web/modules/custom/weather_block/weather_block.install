@@ -11,7 +11,7 @@ use Drupal\Core\Database\Schema;
 /**
  * Implements hook_schema().
  */
-function weather_block_schema() {
+function weather_block_schema(): array {
   $schema['weather_block_city_users'] = [
     'description' => 'Stores relationships between users and cities.',
     'fields' => [

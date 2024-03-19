@@ -73,8 +73,9 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
 
     $cache_id = 'weather_block_city_' . md5($city);
     $cache_tags = ['weather_data'];
+    dump($this->cacheBackend->get($cache_id));
 
-    if ($cache = $this->cacheBackend->get($cache_id)) {
+    if (!empty($cache = $this->cacheBackend->get($cache_id))) {
       $build = $cache->data;
     }
     else {
@@ -116,8 +117,6 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
   public function blockForm($form, FormStateInterface $form_state) {
     $cities = $this->cityService->getCitiesArray();
 
-    $user_id = $this->accountProxy->id();
-    $savedCity = $this->cityService->getSavedCityForUser($user_id);
     $default_city = $this->cityService->getDefaultCity();
 
     $form['city_selection'] = [

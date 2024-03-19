@@ -13,7 +13,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 class UserWeatherHandler {
 
   /**
-   * Initialize a database property.
+   * Initialize a service property.
    */
   public function __construct(protected Connection $database, protected LoggerChannelFactoryInterface $logger, protected ClientFactory $httpClient, protected ConfigFactory $configFactory) {
   }
@@ -60,34 +60,6 @@ class UserWeatherHandler {
     $query->condition('cu.user_id', $userId);
     $cityArray = $query->execute()->fetchAll();
     return $cityArray[0]->city_name;
-  }
-
-  /**
-   * Saves weather data for a city in the database.
-   */
-  public function saveWeatherDataForCity($city, array $weatherData): void {
-    $existingRecord = $this->database->select('weather_block_cities', 'w')
-      ->fields('w')
-      ->condition('name', $city)
-      ->execute()
-      ->fetchAssoc();
-
-    if ($existingRecord) {
-      $this->database->update('weather_block_cities')
-        ->fields([
-          'weather_data' => serialize($weatherData),
-          'cache_expire' => time() + 3600,
-        ])
-        ->condition('name', $city);
-    }
-    else {
-      $this->database->insert('weather_block_cities')
-        ->fields([
-          'name' => $city,
-          'data' => serialize($weatherData),
-        ])
-        ->execute();
-    }
   }
 
   /**
