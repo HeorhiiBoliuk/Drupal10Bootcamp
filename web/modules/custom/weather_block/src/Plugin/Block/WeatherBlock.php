@@ -73,7 +73,6 @@ class WeatherBlock extends BlockBase implements ContainerFactoryPluginInterface 
 
     $cache_id = 'weather_block_city_' . md5($city);
     $cache_tags = ['weather_data'];
-    dump($this->cacheBackend->get($cache_id));
 
     if (!empty($cache = $this->cacheBackend->get($cache_id))) {
       $build = $cache->data;
