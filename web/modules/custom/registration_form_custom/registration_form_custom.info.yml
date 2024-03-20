@@ -1,0 +1,7 @@
+name: Registration Form Custom
+type: module
+description: 'Custom registration form'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - drupal:config

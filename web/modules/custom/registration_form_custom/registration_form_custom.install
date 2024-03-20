@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the registration module.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Schema;
+
+/**
+ * Implements hook_schema().
+ */
+function registration_form_custom_schema() {
+  $schema['extra_field_register'] = [
+    'description' => 'Stores the default city for users who did not select any city.',
+    'fields' => [
+      'uid' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique ID for the user.',
+      ],
+      'country' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the selected country.',
+      ],
+      'interested' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the selected category name.',
+      ],
+    ],
+    'primary key' => ['uid'],
+  ];
+  return $schema;
+}

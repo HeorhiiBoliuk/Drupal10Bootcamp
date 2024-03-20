@@ -1,0 +1,21 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\registration_form_custom\Form\NewUserRegisterForm;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\weather_block\Services\UserWeatherHandler;
+
+/**
+ * Implements hook_entity_insert().
+ */
+function registration_form_custom_entity_insert(\Drupal\user\Entity\User $entity) {
+  $user_id = $entity->id();
+  $city_value = \Drupal::request()->request->get('city');
+  $country_value = \Drupal::request()->request->get('country');
+  $interested_value = \Drupal::request()->request->get('interested');
+  $user_weather_handler = \Drupal::service('weather_block.get_set_city_user');
+  $extra_fields_handler = \Drupal::service('register_form_custom.extra_fields_handler');
+
+  $user_weather_handler->saveCityForUser($user_id, $city_value);
+  $extra_fields_handler->saveExtraFieldsForUser($user_id, $country_value, $interested_value);
+}

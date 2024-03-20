@@ -1,0 +1,8 @@
+services:
+  route_subscriber:
+    class: Drupal\registration_form_custom\Routing\RouteSubscriber
+    tags:
+      - {name: event_subscriber }
+  register_form_custom.extra_fields_handler:
+    class: Drupal\registration_form_custom\Services\ExtraFieldsHandler
+    arguments: [ '@database' ]
