@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_entity_build
+ */
+function registration_form_custom_entity_type_build(array &$entity_types) {
+
+  $entity_types['user']->setFormClass(
+    'custom_registration_form',
+    'Drupal\registration_form_custom\Form\NewUserRegisterForm'
+  );
+}

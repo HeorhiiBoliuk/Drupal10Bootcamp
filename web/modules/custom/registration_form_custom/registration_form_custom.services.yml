@@ -1,0 +1,4 @@
+services:
+  register_form_custom.extra_fields_handler:
+    class: Drupal\registration_form_custom\Services\ExtraFieldsHandler
+    arguments: [ '@database', '@weather_block.get_set_city_user' ]

@@ -1,0 +1,58 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the registration module.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Database\Schema;
+
+/**
+ * Implements hook_schema().
+ */
+function registration_form_custom_schema() {
+  $schema['extra_field_register'] = [
+    'description' => 'Stores the extra fields for users.',
+    'fields' => [
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique ID for the user.',
+      ],
+      'country' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the selected country.',
+      ],
+      'city_name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the city.',
+      ],
+      'interested' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the selected category name.',
+      ],
+    ],
+    'primary key' => ['uid'],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function registration_form_custom_update_10001() {
+  $schema = \Drupal::database()->schema();
+  $schema->addField('extra_field_register', 'city_name', [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'Name of the city.',
+  ]);
+}
