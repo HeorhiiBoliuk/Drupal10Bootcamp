@@ -26,6 +26,12 @@ function registration_form_custom_schema() {
         'not null' => TRUE,
         'description' => 'Name of the selected country.',
       ],
+      'city_name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Name of the city.',
+      ],
       'interested' => [
         'type' => 'varchar',
         'length' => 255,
@@ -36,4 +42,17 @@ function registration_form_custom_schema() {
     'primary key' => ['uid'],
   ];
   return $schema;
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function registration_form_custom_update_10001() {
+  $schema = \Drupal::database()->schema();
+  $schema->addField('extra_field_register', 'city_name', [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'description' => 'Name of the city.',
+  ]);
 }

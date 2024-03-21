@@ -17,15 +17,15 @@ class ExtraFieldsHandler {
   }
 
   /**
-   * This function is saving extra fields that I`m added to default register
-   * form.
+   * This function is saving in DB extra fields form.
    */
-  public function saveExtraFieldsForUser($userId, $country, $interested): void {
+  public function saveExtraFieldsForUser($userId, $country, $interested, $city): void {
     $this->database->upsert('extra_field_register')
       ->fields([
         'uid' => $userId,
         'country' => $country,
         'interested' => $interested,
+        'city_name' => $city,
       ])
       ->key('uid')
       ->execute();

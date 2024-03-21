@@ -2,29 +2,34 @@
 
 namespace Drupal\registration_form_custom\Plugin\Block;
 
+use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\TranslatableInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\UrlGeneratorInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\Core\Utility\LinkGeneratorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Provides a block for the popup registration form.
- *
- * @Block(
- *   id = "register_form_popup",
- *   admin_label = @Translation("Register form popup"),
- * )
- */
+#[Block(
+  id: "register_form_popup",
+  admin_label: new TranslatableMarkup("Register form popup"),
+)]
 class RegisterFormPopup extends BlockBase implements ContainerFactoryPluginInterface {
-  public function __construct(array $configuration,
-  $plugin_id,
-  $plugin_definition,
+
+  /**
+   *
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
     protected LinkGeneratorInterface $link_generator,
-  protected AccountProxyInterface $current_user,
-  protected UrlGeneratorInterface $url_generator) {
+    protected AccountProxyInterface $current_user,
+    protected UrlGeneratorInterface $url_generator,
+  ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
 
@@ -53,7 +58,7 @@ class RegisterFormPopup extends BlockBase implements ContainerFactoryPluginInter
         'data-dialog-type' => 'modal',
       ],
     ]);
-    $link = $this->link_generator->generate(t('Register'), $url);
+    $link = $this->link_generator->generate($this->t('Register'), $url);
     $build = [];
 
     if ($this->current_user->isAnonymous()) {

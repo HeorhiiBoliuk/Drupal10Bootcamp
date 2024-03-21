@@ -84,12 +84,6 @@ class NewUserRegisterForm extends RegisterForm {
     $cities = $this->cityService->getCitiesArray();
     $term_options = $this->getTaxonomyTerms();
 
-    $form['password'] = [
-      '#type' => 'password',
-      '#title' => $this->t('Password'),
-      '#description' => $this->t('Input your password'),
-      '#required' => TRUE,
-    ];
     $form['country'] = [
       '#type' => 'select',
       '#title' => $this->t('Country'),
@@ -147,7 +141,6 @@ class NewUserRegisterForm extends RegisterForm {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     parent::submitForm($form, $form_state);
-    $this->entity->activate();
 
     $form_state->setRedirect('<front>');
   }
@@ -163,7 +156,7 @@ class NewUserRegisterForm extends RegisterForm {
     $userid = $this->entity->id();
     $this->cityService->saveCityForUser($userid, $city_value);
 
-    $this->extraFieldsHandler->saveExtraFieldsForUser($userid, $country_value, $interest_value);
+    $this->extraFieldsHandler->saveExtraFieldsForUser($userid, $country_value, $interest_value, $city_value);
   }
 
 }
