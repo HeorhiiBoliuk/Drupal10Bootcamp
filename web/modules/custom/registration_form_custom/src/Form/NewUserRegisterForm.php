@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Locale\CountryManager;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\user\Entity\User;
+use Drupal\registration_form_custom\Services\ExtraFieldsHandler;
 use Drupal\user\RegisterForm;
 use Drupal\weather_block\Services\FetchApiData;
 use Drupal\weather_block\Services\UserWeatherHandler;
@@ -40,10 +40,8 @@ class NewUserRegisterForm extends RegisterForm {
     protected FetchApiData $apiData,
     protected ConfigFactoryInterface $configFact,
     protected Connection $database,
+    protected ExtraFieldsHandler $extraFieldsHandler,
   ) {
-    $user = User::create();
-    $this->setEntity($user);
-    $this->setModuleHandler($moduleHandler);
 
     parent::__construct($entity_repository, $language_manager, $entityTypeBundleInfo, $time);
   }
@@ -66,6 +64,7 @@ class NewUserRegisterForm extends RegisterForm {
       $container->get('weather_block.fetch_api_data'),
       $container->get('config.factory'),
       $container->get('database'),
+      $container->get('register_form_custom.extra_fields_handler'),
     );
   }
 
@@ -83,12 +82,13 @@ class NewUserRegisterForm extends RegisterForm {
 
     $form = parent::form($form, $form_state);
     $cities = $this->cityService->getCitiesArray();
-    $term_options = $this->getTaxonomyTerm();
+    $term_options = $this->getTaxonomyTerms();
 
     $form['password'] = [
       '#type' => 'password',
       '#title' => $this->t('Password'),
       '#description' => $this->t('Input your password'),
+      '#required' => TRUE,
     ];
     $form['country'] = [
       '#type' => 'select',
@@ -96,6 +96,7 @@ class NewUserRegisterForm extends RegisterForm {
       '#options' => $this->getCountryOptions(),
       '#default_value' => 'UA',
       '#description' => $this->t('Select your country'),
+      '#required' => TRUE,
     ];
     $form['city'] = [
       '#type' => 'select',
@@ -103,12 +104,14 @@ class NewUserRegisterForm extends RegisterForm {
       '#options' => array_combine($cities, $cities),
       '#empty_option' => $this->t('-select-'),
       '#description' => $this->t('Select your city'),
+      '#required' => TRUE,
     ];
     $form['interested'] = [
       '#type' => 'select',
       '#title' => $this->t('Interests'),
       '#options' => $term_options,
-      '#description' => $this->t('Select your interests'),
+      '#description' => $this->t('Select your interest'),
+      '#required' => TRUE,
     ];
     return $form;
   }
@@ -126,9 +129,9 @@ class NewUserRegisterForm extends RegisterForm {
   }
 
   /**
-   * Get a taxonomy terms.
+   * Get a terms of taxonomy category.
    */
-  private function getTaxonomyTerm(): array {
+  private function getTaxonomyTerms(): array {
     $terms = $this->typeManager->getStorage('taxonomy_term')->loadTree('news');
     $term_options = [];
     foreach ($terms as $term) {
@@ -143,15 +146,27 @@ class NewUserRegisterForm extends RegisterForm {
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $username = $form_state->getValue('name');
-    $email = $form_state->getValue('mail');
-    $password = $form_state->getValue('password');
-    $this->entity->setUsername($username);
-    $this->entity->setEmail($email);
-    $this->entity->setPassword($password);
+    parent::submitForm($form, $form_state);
+    $country_value = $form_state->getValue('country');
+    $interest_value = $form_state->getValue('interested');
+    $city_value = $form_state->getValue('city');
     $this->entity->activate();
 
     $form_state->setRedirect('<front>');
+  }
+
+  /**
+   *
+   */
+  public function save(array $form, FormStateInterface $form_state): void {
+    parent::save($form, $form_state);
+    $country_value = $form_state->getValue('country');
+    $interest_value = $form_state->getValue('interested');
+    $city_value = $form_state->getValue('city');
+    $userid = $this->entity->id();
+    $this->cityService->saveCityForUser($userid, $city_value);
+
+    $this->extraFieldsHandler->saveExtraFieldsForUser($userid, $country_value, $interest_value);
   }
 
 }

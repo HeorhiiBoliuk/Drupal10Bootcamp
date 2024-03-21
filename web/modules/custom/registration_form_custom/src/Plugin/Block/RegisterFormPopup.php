@@ -2,42 +2,65 @@
 
 namespace Drupal\registration_form_custom\Plugin\Block;
 
-use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Link;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Routing\UrlGeneratorInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Utility\LinkGeneratorInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- *  Creating a block for popup register form.
+ * Provides a block for the popup registration form.
+ *
+ * @Block(
+ *   id = "register_form_popup",
+ *   admin_label = @Translation("Register form popup"),
+ * )
  */
-#[Block(
-  id: "register_form_popup",
-  admin_label: new TranslatableMarkup("Register form popup"),
-)]
-class RegisterFormPopup extends BlockBase {
+class RegisterFormPopup extends BlockBase implements ContainerFactoryPluginInterface {
+  public function __construct(array $configuration,
+  $plugin_id,
+  $plugin_definition,
+    protected LinkGeneratorInterface $link_generator,
+  protected AccountProxyInterface $current_user,
+  protected UrlGeneratorInterface $url_generator) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('link_generator'),
+      $container->get('current_user'),
+      $container->get('url_generator')
+    );
+  }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
     $url = Url::fromRoute('user.register');
-    $link_options = [
+    $url->setOptions([
       'attributes' => [
-        'class' => [
-          'use-ajax',
-          'register-popup-form',
-        ],
+        'class' => ['use-ajax', 'register-popup-form'],
         'data-dialog-type' => 'modal',
       ],
-    ];
-    $url->setOptions($link_options);
-    $link = Link::fromTextAndUrl(t('Register'), $url)->toString();
+    ]);
+    $link = $this->link_generator->generate(t('Register'), $url);
     $build = [];
-    if (\Drupal::currentUser()->isAnonymous()) {
+
+    if ($this->current_user->isAnonymous()) {
       $build['register_popup_block']['#markup'] = '<div class="Register-popup-link">' . $link . '</div>';
     }
-    $build['register_popup_block']['#attached']['library'][] = 'core/drupal.dialog.ajax';
+
+    $build['#attached']['library'][] = 'core/drupal.dialog.ajax';
 
     return $build;
   }

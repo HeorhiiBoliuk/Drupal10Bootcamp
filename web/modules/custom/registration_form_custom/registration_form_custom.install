@@ -12,10 +12,10 @@ use Drupal\Core\Database\Schema;
  */
 function registration_form_custom_schema() {
   $schema['extra_field_register'] = [
-    'description' => 'Stores the default city for users who did not select any city.',
+    'description' => 'Stores the extra fields for users.',
     'fields' => [
       'uid' => [
-        'type' => 'serial',
+        'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
         'description' => 'Primary Key: Unique ID for the user.',
