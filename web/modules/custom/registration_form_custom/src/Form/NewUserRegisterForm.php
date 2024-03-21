@@ -147,9 +147,6 @@ class NewUserRegisterForm extends RegisterForm {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     parent::submitForm($form, $form_state);
-    $country_value = $form_state->getValue('country');
-    $interest_value = $form_state->getValue('interested');
-    $city_value = $form_state->getValue('city');
     $this->entity->activate();
 
     $form_state->setRedirect('<front>');
