@@ -28,6 +28,13 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   view_mode:
     type: menu_item_extras_view_mode_selector_select
     weight: 0

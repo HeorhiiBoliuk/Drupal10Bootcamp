@@ -7,7 +7,7 @@ dependencies:
 id: my_awesome_theme_pagetitle
 theme: my_awesome_theme
 region: top_header
-weight: -11
+weight: -12
 provider: null
 plugin: page_title_block
 settings:

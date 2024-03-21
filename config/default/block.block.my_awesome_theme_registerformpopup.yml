@@ -1,0 +1,20 @@
+uuid: 165d6ddc-86cf-470a-94f0-a651b925e52f
+langcode: en
+status: true
+dependencies:
+  module:
+    - registration_form_custom
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_registerformpopup
+theme: my_awesome_theme
+region: top_header
+weight: -14
+provider: null
+plugin: register_form_popup
+settings:
+  id: register_form_popup
+  label: 'Register form popup'
+  label_display: '0'
+  provider: registration_form_custom
+visibility: {  }
