@@ -4,6 +4,16 @@ http:
   routers:
     
     
+    my-site-solr-8983-http:
+      
+      rule: HostRegexp(`my-site.ddev.site`)
+      
+      service: "my-site-solr-8983-http"
+      tls: false
+      entrypoints:
+        - http-8983
+    
+    
     my-site-web-80-http:
       
       rule: HostRegexp(`my-site.ddev.site`)
@@ -22,6 +32,7 @@ http:
       tls: false
       entrypoints:
         - http-8025
+    
     
     
     
@@ -54,6 +65,11 @@ http:
     
 
   services:
+    
+    my-site-solr-8983-http:
+      loadbalancer:
+        servers:
+          - url: http://ddev-my-site-solr:8983
     
     my-site-web-80-http:
       loadbalancer:

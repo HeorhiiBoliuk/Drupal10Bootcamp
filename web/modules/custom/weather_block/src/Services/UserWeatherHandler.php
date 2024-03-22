@@ -57,7 +57,12 @@ class UserWeatherHandler {
     $query->fields('cu', ['city_name']);
     $query->condition('cu.user_id', $userId);
     $cityArray = $query->execute()->fetchAll();
-    return $cityArray[0]->city_name;
+    if ($userId == 0) {
+      return $this->configFactory->get('default_value_of_city.settings')->get('default_city');
+    }
+    else {
+      return $cityArray[0]->city_name;
+    }
   }
 
   /**

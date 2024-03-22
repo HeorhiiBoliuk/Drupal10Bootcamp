@@ -1,0 +1,44 @@
+.facet_block_solr{
+  width: 18%;
+  float: left;
+  margin: 20px;
+  span{
+    @include title;
+    &:hover{
+      color: $blue;
+    }
+  }
+}
+.solr-search-page{
+  width: 75%;
+  float: right;
+  .views-row{
+    margin: 20px 0;
+    .views-field-title{
+      @include title;
+      &:hover{
+        color: $blue;
+      }
+    }
+    .views-field-body{
+      @include body;
+    }
+    .views-field-category{
+      background-color: $black;
+
+      a{
+        font-family: 'Open Sans', 'Open Sans Regular', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 1;
+        color: $white;
+        margin-right: 5px;
+        padding: 3px 6px 4px;
+        display: block;
+        vertical-align: top;
+        transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+      }
+    }
+  }
+}

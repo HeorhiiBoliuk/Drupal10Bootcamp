@@ -5,6 +5,7 @@ module:
   admin_toolbar_tools: 0
   announcements_feed: 0
   automated_cron: 0
+  batch_example: 0
   better_exposed_filters: 0
   big_pipe: 0
   block: 0
@@ -27,6 +28,7 @@ module:
   entity_pager: 0
   entity_reference_revisions: 0
   examples: 0
+  facets: 0
   field: 0
   field_layout: 0
   field_ui: 0
@@ -42,6 +44,7 @@ module:
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
   js_example: 0
+  language: 0
   layout_builder: 0
   layout_builder_component_attributes: 0
   layout_discovery: 0
@@ -57,9 +60,11 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  registration_form: 0
+  registration_form_custom: 0
   sdc: 0
   search: 0
+  search_api: 0
+  search_api_solr: 0
   serialization: 0
   shortcut: 0
   svg_image: 0

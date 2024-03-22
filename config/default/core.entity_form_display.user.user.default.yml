@@ -63,4 +63,5 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
 hidden:
+  langcode: true
   layout_builder__layout: true

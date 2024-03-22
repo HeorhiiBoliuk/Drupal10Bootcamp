@@ -141,5 +141,7 @@ content:
 hidden:
   field_social_links: true
   field_user_description: true
+  langcode: true
   layout_builder__layout: true
   member_for: true
+  search_api_excerpt: true

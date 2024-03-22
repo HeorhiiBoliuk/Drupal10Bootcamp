@@ -9,7 +9,7 @@ dependencies:
 id: my_awesome_theme_weatherblock
 theme: my_awesome_theme
 region: top_header
-weight: -15
+weight: -16
 provider: null
 plugin: weather_block
 settings:

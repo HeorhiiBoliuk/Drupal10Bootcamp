@@ -1,0 +1,24 @@
+uuid: 4404dded-e195-42dc-83eb-76b5a11cc98b
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.category
+  module:
+    - facets
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_category
+theme: my_awesome_theme
+region: content
+weight: -15
+provider: null
+plugin: 'facet_block:category'
+settings:
+  id: 'facet_block:category'
+  label: Category
+  label_display: '0'
+  provider: facets
+  context_mapping: {  }
+  block_id: my_awesome_theme_category
+visibility: {  }
