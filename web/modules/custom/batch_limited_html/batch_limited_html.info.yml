@@ -1,0 +1,6 @@
+name: Batch Limited HTML
+type: module
+description: 'Change article text format on limited HTML'
+core_version_requirement: ^9 || ^10
+package: Custom
+

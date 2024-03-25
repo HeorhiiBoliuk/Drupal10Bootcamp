@@ -13,6 +13,8 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use Drupal\weather_block\Services\FetchApiData;
 use Drupal\weather_block\Services\UserWeatherHandler;
 use Symfony\Component\DependencyInjection\ContainerInterface;

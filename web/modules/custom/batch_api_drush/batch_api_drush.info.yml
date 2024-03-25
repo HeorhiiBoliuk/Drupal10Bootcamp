@@ -1,0 +1,4 @@
+name: 'Batch api drush'
+type: module
+description: 'Change article text format on Basic HTML.'
+core_version_requirement: ^10
