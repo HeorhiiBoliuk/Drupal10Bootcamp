@@ -1,0 +1,9 @@
+services:
+  batch_api.drush:
+    class: Drupal\batch_api_drush\Commands\BatchApiDrushCommands
+    tags:
+      - { name: drush.command }
+    arguments:
+      - '@entity_type.manager'
+      - '@messenger'
+      - '@entity.repository'

@@ -1,8 +1,8 @@
-uuid: 6e87920c-f218-4f6d-9b78-8a1e3331779c
+uuid: e6910f2b-b3a2-4fdc-badf-9c7cd0fa4598
 langcode: en
 status: true
 dependencies: {  }
-id: search_api__views_page__search_using_solr__page_1
+id: search_api__search_api__views_page__search_using_solr__page_1
 name: 'search_api:views_page__search_using_solr__page_1'
 filter_key: null
 url_processor: query_string

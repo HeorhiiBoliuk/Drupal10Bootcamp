@@ -5,7 +5,9 @@ module:
   admin_toolbar_tools: 0
   announcements_feed: 0
   automated_cron: 0
+  batch_api_drush: 0
   batch_example: 0
+  batch_limited_html: 0
   better_exposed_filters: 0
   big_pipe: 0
   block: 0
