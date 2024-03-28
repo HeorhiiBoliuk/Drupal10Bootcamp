@@ -1,0 +1,6 @@
+name: CIHI Demo Link
+type: module
+description: Adds CKEditor5 Custom Link Color plugin.
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:ckeditor5
