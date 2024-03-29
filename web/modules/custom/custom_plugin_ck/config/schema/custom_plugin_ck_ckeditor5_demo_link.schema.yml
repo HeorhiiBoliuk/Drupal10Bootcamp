@@ -1,0 +1,10 @@
+ckeditor5.plugin.custom_plugin_ck_ckeditor5_demo_link_demoLink:
+  type: mapping
+  label: 'Custom Plugin CK Settings'
+  mapping:
+    enabled_types:
+      type: sequence
+      label: 'Enabled Types'
+      sequence:
+        - type: string
+          label: 'Type'

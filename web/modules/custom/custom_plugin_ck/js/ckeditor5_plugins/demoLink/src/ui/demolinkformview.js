@@ -1,8 +1,3 @@
-/**
- * @file
- * Defines the FormView View class.
- */
-
 import {
   ButtonView,
   // Model,
@@ -14,7 +9,7 @@ import {
 import { icons } from "ckeditor5/src/core";
 
 /**
- * The demoLink FormView class.
+ * The FormView class.
  */
 export default class FormView extends View {
 

@@ -1,8 +1,3 @@
-/**
- * @file
- * Defines the DemoLinkUI plugin.
- */
-
 import { Plugin } from 'ckeditor5/src/core';
 import {
   ButtonView,
@@ -17,7 +12,7 @@ import {
 } from './utils';
 
 /**
- * The demoLink UI plugin. It introduces the `'demoLink'` button and the forms.
+ * The UI plugin. It introduces the button and the forms.
  */
 export default class DemoLinkUI extends Plugin {
 
@@ -127,6 +122,12 @@ export default class DemoLinkUI extends Plugin {
 
       formEl.focus();
 
+      const editorConfig = this.editor.config;
+
+      const backgroundColor = editorConfig._config.colors_config.background_color;
+
+      const color = editorConfig._config.colors_config.color;
+
       const isEmpty = !command.value || !command.value[modelName] || command.value[modelName] === '';
 
       if (modelName === 'demoLinkUrl' && isEmpty) {
@@ -136,13 +137,13 @@ export default class DemoLinkUI extends Plugin {
       }
 
       if (modelName === 'demoBackgroundColor' && isEmpty) {
-        formEl.fieldView.element.value = '#000';
+        formEl.fieldView.element.value = backgroundColor;
         formEl.set('isEmpty', false);
         return;
       }
 
       if (modelName === 'demoTextColor' && isEmpty) {
-        formEl.fieldView.element.value = '#000';
+        formEl.fieldView.element.value = color;
         formEl.set('isEmpty', false);
         return;
       }
@@ -158,7 +159,7 @@ export default class DemoLinkUI extends Plugin {
   }
 
   /**
-   * Handles the selection specific cases (right before or after the element).
+   * Handles the selection.
    */
   _handleSelection() {
     const editor = this.editor;

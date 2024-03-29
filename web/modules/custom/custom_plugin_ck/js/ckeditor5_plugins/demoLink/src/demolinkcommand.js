@@ -1,8 +1,3 @@
-/**
- * @file
- * Defines the Command plugin.
- */
-
 import { Command } from 'ckeditor5/src/core';
 import {
   findElement,
@@ -69,7 +64,7 @@ export default class DemoLinkCommand extends Command {
   }
 
   /**
-   * Create a demoLink element using the new values.
+   * Create an element using the new values.
    */
   _editElement(writer, modelEl, values) {
     writer.clearAttributes(modelEl);

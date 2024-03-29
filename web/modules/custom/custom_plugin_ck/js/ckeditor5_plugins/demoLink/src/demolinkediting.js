@@ -1,13 +1,8 @@
-/**
- * @file
- * Defines the DemoLinkEditing plugin.
- */
-
 import {Plugin} from 'ckeditor5/src/core';
 import DemoLinkCommand from "./demolinkcommand";
 
 /**
- * The demoLink editing feature.
+ * The editing feature.
  */
 export default class DemoLinkEditing extends Plugin {
 
@@ -27,7 +22,7 @@ export default class DemoLinkEditing extends Plugin {
   }
 
   /**
-   * Registers schema for demoLink and its child elements.
+   * Registers schema for item and its child elements.
    */
   _defineSchema() {
     const schema = this.editor.model.schema;

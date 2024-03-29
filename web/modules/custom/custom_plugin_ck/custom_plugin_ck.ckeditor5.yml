@@ -1,0 +1,20 @@
+custom_plugin_ck_ckeditor5_demo_link_demoLink:
+  ckeditor5:
+    plugins:
+      - demoLink.DemoLink
+    config:
+      enabled_types:
+        - Color
+        - Background Color
+      additional_config_option: 'value'
+  drupal:
+    label: Demo Link
+    library: custom_plugin_ck/demoLink
+    class: Drupal\custom_plugin_ck\Plugin\CKEditor5Plugin\CustomPluginCk
+    toolbar_items:
+      DemoLink:
+        label: DemoLink
+    elements:
+      - <p>
+      - <a>
+      - <span>
