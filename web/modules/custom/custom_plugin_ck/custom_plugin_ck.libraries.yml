@@ -1,0 +1,5 @@
+demoLink:
+  js:
+    js/build/demoLink.js: { preprocess: false, minified: true }
+  dependencies:
+    - core/ckeditor5
