@@ -72,10 +72,10 @@ export default class DemoLinkUI extends Plugin {
     this.listenTo(formView, 'submit', () => {
 
       let values = {
-        demoLinkText: formView.textInputView.fieldView.element.value,
-        demoLinkUrl: formView.urlInputView.fieldView.element.value,
-        demoBackgroundColor: formView.backgroundColor.fieldView.element.value,
-        demoTextColor: formView.textInputColor.fieldView.element.value,
+        customText: formView.textInputView.fieldView.element.value,
+        customUrl: formView.urlInputView.fieldView.element.value,
+        customBackgroundColor: formView.backgroundColor.fieldView.element.value,
+        customTextColor: formView.textInputColor.fieldView.element.value,
       };
 
       this.editor.execute('demoLink', values);
@@ -110,10 +110,10 @@ export default class DemoLinkUI extends Plugin {
     const command = this.editor.commands.get('demoLink');
 
     const modelToFormFields = {
-      demoLinkText: 'textInputView',
-      demoLinkUrl: 'urlInputView',
-      demoBackgroundColor: 'backgroundColor',
-      demoTextColor: 'textInputColor',
+      customText: 'textInputView',
+      customUrl: 'urlInputView',
+      customBackgroundColor: 'backgroundColor',
+      customTextColor: 'textInputColor',
     };
 
     Object.entries(modelToFormFields).forEach(([modelName, formElName]) => {
@@ -130,19 +130,19 @@ export default class DemoLinkUI extends Plugin {
 
       const isEmpty = !command.value || !command.value[modelName] || command.value[modelName] === '';
 
-      if (modelName === 'demoLinkUrl' && isEmpty) {
+      if (modelName === 'customLinkUrl' && isEmpty) {
         formEl.fieldView.element.value = '#';
         formEl.set('isEmpty', false);
         return;
       }
 
-      if (modelName === 'demoBackgroundColor' && isEmpty) {
+      if (modelName === 'customBackgroundColor' && isEmpty) {
         formEl.fieldView.element.value = backgroundColor;
         formEl.set('isEmpty', false);
         return;
       }
 
-      if (modelName === 'demoTextColor' && isEmpty) {
+      if (modelName === 'customTextColor' && isEmpty) {
         formEl.fieldView.element.value = color;
         formEl.set('isEmpty', false);
         return;
@@ -169,7 +169,7 @@ export default class DemoLinkUI extends Plugin {
 
       let el = selection.getSelectedElement() ?? selection.getFirstRange().getCommonAncestor();
 
-      if (!['demoLinkText'].includes(el.name)) {
+      if (!['customText'].includes(el.name)) {
         this._hideUI();
         return;
       }
@@ -181,9 +181,9 @@ export default class DemoLinkUI extends Plugin {
 
       const position = selection.getFirstPosition();
 
-      const afterTouchChildElName = 'demoLinkText';
+      const afterTouchChildElName = 'customText';
 
-      const beforeTouch = el.name == 'demoLinkText' && position.isTouching( positionBefore );
+      const beforeTouch = el.name == 'customText' && position.isTouching( positionBefore );
       const afterTouch = el.name == afterTouchChildElName && position.isTouching( positionAfter );
 
       if (beforeTouch || afterTouch) {

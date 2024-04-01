@@ -18,18 +18,18 @@ export default class DemoLinkCommand extends Command {
     this.value = null;
 
     const selection = this.editor.model.document.selection;
-    const demoLinkEl = findElement(selection, 'demoLink');
-    if (!demoLinkEl) {
+    const Element = findElement(selection, 'demoLink');
+    if (!Element) {
       return;
     }
 
     this.value = {};
 
-    for (const [attrKey, attrValue] of demoLinkEl.getAttributes()) {
+    for (const [attrKey, attrValue] of Element.getAttributes()) {
       this.value[attrKey] = attrValue;
     }
 
-    for (const childNode of demoLinkEl.getChildren()) {
+    for (const childNode of Element.getChildren()) {
       const childTextNode = childNode.getChild(0);
       const dataNotEmpty = childTextNode && childTextNode._data;
       this.value[childNode.name] = dataNotEmpty ? childTextNode._data : '';
@@ -47,17 +47,17 @@ export default class DemoLinkCommand extends Command {
 
       var isNew = false;
 
-      var demoLinkEl = findElement(model.document.selection, 'demoLink');
+      var Element = findElement(model.document.selection, 'demoLink');
 
-      if (!demoLinkEl) {
-        demoLinkEl = writer.createElement('demoLink');
+      if (!Element) {
+        Element = writer.createElement('demoLink');
         isNew = true;
       }
 
-      this._editElement(writer, demoLinkEl, values);
+      this._editElement(writer, Element, values);
 
       if (isNew) {
-        model.insertContent(demoLinkEl);
+        model.insertContent(Element);
       }
 
     });
@@ -70,10 +70,10 @@ export default class DemoLinkCommand extends Command {
     writer.clearAttributes(modelEl);
 
     var modelAttrs = {};
-    modelAttrs.demoLinkUrl = values['demoLinkUrl'];
-    modelAttrs.demoTextColor = values['demoTextColor'];
-    modelAttrs.demoBackgroundColor = values['demoBackgroundColor'];
-    modelAttrs.demoLinkClass = 'demo-link';
+    modelAttrs.customLinkUrl = values['customUrl'];
+    modelAttrs.customTextColor = values['customTextColor'];
+    modelAttrs.customBackgroundColor = values['customBackgroundColor'];
+    modelAttrs.customLinkClass = 'demo-link';
     writer.setAttributes(modelAttrs, modelEl);
 
     const children = [];
@@ -81,10 +81,10 @@ export default class DemoLinkCommand extends Command {
       children.push(el.name);
     });
 
-    const demoLinkText = this._processChildTextEl(writer, values, children, modelEl, 'demoLinkText');
+    const customText = this._processChildTextEl(writer, values, children, modelEl, 'customText');
 
-    if (demoLinkText) {
-      writer.append(demoLinkText, modelEl);
+    if (customText) {
+      writer.append(customText, modelEl);
     }
 
   }

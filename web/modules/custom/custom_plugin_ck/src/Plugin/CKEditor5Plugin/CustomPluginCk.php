@@ -16,8 +16,6 @@ class CustomPluginCk extends CKEditor5PluginDefault implements CKEditor5PluginCo
 
   use CKEditor5PluginConfigurableTrait;
 
-  const T_CONTEXT = ['context' => 'CIHI Demo Link'];
-
   /**
    * {@inheritdoc}
    */
@@ -25,18 +23,11 @@ class CustomPluginCk extends CKEditor5PluginDefault implements CKEditor5PluginCo
     return ['<p>', '<a>', '<span>'];
   }
 
-  const ALWAYS_ENABLED_COLOR = [
-    '#000',
-  ];
-
   /**
-   * {@inheritdoc}
+   * Return chose user colors.
    */
   public function getChoosedColors() {
-    return array_merge(
-      self::ALWAYS_ENABLED_COLOR,
-      $this->configuration['enabled_types'] ?? []
-    );
+    return $this->configuration['enabled_types'] ?? [];
   }
 
   /**
@@ -49,6 +40,9 @@ class CustomPluginCk extends CKEditor5PluginDefault implements CKEditor5PluginCo
     ];
   }
 
+  /**
+   * Contains a default configuration.
+   */
   const DEFAULT_CONFIGURATION = [
     'enabled_types' => [
       'color' => '',
@@ -107,4 +101,3 @@ class CustomPluginCk extends CKEditor5PluginDefault implements CKEditor5PluginCo
   }
 
 }
-

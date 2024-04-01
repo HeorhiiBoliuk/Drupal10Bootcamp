@@ -30,17 +30,17 @@ export default class DemoLinkEditing extends Plugin {
     schema.register('demoLink', {
       inheritAllFrom: '$inlineObject',
       allowAttributes: [
-        'demoLinkUrl',
-        'demoBackgroundColor',
-        'demoTextColor',
-        'demoLinkClass'
+        'customUrl',
+        'customBackgroundColor',
+        'customTextColor',
+        'customClass'
       ],
       allowChildren: [
-        'demoLinkText',
+        'customText',
       ],
     });
 
-    schema.register('demoLinkText', {
+    schema.register('customText', {
       allowIn: 'demoLink',
       isLimit: true,
       allowContentOf: '$block',
@@ -72,9 +72,9 @@ export default class DemoLinkEditing extends Plugin {
           return null;
         }
         const attrs = {
-          'demoLinkUrl': viewElement.getAttribute('href'),
-          'demoBackgroundColor': viewElement.getStyle('background-color'),
-          'demoTextColor': viewElement.getStyle('color')
+          'customUrl': viewElement.getAttribute('href'),
+          'customBackgroundColor': viewElement.getStyle('background-color'),
+          'customTextColor': viewElement.getStyle('color')
         };
         return writer.createElement('demoLink', attrs);
       }
@@ -86,7 +86,7 @@ export default class DemoLinkEditing extends Plugin {
         const htmlAttrs = {
           'class': 'demo-link',
           'href': modelElement.getAttribute('demoLinkUrl'),
-          'style': `background-color: ${modelElement.getAttribute('demoBackgroundColor')}; color: ${modelElement.getAttribute('demoTextColor')};`
+          'style': `background-color: ${modelElement.getAttribute('customBackgroundColor')}; color: ${modelElement.getAttribute('customTextColor')};`
         };
         return writer.createContainerElement('a', htmlAttrs);
       }
@@ -104,11 +104,11 @@ export default class DemoLinkEditing extends Plugin {
         }
       },
       model: {
-        key: 'demoLinkUrl',
+        key: 'customUrl',
         value: viewElement => {
           const attrs = {
-            'demoLinkUrl': viewElement.getAttribute('href'),
-            'demoTextColor': viewElement.getStyle('color')
+            'customUrl': viewElement.getAttribute('href'),
+            'customTextColor': viewElement.getStyle('color')
           };
           return attrs;
         }
@@ -138,17 +138,17 @@ export default class DemoLinkEditing extends Plugin {
         classes: 'text',
       },
       model: ( viewElement, { writer } ) => {
-        return writer.createElement('demoLinkText');
+        return writer.createElement('customText');
       }
     });
 
     // demoLinkText. Model -> View.
     conversion.for('downcast').elementToElement({
-      model: 'demoLinkText',
+      model: 'customText',
       view: ( modelElement, { writer: viewWriter } ) => {
         return viewWriter.createContainerElement('span', {class: 'text'});
       }
     });
   }
 
-  }
+}
