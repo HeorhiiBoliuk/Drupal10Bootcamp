@@ -20,6 +20,7 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  custom_location: 0
   datetime: 0
   dblog: 0
   devel: 0
@@ -38,6 +39,7 @@ module:
   filter: 0
   fontawesome: 0
   form_api_example: 0
+  geofield: 0
   help: 0
   history: 0
   image: 0
