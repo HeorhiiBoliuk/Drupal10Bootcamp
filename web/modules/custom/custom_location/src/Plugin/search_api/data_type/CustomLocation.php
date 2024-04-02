@@ -5,7 +5,7 @@ namespace Drupal\custom_location\Plugin\search_api\data_type;
 use Drupal\search_api\DataType\DataTypePluginBase;
 
 /**
- * Provides a custom full text data type.
+ * Provides a custom location data type.
  *
  * @SearchApiDataType(
  *   id = "custom_location",
