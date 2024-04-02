@@ -1,0 +1,6 @@
+name: Custom Location
+type: module
+description: 'Add field type location'
+core_version_requirement: ^9 || ^10
+package: Custom
+

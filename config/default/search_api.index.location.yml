@@ -1,16 +1,15 @@
-uuid: c4ab22a2-6833-4624-841a-745b199d87d9
+uuid: 9043f801-6442-45f5-9795-815ebb16593b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
-    - field.storage.node.field_category
+    - field.storage.node.field_location
     - search_api.server.solr
   module:
     - search_api_solr
-    - node
+    - custom_location
     - search_api
-    - taxonomy
+    - node
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -58,63 +57,25 @@ third_party_settings:
       specific_languages:
         en: '0'
       use_universal_collation: false
-id: solr
-name: solr
+id: location
+name: location
 description: ''
 read_only: false
 field_settings:
-  aggregated_field:
-    label: 'Aggregated field'
-    property_path: aggregated_field
-    type: 'solr_text_custom:ngram'
-    configuration:
-      type: union
-      separator: |+
-
-
-
-      fields:
-        - 'entity:node/body'
-        - 'entity:node/title'
-  body:
-    label: Body
+  latlon:
+    label: 'location » LatLong Pair'
     datasource_id: 'entity:node'
-    property_path: body
-    type: 'solr_text_custom:ngram'
+    property_path: 'field_location:latlon'
+    type: custom_location
     dependencies:
       config:
-        - field.storage.node.body
-  field_category:
-    label: Category
-    datasource_id: 'entity:node'
-    property_path: field_category
-    type: string
-    dependencies:
-      config:
-        - field.storage.node.field_category
-  title:
-    label: Title
-    datasource_id: 'entity:node'
-    property_path: title
-    type: 'solr_text_custom:ngram'
-    dependencies:
-      module:
-        - node
+        - field.storage.node.field_location
 datasource_settings:
   'entity:node':
     bundles:
       default: false
       selected:
-        - article
         - store
-    languages:
-      default: true
-      selected: {  }
-  'entity:taxonomy_term':
-    bundles:
-      default: false
-      selected:
-        - news
     languages:
       default: true
       selected: {  }
