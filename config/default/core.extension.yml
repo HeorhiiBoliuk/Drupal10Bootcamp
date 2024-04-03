@@ -1,8 +1,11 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  action: 0
+  action_example: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  ajax_example: 0
   announcements_feed: 0
   automated_cron: 0
   batch_api_drush: 0
@@ -14,34 +17,46 @@ module:
   block_content: 0
   block_example: 0
   breakpoint: 0
+  cache_example: 0
   ckeditor5: 0
   comment: 0
   components: 0
   config: 0
+  config_entity_example: 0
   contact: 0
+  content_entity_example: 0
   contextual: 0
+  cron_example: 0
   custom_location: 0
+  custom_map_plugin: 0
   datetime: 0
   dblog: 0
+  dbtng_example: 0
   devel: 0
   devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
+  email_example: 0
   emulsify_twig: 0
   entity_pager: 0
   entity_reference_revisions: 0
+  events_example: 0
   examples: 0
   facets: 0
   field: 0
+  field_example: 0
   field_layout: 0
+  field_permission_example: 0
   field_ui: 0
   file: 0
+  file_example: 0
   filter: 0
   fontawesome: 0
   form_api_example: 0
   geofield: 0
   help: 0
   history: 0
+  hooks_example: 0
   image: 0
   jquery_ui: 0
   jquery_ui_datepicker: 0
@@ -55,29 +70,43 @@ module:
   link: 0
   media: 0
   media_library: 0
+  menu_example: 0
   menu_item_extras: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
   node: 0
+  node_type_example: 0
   options: 0
   page_cache: 0
+  page_example: 0
+  pager_example: 0
   path: 0
   path_alias: 0
+  phpunit_example: 0
+  plugin_type_example: 0
+  queue_example: 0
   registration_form_custom: 0
+  render_example: 0
   sdc: 0
   search: 0
   search_api: 0
   search_api_solr: 0
   serialization: 0
+  session_example: 0
   shortcut: 0
+  stream_wrapper_example: 0
   svg_image: 0
   system: 0
+  tabledrag_example: 0
+  tablesort_example: 0
   taxonomy: 0
+  testing_example: 0
   text: 0
   theming_example: 0
   token: 0
   toolbar: 0
+  tour: 0
   twig_tweak: 0
   update: 0
   user: 0

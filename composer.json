@@ -114,7 +114,10 @@
         }
     },
     "scripts": {
-        "phpcs": "phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md"
+        "phpcs": "phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md",
+        "post-install-cmd": [
+            "npm install leaflet"
+        ]
     },
     "require-dev": {
         "drupal/core-dev": "^10.2",
