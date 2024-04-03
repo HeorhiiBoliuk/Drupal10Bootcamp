@@ -10,7 +10,7 @@
 
         const locations = settings.locations_stores.locations;
 
-        var markers = L.layerGroup();
+        const markers = L.layerGroup();
 
         const markerHtmlStyles = `
         background-color: ${myCustomColour};
@@ -28,9 +28,9 @@
           const latitude = location.latitude;
           const longitude = location.longitude;
 
-          var point = [latitude, longitude];
+          const point = [latitude, longitude];
 
-          var marker = L.marker(point, {
+          const marker = L.marker(point, {
             icon: L.divIcon({
               className: "my-custom-pin",
               html: `<span style="${markerHtmlStyles}" />`
@@ -39,7 +39,7 @@
           marker.addTo(markers);
         });
 
-        var map = L.map('leaflet-map').setView([51.505, -0.09], myCustomZoom);
+        const map = L.map('leaflet-map').setView([51.505, -0.09], myCustomZoom);
 
         markers.addTo(map);
 
