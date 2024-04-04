@@ -1,0 +1,13 @@
+<?php
+/**
+ * Implement hook_theme().
+ */
+function copyrights_block_theme(): array {
+  return [
+    'copyrights_block_template' => [
+      'variables' => [
+        'field_copyright' => NULL,
+      ],
+    ],
+  ];
+}

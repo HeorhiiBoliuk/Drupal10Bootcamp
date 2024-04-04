@@ -2,13 +2,13 @@
 
 namespace Drupal\copyrights_block\Plugin\Block;
 
+use Drupal\config_pages\ConfigPagesLoaderServiceInterface;
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\token\TokenInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -26,8 +26,8 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
   public function __construct(array $configuration,
     $plugin_id,
     $plugin_definition,
-    protected TokenInterface $token,
     protected EntityTypeManagerInterface $entityTypeManager,
+    protected ConfigPagesLoaderServiceInterface $configPages,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
@@ -40,8 +40,8 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('token'),
       $container->get('entity_type.manager'),
+      $container->get('config_pages.loader'),
     );
   }
 
@@ -59,11 +59,11 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
    * {@inheritdoc}
    */
   public function build(): array {
-    $config = $this->entityTypeManager->getStorage('config_pages')->load('global_configurations');
-    $token_text = $config->get('field_copyright')->value;
-    $copyright_text = $this->token->replace($token_text);
-    $build['content'] = [
-      '#markup' => $copyright_text,
+    $field_copyright = $this->configPages->getFieldView('global_configurations', 'field_copyright');
+
+    $build = [
+      '#theme' => 'copyrights_block_template',
+      '#field_copyright' => $field_copyright,
       '#cache' => ['tags' => ['config_pages:1']],
     ];
     return $build;
