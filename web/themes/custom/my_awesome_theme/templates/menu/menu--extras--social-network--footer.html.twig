@@ -10,9 +10,12 @@
   {% endif %}
 {% endfor %}
 
-<h2 id="block-my-awesome-theme-socialnetwork-2-menu">
-  {{ social_label }}
-</h2>
+{% set social_label = config_pages_field('global_configurations', 'field_social_label', 'full') %}
+{% if (social_label != 0) %}
+  <h2 id="block-my-awesome-theme-socialnetwork-2-menu">
+    {{ social_label }}
+  </h2>
+{% endif %}
 {% include '@atoms/social_list/social_list.twig' with {
   social_item: social_list
 } %}
