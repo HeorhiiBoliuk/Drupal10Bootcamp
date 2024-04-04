@@ -1,6 +1,6 @@
 uuid: 5a244b93-1cf6-4f39-a869-b2f1a1d2bf36
 langcode: en
-status: true
+status: false
 dependencies:
   content:
     - 'block_content:basic:82c557e6-f254-42fb-85cb-4450556396fe'
@@ -16,7 +16,7 @@ provider: null
 plugin: 'block_content:82c557e6-f254-42fb-85cb-4450556396fe'
 settings:
   id: 'block_content:82c557e6-f254-42fb-85cb-4450556396fe'
-  label: '© Newspaper WordPress Theme by TagDiv'
+  label: 'Copyright © 2024 Bootcamp#7'
   label_display: visible
   provider: block_content
   status: true

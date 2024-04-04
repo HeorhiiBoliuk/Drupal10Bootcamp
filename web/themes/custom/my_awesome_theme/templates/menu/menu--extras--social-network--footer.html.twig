@@ -10,6 +10,9 @@
   {% endif %}
 {% endfor %}
 
+<h2 id="block-my-awesome-theme-socialnetwork-2-menu">
+  {{ social_label }}
+</h2>
 {% include '@atoms/social_list/social_list.twig' with {
   social_item: social_list
 } %}

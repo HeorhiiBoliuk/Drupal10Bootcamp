@@ -1,0 +1,5 @@
+name: 'Copyrights block'
+type: module
+description: 'Let the config page for copyright block'
+core_version_requirement: ^9 || ^10
+package: Custom

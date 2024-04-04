@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - editor
+    - token_filter
 _core:
   default_config_hash: vpZysv3RHJjhYzq7O_q5q8mVlHdrSzKELmXyiX6RtV0
 name: 'Full HTML'
@@ -49,3 +50,10 @@ filters:
     status: true
     weight: 15
     settings: {  }
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: 0
+    settings:
+      replace_empty: '0'
