@@ -4,8 +4,12 @@ namespace Drupal\copyrights_block\Plugin\Block;
 
 use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\token\TokenInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a block copyright block.
@@ -14,7 +18,32 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 id: "copyright_block",
 admin_label: new TranslatableMarkup("Copyright Block"),
 )]
-final class BlockCopyrightBlock extends BlockBase {
+final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Constructor for BlockCopyrightBlock.
+   */
+  public function __construct(array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    protected TokenInterface $token,
+    protected EntityTypeManagerInterface $entityTypeManager,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('token'),
+      $container->get('entity_type.manager'),
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -30,9 +59,9 @@ final class BlockCopyrightBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build(): array {
-    $config = \Drupal::entityTypeManager()->getStorage('config_pages')->load('global_configurations');
+    $config = $this->entityTypeManager->getStorage('config_pages')->load('global_configurations');
     $token_text = $config->get('field_copyright')->value;
-    $copyright_text = \Drupal::token()->replace($token_text);
+    $copyright_text = $this->token->replace($token_text);
     $build['content'] = [
       '#markup' => $copyright_text,
       '#cache' => ['tags' => ['config_pages:1']],
