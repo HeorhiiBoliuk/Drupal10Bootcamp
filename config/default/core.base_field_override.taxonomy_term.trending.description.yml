@@ -1,0 +1,21 @@
+uuid: 8e3d2495-e277-4102-855b-852e2bc8f180
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trending
+  module:
+    - text
+id: taxonomy_term.trending.description
+field_name: description
+entity_type: taxonomy_term
+bundle: trending
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

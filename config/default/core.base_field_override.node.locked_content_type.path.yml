@@ -1,0 +1,20 @@
+uuid: 27212880-050d-4598-bc20-61b1f6916bdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.locked_content_type
+  module:
+    - path
+id: node.locked_content_type.path
+field_name: path
+entity_type: node
+bundle: locked_content_type
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

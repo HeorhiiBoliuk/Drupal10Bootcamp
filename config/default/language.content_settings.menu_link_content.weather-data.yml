@@ -1,0 +1,18 @@
+uuid: 387305a7-d081-4668-b842-37e6f9ee7aba
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.weather-data
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.weather-data
+target_entity_type_id: menu_link_content
+target_bundle: weather-data
+default_langcode: site_default
+language_alterable: false

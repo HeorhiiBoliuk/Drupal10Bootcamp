@@ -1,0 +1,18 @@
+uuid: 9935abbc-f352-4a5b-99b5-6392da30ed77
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_button
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: block_content.top_button
+target_entity_type_id: block_content
+target_bundle: top_button
+default_langcode: site_default
+language_alterable: false

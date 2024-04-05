@@ -1,0 +1,18 @@
+uuid: 9f29bc95-47e3-488f-a1d2-b451212fa380
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.header-buttons
+id: menu_link_content.header-buttons.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: header-buttons
+label: Changed
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: 8ef860cd-a3bc-42d0-83c0-5f7176778b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.overview_grid
+id: taxonomy_term.overview_grid.name
+field_name: name
+entity_type: taxonomy_term
+bundle: overview_grid
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

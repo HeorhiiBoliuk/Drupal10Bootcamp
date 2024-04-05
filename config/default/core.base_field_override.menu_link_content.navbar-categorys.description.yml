@@ -1,0 +1,18 @@
+uuid: e7932b80-2f22-43a4-ab44-eb672323941c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.navbar-categorys
+id: menu_link_content.navbar-categorys.description
+field_name: description
+entity_type: menu_link_content
+bundle: navbar-categorys
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 03264946-5d1b-450b-9ba8-851c69763afb
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_languageswitcher
+theme: my_awesome_theme
+region: top_header
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  label_display: '0'
+  provider: language
+visibility: {  }

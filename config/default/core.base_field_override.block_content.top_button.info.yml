@@ -1,0 +1,18 @@
+uuid: c9cd93b6-1eb6-405c-9cd0-27d39b35013b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_button
+id: block_content.top_button.info
+field_name: info
+entity_type: block_content
+bundle: top_button
+label: 'Block description'
+description: 'A brief description of your block.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

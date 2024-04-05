@@ -1,0 +1,20 @@
+uuid: fc7be94a-51dd-4f8a-a45e-54ea935aabca
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.store
+  module:
+    - path
+id: node.store.path
+field_name: path
+entity_type: node
+bundle: store
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

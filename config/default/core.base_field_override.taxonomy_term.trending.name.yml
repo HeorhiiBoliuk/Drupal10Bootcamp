@@ -1,0 +1,18 @@
+uuid: c01023a6-c440-4c61-9874-632d6afc6989
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trending
+id: taxonomy_term.trending.name
+field_name: name
+entity_type: taxonomy_term
+bundle: trending
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

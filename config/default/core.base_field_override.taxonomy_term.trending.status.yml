@@ -1,0 +1,22 @@
+uuid: e2ef2664-d504-4bf0-a143-b8e4ad42f885
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trending
+id: taxonomy_term.trending.status
+field_name: status
+entity_type: taxonomy_term
+bundle: trending
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

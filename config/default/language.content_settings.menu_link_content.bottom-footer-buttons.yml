@@ -1,0 +1,18 @@
+uuid: e4d4e275-6be4-409b-aea3-435e16c14749
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.bottom-footer-buttons
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.bottom-footer-buttons
+target_entity_type_id: menu_link_content
+target_bundle: bottom-footer-buttons
+default_langcode: site_default
+language_alterable: false

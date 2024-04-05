@@ -1,0 +1,21 @@
+uuid: 21b634ef-28d5-4750-92e3-c308e04f5989
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.overview_grid
+  module:
+    - text
+id: taxonomy_term.overview_grid.description
+field_name: description
+entity_type: taxonomy_term
+bundle: overview_grid
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,18 @@
+uuid: 1df11a7c-16d1-48e3-ab23-09a6fe3d458f
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.weather-data
+id: menu_link_content.weather-data.title
+field_name: title
+entity_type: menu_link_content
+bundle: weather-data
+label: 'Menu link title'
+description: 'The text to be used for this link in the menu.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
