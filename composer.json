@@ -12,6 +12,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -57,6 +61,10 @@
         "sort-packages": true
     },
     "extra": {
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+            ],
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
@@ -67,7 +75,9 @@
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:drupal-library",
+                "type:bower-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -114,10 +124,7 @@
         }
     },
     "scripts": {
-        "phpcs": "phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md",
-        "post-install-cmd": [
-            "npm install leaflet"
-        ]
+        "phpcs": "phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md"
     },
     "require-dev": {
         "drupal/core-dev": "^10.2",
