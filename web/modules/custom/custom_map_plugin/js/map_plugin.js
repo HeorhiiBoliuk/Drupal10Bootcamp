@@ -3,13 +3,14 @@
 
   Drupal.behaviors.customMapBehavior = {
     attach: function (context, settings) {
-      once('customMapBehavior', '#leaflet-map', context).forEach(function (element){
-        const myCustomColour = settings.customMapView.color;
-        const myCustomSize = settings.customMapView.size;
-        const myCustomZoom = settings.customMapView.zoom;
+      once('customMapBehavior', '.leaflet-map', context).forEach(function (element){
+        const displayMapId = element.getAttribute('data-display-id');
 
-        const locations = settings.locations_stores.locations;
+        const myCustomColour = settings.customMapView[displayMapId].color;
+        const myCustomSize = settings.customMapView[displayMapId].size;
+        const myCustomZoom = settings.customMapView[displayMapId].zoom;
 
+        const locations = settings.locations_stores[displayMapId][0].locations;
         const markers = L.layerGroup();
 
         const markerHtmlStyles = `
@@ -20,6 +21,7 @@
         locations.forEach(function(location) {
           const latitude = location.latitude;
           const longitude = location.longitude;
+          console.log(latitude, longitude);
 
           const point = [latitude, longitude];
 
@@ -31,6 +33,8 @@
           });
           marker.addTo(markers);
         });
+
+
 
         const map = L.map(element).setView([51.505, -0.09], myCustomZoom);
 

@@ -79,22 +79,18 @@ class StoreLocations extends AreaPluginBase {
    */
   public function render($empty = FALSE) {
     $locations = $this->getStoresLocation();
+    $current_display_id = $this->view->id();
     if (!$empty || !empty($this->options['empty'])) {
-      return [
-        '#markup' => '<div id="leaflet-map"></div>',
-        '#attached' => [
-          'drupalSettings' => [
-            'locations_stores' => [
-              'locations' => $locations,
-            ],
-            'customMapView' => [
-              'color' => $this->options['color'],
-              'size' => $this->options['size'],
-              'zoom' => $this->options['zoom'],
-            ],
-          ],
-        ],
+      $build['#markup'] = "<div class='leaflet-map' data-display-id='$current_display_id'></div>";
+      $build['#attached']['drupalSettings']['customMapView'][$current_display_id] = [
+        'color' => $this->options['color'],
+        'size' => $this->options['size'],
+        'zoom' => $this->options['zoom'],
       ];
+      $build['#attached']['drupalSettings']['locations_stores'][$current_display_id][] = [
+        'locations' => $locations,
+      ];
+      return $build;
     }
     return NULL;
   }
