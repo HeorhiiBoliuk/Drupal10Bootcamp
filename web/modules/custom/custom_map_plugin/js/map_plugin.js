@@ -3,7 +3,7 @@
 
   Drupal.behaviors.customMapBehavior = {
     attach: function (context, settings) {
-      once('customMapBehavior', '#leaflet-map', context).forEach(function (){
+      once('customMapBehavior', '#leaflet-map', context).forEach(function (element){
         const myCustomColour = settings.customMapView.color;
         const myCustomSize = settings.customMapView.size;
         const myCustomZoom = settings.customMapView.zoom;
@@ -15,14 +15,7 @@
         const markerHtmlStyles = `
         background-color: ${myCustomColour};
         width: ${myCustomSize}rem;
-        height: ${myCustomSize}rem;
-        display: block;
-        left: -1.5rem;
-        top: -1.5rem;
-        position: relative;
-        border-radius: 3rem 3rem 0;
-        transform: rotate(45deg);
-        border: 1px solid #FFFFFF;`;
+        height: ${myCustomSize}rem;`;
 
         locations.forEach(function(location) {
           const latitude = location.latitude;
@@ -39,7 +32,7 @@
           marker.addTo(markers);
         });
 
-        const map = L.map('leaflet-map').setView([51.505, -0.09], myCustomZoom);
+        const map = L.map(element).setView([51.505, -0.09], myCustomZoom);
 
         markers.addTo(map);
 
