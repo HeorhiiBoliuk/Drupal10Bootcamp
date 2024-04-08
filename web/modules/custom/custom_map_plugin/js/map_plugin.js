@@ -21,7 +21,6 @@
         locations.forEach(function(location) {
           const latitude = location.latitude;
           const longitude = location.longitude;
-          console.log(latitude, longitude);
 
           const point = [latitude, longitude];
 
