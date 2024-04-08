@@ -31,6 +31,7 @@ module:
   copyrights_block: 0
   cron_example: 0
   custom_location: 0
+  custom_map_plugin: 0
   datetime: 0
   dblog: 0
   dbtng_example: 0
