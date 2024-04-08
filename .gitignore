@@ -9,3 +9,4 @@
 /web/core
 /node_modules
 /.ddev/.ddev-docker-compose-full.yaml
+/web/modules/custom/custom_map_plugin/libraries

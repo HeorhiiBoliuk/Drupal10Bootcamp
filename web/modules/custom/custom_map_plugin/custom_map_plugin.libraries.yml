@@ -1,0 +1,10 @@
+leaflet:
+  js:
+    ../../../libraries/leaflet/dist/leaflet.js: {}
+    js/map_plugin.js: {}
+  dependencies:
+    - core/once
+  css:
+    theme:
+      ../../../libraries/leaflet/dist/leaflet.css: {}
+      css/custom_map_plugin.css: {}

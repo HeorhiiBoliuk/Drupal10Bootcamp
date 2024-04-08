@@ -1,0 +1,24 @@
+uuid: 41fdf994-ab7d-47ec-8bc3-0c2c2030b78b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.our_stores
+  module:
+    - views
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_views_block__our_stores_block_1
+theme: my_awesome_theme
+region: content
+weight: -16
+provider: null
+plugin: 'views_block:our_stores-block_1'
+settings:
+  id: 'views_block:our_stores-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility: {  }
