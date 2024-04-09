@@ -2,9 +2,12 @@
 
 namespace Drupal\custom_migration_users\Plugin\migrate\destination;
 
-use Drupal\migrate\Annotation\MigrateDestination;
-use Drupal\migrate\Plugin\MigrateDestinationInterface;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\migrate\Plugin\migrate\destination\DestinationBase;
+use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Custom migrate destination plugin for users extra fields.
@@ -13,7 +16,39 @@ use Drupal\migrate\Row;
  *   id = "my_custom_fields"
  * )
  */
-class MyCustomFields implements MigrateDestinationInterface {
+class MyCustomFields extends DestinationBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Constructor for DestinationPlugin class.
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    MigrationInterface $migration,
+    protected Connection $database,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $migration);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(
+    ContainerInterface $container,
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    MigrationInterface $migration = NULL,
+  ): static {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $migration,
+      $container->get('database'),
+    );
+  }
 
   /**
    * {@inheritDoc}
@@ -38,11 +73,11 @@ class MyCustomFields implements MigrateDestinationInterface {
    * {@inheritDoc}
    */
   public function import(Row $row, array $old_destination_id_values = []): void {
-    $uid = $row->getSourceProperty('uid');
-    $country = $row->getSourceProperty('country');
-    $city_name = $row->getSourceProperty('city_name');
-    $interested = $row->getSourceProperty('interested');
-    \Drupal::database()->upsert('extra_field_register')
+    $uid = $row->getDestinationProperty('uid');
+    $country = $row->getDestinationProperty('country');
+    $city_name = $row->getDestinationProperty('city_name');
+    $interested = $row->getDestinationProperty('interested');
+    $this->database->upsert('extra_field_register')
       ->fields([
         'uid' => $uid,
         'country' => $country,
@@ -59,7 +94,7 @@ class MyCustomFields implements MigrateDestinationInterface {
   public function rollback(array $destination_identifier): void {
     if ($this->supportsRollback() && isset($destination_identifier['uid'])) {
       $uid = $destination_identifier['uid'];
-      \Drupal::database()->delete('extra_field_register')
+      $this->database->delete('extra_field_register')
         ->condition('uid', $uid)
         ->execute();
     }
@@ -98,10 +133,7 @@ class MyCustomFields implements MigrateDestinationInterface {
    */
   public function getPluginDefinition(): array {
     return [
-      'uid' => 'Users id',
-      'country' => 'Countries',
-      'city_name' => 'City name',
-      'interested' => 'Interested in',
+      'Insert a values in custom extra_fields table',
     ];
   }
 
