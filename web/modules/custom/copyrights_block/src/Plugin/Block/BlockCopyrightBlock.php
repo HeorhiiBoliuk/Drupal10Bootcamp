@@ -15,8 +15,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides a block copyright block.
  */
 #[Block(
-id: "copyright_block",
-admin_label: new TranslatableMarkup("Copyright Block"),
+  id: "copyright_block",
+  admin_label: new TranslatableMarkup("Copyright Block"),
 )]
 final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
@@ -50,7 +50,7 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
    */
   public function blockForm($form, FormStateInterface $form_state): array {
     $form['url'] = [
-      '#markup' => 'Copyrights text can be edited <a href="http://my-site.ddev.site/admin/structure/config_pages">here</a>',
+      '#markup' => $this->t('Copyrights text can be edited <a href=":config_link">here</a>', [':config_link' => '/admin/structure/config_pages']),
     ];
     return $form;
   }
@@ -60,9 +60,19 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
    */
   public function build(): array {
     $config_page = $this->configPages->load('global_configurations');
-    $field_copyright = $config_page->get('field_copyright')->view('full');
+    if (!empty($config_page)) {
+      $field_copyright = $config_page->get('field_copyright')->view('full');
 
-    return $field_copyright;
+      return $field_copyright;
+    }
+    else {
+      $definition = $this->entityTypeManager->getDefinition('config_page');
+      $cache_tag = $definition->getListCacheTags();
+      return [
+        '#markup' => 'No copyrights found',
+        '#cache' => ['tags' => $cache_tag],
+      ];
+    }
   }
 
 }
