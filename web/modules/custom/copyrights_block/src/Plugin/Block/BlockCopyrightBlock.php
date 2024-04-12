@@ -60,9 +60,14 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
    */
   public function build(): array {
     $config_page = $this->configPages->load('global_configurations');
-    $field_copyright = $config_page->get('field_copyright')->view('full');
+    if (!empty($config_page)) {
+      $field_copyright = $config_page->get('field_copyright')->view('full');
 
-    return $field_copyright;
+      return $field_copyright;
+    }
+    else {
+      return [''];
+    }
   }
 
 }
