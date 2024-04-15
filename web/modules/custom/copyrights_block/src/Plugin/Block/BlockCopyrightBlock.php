@@ -69,7 +69,7 @@ final class BlockCopyrightBlock extends BlockBase implements ContainerFactoryPlu
       $definition = $this->entityTypeManager->getDefinition('config_page');
       $cache_tag = $definition->getListCacheTags();
       return [
-        '#markup' => 'No copyrights found',
+        '#markup' => $this->t('No copyrights found'),
         '#cache' => ['tags' => $cache_tag],
       ];
     }
