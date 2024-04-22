@@ -1,0 +1,20 @@
+uuid: 850ca8fa-5692-4a7a-8a07-228aa334c0e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.svg
+id: media.svg.name
+field_name: name
+entity_type: media
+bundle: svg
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

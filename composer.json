@@ -24,6 +24,7 @@
         "drupal/adminimal_theme": "^1.7",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/components": "^3.0@beta",
+        "drupal/config_pages": "^2.15",
         "drupal/core-composer-scaffold": "^10.2",
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
@@ -43,6 +44,7 @@
         "drupal/search_api": "^1.31",
         "drupal/search_api_solr": "^4.3",
         "drupal/svg_image": "^3.0",
+        "drupal/token_filter": "^2.1",
         "drupal/twig_tweak": "^3.2",
         "drupal/video_embed_field": "^2.5",
         "enshrined/svg-sanitize": "^0.18"

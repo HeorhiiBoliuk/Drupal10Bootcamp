@@ -1,0 +1,25 @@
+uuid: c69bc063-fd0f-4412-824a-410de7a84c8b
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:c71e9e10-807d-43ea-b121-185c6a2132a2'
+  module:
+    - block_content
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_copyrights
+theme: my_awesome_theme
+region: bottom_footer
+weight: -14
+provider: null
+plugin: 'block_content:c71e9e10-807d-43ea-b121-185c6a2132a2'
+settings:
+  id: 'block_content:c71e9e10-807d-43ea-b121-185c6a2132a2'
+  label: Copyrights
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

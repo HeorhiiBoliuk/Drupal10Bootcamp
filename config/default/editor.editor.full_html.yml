@@ -35,7 +35,7 @@ settings:
       - '|'
       - sourceEditing
       - '|'
-      - DemoLink
+      - tokenBrowser
   plugins:
     ckeditor5_codeBlock:
       languages:
@@ -97,10 +97,8 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
-    custom_plugin_ck_ckeditor5_demo_link_demoLink:
-      enabled_types:
-        color: '#fff'
-        background_color: '#000'
+    token_filter_token_browser:
+      token_types: {  }
 image_upload:
   status: true
   scheme: public

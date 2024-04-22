@@ -1,0 +1,24 @@
+uuid: 635306dd-e559-47d9-aebb-0a85b174c454
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.global_configurations
+    - field.storage.config_pages.field_copyright
+    - filter.format.plain_token_text
+  module:
+    - text
+id: config_pages.global_configurations.field_copyright
+field_name: field_copyright
+entity_type: config_pages
+bundle: global_configurations
+label: copyright
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - plain_token_text
+field_type: text

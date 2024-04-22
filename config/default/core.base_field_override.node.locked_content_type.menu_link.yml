@@ -1,0 +1,20 @@
+uuid: 0fab2858-ce66-44c6-857d-65934c500aea
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.locked_content_type
+id: node.locked_content_type.menu_link
+field_name: menu_link
+entity_type: node
+bundle: locked_content_type
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,18 @@
+uuid: fdfb0df6-b6f3-445c-8085-835d2543e793
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.bottom-footer-buttons
+id: menu_link_content.bottom-footer-buttons.description
+field_name: description
+entity_type: menu_link_content
+bundle: bottom-footer-buttons
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

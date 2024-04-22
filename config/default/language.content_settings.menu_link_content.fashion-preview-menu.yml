@@ -1,0 +1,18 @@
+uuid: 9e7bedb7-3d71-496a-ae4e-64185d87de00
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.fashion-preview-menu
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.fashion-preview-menu
+target_entity_type_id: menu_link_content
+target_bundle: fashion-preview-menu
+default_langcode: site_default
+language_alterable: false

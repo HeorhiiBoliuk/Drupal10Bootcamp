@@ -1,0 +1,18 @@
+uuid: 1183ea92-7d57-4560-8a62-321602fd4f3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.locked_content_type
+id: node.locked_content_type.created
+field_name: created
+entity_type: node
+bundle: locked_content_type
+label: 'Authored on'
+description: 'The date and time that the content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

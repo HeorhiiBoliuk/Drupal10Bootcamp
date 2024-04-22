@@ -1,0 +1,18 @@
+uuid: 1db4ea3f-9773-49a8-9bfa-2dae0cc79397
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trending
+id: taxonomy_term.trending.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: trending
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

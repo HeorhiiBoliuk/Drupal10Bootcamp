@@ -1,0 +1,18 @@
+uuid: eb5b3426-0cba-4468-abf8-106d609c99e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.fashion-preview-menu
+id: menu_link_content.fashion-preview-menu.description
+field_name: description
+entity_type: menu_link_content
+bundle: fashion-preview-menu
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

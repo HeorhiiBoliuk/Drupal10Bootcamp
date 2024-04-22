@@ -1,0 +1,18 @@
+uuid: 37d160fb-448c-4e25-aac4-e4658d15299a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.top_button
+id: block_content.top_button.changed
+field_name: changed
+entity_type: block_content
+bundle: top_button
+label: Changed
+description: 'The time that the content block was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

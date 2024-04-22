@@ -1,0 +1,18 @@
+uuid: cc9872c5-de85-4c8f-9ad3-4fd8f07865ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social-network
+id: menu_link_content.social-network.description
+field_name: description
+entity_type: menu_link_content
+bundle: social-network
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

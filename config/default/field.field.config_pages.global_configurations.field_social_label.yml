@@ -1,0 +1,19 @@
+uuid: 5a4c789f-b580-4917-acb9-5a5eed63de1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.global_configurations
+    - field.storage.config_pages.field_social_label
+id: config_pages.global_configurations.field_social_label
+field_name: field_social_label
+entity_type: config_pages
+bundle: global_configurations
+label: social_label
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

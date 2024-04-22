@@ -1,0 +1,20 @@
+uuid: a04cfdbb-9f48-4a4c-9482-3811de14d8dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.overview_grid
+  module:
+    - path
+id: taxonomy_term.overview_grid.path
+field_name: path
+entity_type: taxonomy_term
+bundle: overview_grid
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

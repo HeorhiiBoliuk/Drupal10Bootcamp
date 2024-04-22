@@ -1,0 +1,21 @@
+uuid: 41b6fcaf-3631-4260-ac57-a8e50c18d011
+langcode: en
+status: true
+dependencies:
+  module:
+    - copyrights_block
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_copyrightblock
+theme: my_awesome_theme
+region: bottom_footer
+weight: -17
+provider: null
+plugin: copyright_block
+settings:
+  id: copyright_block
+  label: 'Copyright Block'
+  label_display: '0'
+  provider: copyrights_block
+  example: null
+visibility: {  }

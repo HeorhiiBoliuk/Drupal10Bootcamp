@@ -1,0 +1,20 @@
+uuid: 79b82f22-887b-40a4-b63b-96c82c68678e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.trending
+  module:
+    - path
+id: taxonomy_term.trending.path
+field_name: path
+entity_type: taxonomy_term
+bundle: trending
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

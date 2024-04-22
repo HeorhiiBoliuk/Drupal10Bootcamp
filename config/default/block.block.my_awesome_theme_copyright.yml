@@ -1,0 +1,32 @@
+uuid: 1251da67-8576-42a3-ba0b-ad6af8a6fb45
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:67e2f711-94e3-41ae-9590-e940ad7b32a6'
+  module:
+    - block_content
+    - config_pages
+  theme:
+    - my_awesome_theme
+id: my_awesome_theme_copyright
+theme: my_awesome_theme
+region: bottom_footer
+weight: -13
+provider: null
+plugin: 'block_content:67e2f711-94e3-41ae-9590-e940ad7b32a6'
+settings:
+  id: 'block_content:67e2f711-94e3-41ae-9590-e940ad7b32a6'
+  label: Copyright
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  config_pages_values_access:
+    id: config_pages_values_access
+    negate: false
+    config_page_field: global_configurations|field_copyrights|string
+    operator: '=='
+    condition_value: ''

@@ -1,0 +1,18 @@
+uuid: 84e078d4-9422-4555-96ac-7e07c44b3ee1
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.lifestyle-preview-menu
+id: menu_link_content.lifestyle-preview-menu.description
+field_name: description
+entity_type: menu_link_content
+bundle: lifestyle-preview-menu
+label: Description
+description: 'Shown when hovering over the menu link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

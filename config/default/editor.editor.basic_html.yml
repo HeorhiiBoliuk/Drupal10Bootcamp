@@ -28,7 +28,7 @@ settings:
       - code
       - '|'
       - sourceEditing
-      - DemoLink
+      - tokenBrowser
   plugins:
     ckeditor5_heading:
       enabled_headings:
@@ -59,6 +59,8 @@ settings:
         - '<h4 id>'
         - '<h5 id>'
         - '<h6 id>'
+    token_filter_token_browser:
+      token_types: {  }
 image_upload:
   status: true
   scheme: public
