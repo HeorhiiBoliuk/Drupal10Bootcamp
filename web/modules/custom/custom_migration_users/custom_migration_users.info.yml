@@ -1,0 +1,4 @@
+name: Migrate users
+type: module
+description: Adds users migration from csv
+core_version_requirement: ^9 || ^10

@@ -1,0 +1,39 @@
+id: import_csv_users_extra_fields
+label: Import users extra fields
+migration_group: custom_users
+
+source:
+  plugin: 'csv'
+  path: 'modules/custom/custom_migration_users/assets/users_extra_fields.csv'
+  delimiter: ','
+  enclosure: '"'
+  header_offset: 0
+  ids:
+    - uid
+  fields:
+    0:
+      name: uid
+      label: 'User id'
+    1:
+      name: country
+      label: 'User country'
+    2:
+      name: city_name
+      label: 'User city'
+    3:
+      name: interested
+      label: 'Interested in'
+
+process:
+  uid: uid
+  country: country
+  city_name: city_name
+  interested: interested
+
+destination:
+  plugin: my_custom_fields
+
+migration_dependencies:
+  required:
+    - import_csv_users
+  optional: {  }

@@ -1,0 +1,4 @@
+ID,name,email,firstname,lastname,Status,roles,Password
+212,george2,george.jollyoff@gmail.com,Geroge,Boluk,1,"administrator,migrationuser",123
+213,GeorgeJollyoff2,jollyoff.george@gmail.com,jolly,off,1,authenticated,123
+214,heorhii2,heorhii@gmail.com,heorhii,boliuk,1,"migrationuser,administrator",123
