@@ -1,0 +1,4 @@
+name: Custom Multistep Form.
+type: module
+description: Adds a multistep form.
+core_version_requirement: ^9 || ^10
