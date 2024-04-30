@@ -16,9 +16,9 @@ class CustomMultistepCheckoutForm extends FormBase {
    * Steps names.
    */
   protected $stepNames = [
-    1 => 'Products',
-    2 => 'Delivery',
-    3 => 'Payment',
+    'Products',
+    'Delivery',
+    'Payment',
   ];
 
   /**
@@ -52,7 +52,7 @@ class CustomMultistepCheckoutForm extends FormBase {
     $config = $this->configFact->getEditable('custom_multistep_form.settings');
     $finished = $form_state->getStorage()['finished'] ?? 0;
     $enabled_steps = 0;
-    for ($i = 1; $i <= 3; $i++) {
+    for ($i = 0; $i <= 2; $i++) {
       $step_config = $config->get($this->stepNames[$i]);
       if ($step_config['enabled']) {
         $enabled_steps++;
@@ -93,30 +93,27 @@ class CustomMultistepCheckoutForm extends FormBase {
 
     $step_order = [];
     for ($i = 1; $i <= 3; $i++) {
-      $step_config = $config->get($this->stepNames[$i]);
+      $step_name = $this->stepNames[$i - 1];
+      $step_config = $config->get($step_name);
       if ($step_config['enabled']) {
-        $step_order[$i] = $step_config['order'];
+        $step_order[] = $step_config['order'];
       }
     }
-    $page_num = $form_state->get('page_num') ?? 1;
+
+    $page_name = array_search($page_num, $step_order);
+    $form_position = $this->stepNames[$page_name];
+
+    if ($page_name === FALSE) {
+      return $this->formFinish($form, $form_state);
+    }
+
     $form['#tree'] = TRUE;
 
-    $form_position = array_search($page_num, $step_order);
-    $form_state->set('page_num', $page_num);
-
-    switch ($form_position) {
-      case 1:
-        return $this->formProductSelection($form, $form_state);
-
-      case 2:
-        return $this->formDelivery($form, $form_state);
-
-      case 3:
-        return $this->formPayment($form, $form_state);
-
-      default:
-        return $this->formFinish($form, $form_state);
-    }
+    return match ($form_position) {
+      'Products' => $this->formProductSelection($form, $form_state),
+      'Delivery' => $this->formDelivery($form, $form_state),
+      'Payment' => $this->formPayment($form, $form_state),
+    };
   }
 
   /**
@@ -124,7 +121,7 @@ class CustomMultistepCheckoutForm extends FormBase {
    */
   public function formProductSelection(array $form, FormStateInterface $form_state): array {
     // Used in submit form.
-    $form_state->set('page_name', 'product');
+    $form_state->set('page_name', 'Products');
     $default_values = $form_state->getStorage();
 
     $form['description'] = [
@@ -143,7 +140,7 @@ class CustomMultistepCheckoutForm extends FormBase {
         '2' => $this->t('Drink'),
         '3' => $this->t('Other'),
       ],
-      '#default_value' => $default_values["page_product_values"]["type"] ?? NULL,
+      '#default_value' => $default_values["page_Products_values"]["type"] ?? NULL,
       '#required' => TRUE,
     ];
 
@@ -157,7 +154,7 @@ class CustomMultistepCheckoutForm extends FormBase {
    */
   public function formDelivery(array $form, FormStateInterface $form_state): array {
     // Used in submit form.
-    $form_state->set('page_name', 'delivery');
+    $form_state->set('page_name', 'Delivery');
     $default_values = $form_state->getStorage();
 
     $form['description'] = [
@@ -172,14 +169,14 @@ class CustomMultistepCheckoutForm extends FormBase {
       '#title' => $this->t('Country'),
       '#options' => [$this->t('Ukraine'), $this->t('Turkey'), $this->t('Poland')],
       '#description' => $this->t('Select your country'),
-      '#default_value' => $default_values["page_delivery_values"]["country"] ?? NULL,
+      '#default_value' => $default_values["page_Delivery_values"]["country"] ?? NULL,
       '#required' => TRUE,
     ];
     $form['city'] = [
       '#type' => 'select',
       '#title' => $this->t('City'),
       '#options' => [$this->t('Kherson'), $this->t('Lutsk'), $this->t('Kiev')],
-      '#default_value' => $default_values["page_delivery_values"]["city"] ?? NULL,
+      '#default_value' => $default_values["page_Delivery_values"]["city"] ?? NULL,
       '#description' => $this->t('Select your city'),
       '#required' => TRUE,
     ];
@@ -194,7 +191,7 @@ class CustomMultistepCheckoutForm extends FormBase {
    */
   public function formPayment(array $form, FormStateInterface $form_state): array {
     // Used in submit form.
-    $form_state->set('page_name', 'payment');
+    $form_state->set('page_name', 'Payment');
 
     $form['#id'] = 'custom-multistep-form-' . $form_state->get('page_num') ?? 1;
 
@@ -207,7 +204,7 @@ class CustomMultistepCheckoutForm extends FormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Card number'),
       '#required' => TRUE,
-      '#default_value' => $default_values["page_payment_values"]["number"] ?? NULL,
+      '#default_value' => $default_values["page_Payment_values"]["number"] ?? NULL,
       '#size' => 16,
       '#maxlength' => 16,
       '#minlength' => 15,
@@ -266,13 +263,13 @@ class CustomMultistepCheckoutForm extends FormBase {
     $summary = $this->t(
       'Your product: @product, delivery option: @delivery_option, @delivery_city, payment method: @payment_method, @card_month, @card_year, @secure_code',
       [
-        '@product' => $values["page_product_values"]["type"] ?? '',
-        '@secure_code' => $values["page_payment_values"]["secure_code"] ?? '',
-        '@card_month' => $values["page_payment_values"]["expiry_date"]["month"] ?? '',
-        '@card_year' => $values["page_payment_values"]["expiry_date"]["year"] ?? '',
-        '@delivery_option' => $values["page_delivery_values"]["country"] ?? '',
-        '@delivery_city' => $values["page_delivery_values"]["city"] ?? '',
-        '@payment_method' => $values["page_payment_values"]['card']["number"] ?? '',
+        '@product' => $values["page_Products_values"]["type"] ?? '',
+        '@secure_code' => $values["page_Payment_values"]["secure_code"] ?? '',
+        '@card_month' => $values["page_Payment_values"]["expiry_date"]["month"] ?? '',
+        '@card_year' => $values["page_Payment_values"]["expiry_date"]["year"] ?? '',
+        '@delivery_option' => $values["page_Delivery_values"]["country"] ?? '',
+        '@delivery_city' => $values["page_Delivery_values"]["city"] ?? '',
+        '@payment_method' => $values["page_Payment_values"]['card']["number"] ?? '',
       ]);
 
     $form['summary'] = [
