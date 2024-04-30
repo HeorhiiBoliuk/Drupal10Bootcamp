@@ -1,6 +1,9 @@
-step_1: null
-step_2: 1
-step_3: 1
-step_order_3: 3
-step_order_2: '2'
-step_order_1: null
+Products:
+  enabled: 1
+  order: '1'
+Delivery:
+  enabled: 1
+  order: '2'
+Payment:
+  enabled: 1
+  order: '3'

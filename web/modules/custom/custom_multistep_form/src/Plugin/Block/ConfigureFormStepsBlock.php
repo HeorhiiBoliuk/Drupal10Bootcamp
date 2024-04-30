@@ -12,13 +12,22 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'FormConfigureBlock' block.
+ * Provides a 'ConfigureFormStepsBlock' block.
  */
 #[Block(
-  id: "form_configure_block",
-  admin_label: new TranslatableMarkup("Configure Form Steps"),
+  id: "configure_form_steps_block",
+  admin_label: new TranslatableMarkup("Configure Multistep Form Steps"),
 )]
-class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class ConfigureFormStepsBlock extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Steps names.
+   */
+  protected $stepNames = [
+    1 => 'Products',
+    2 => 'Delivery',
+    3 => 'Payment',
+  ];
 
   /**
    * Constructor for FormConfigureBlock.
@@ -49,7 +58,7 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
    * {@inheritDoc}
    */
   public function build(): array {
-    return $this->formBuilder->getForm('\Drupal\custom_multistep_form\Form\CustomMultistepForm');
+    return $this->formBuilder->getForm('\Drupal\custom_multistep_form\Form\CustomMultistepCheckoutForm');
   }
 
   /**
@@ -57,6 +66,13 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
    */
   public function blockForm($form, FormStateInterface $form_state): array {
     $config = $this->configFactory->getEditable('custom_multistep_form.settings');
+    if ($config->isNew()) {
+      $config
+        ->set('Products', ['enabled' => 1, 'order' => '1'])
+        ->set('Delivery', ['enabled' => 1, 'order' => '2'])
+        ->set('Payment', ['enabled' => 1, 'order' => '3'])
+        ->save();
+    }
 
     $form['steps'] = [
       '#type' => 'details',
@@ -74,7 +90,9 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
 
     $active_steps_count = 0;
     for ($i = 1; $i <= 3; $i++) {
-      if ($config->get("step_$i")) {
+      $step_name = $this->stepNames[$i];
+      $step_config = $config->get($step_name);
+      if ($step_config['enabled']) {
         $active_steps_count++;
       }
     }
@@ -85,11 +103,16 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
     }
 
     for ($i = 1; $i <= 3; $i++) {
-      $step_weight = $config->get("step_order_$i");
-      $step_enabled = $config->get("step_$i");
+      $step_name = $this->stepNames[$i];
+      if ($this->configFactory->getEditable('custom_multistep_form.settings')) {
+        $step_config = $config->get($step_name);
+        $step_weight = $step_config['order'];
+        $step_enabled = $step_config['enabled'];
+      }
+      $form_state->set("step_name_$i", $this->stepNames[$i]);
 
       $form['steps']['step_order'][$i]['step'] = [
-        '#plain_text' => $this->t('Step @step', ['@step' => $i]),
+        '#plain_text' => $this->t('Step @step', ['@step' => $this->stepNames[$i]]),
       ];
       $form['steps']['step_order'][$i]['weight'] = [
         '#type' => 'select',
@@ -107,7 +130,7 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
 
       $form['steps']["step_$i"] = [
         '#type' => 'checkbox',
-        '#title' => $this->t('Enable step @step', ['@step' => $i]),
+        '#title' => $this->t('Enable step @step', ['@step' => $this->stepNames[$i]]),
         '#default_value' => $step_enabled ?? FALSE,
         '#access' => TRUE,
         '#ajax' => [
@@ -129,12 +152,16 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
    * {@inheritdoc}
    */
   public function blockSubmit($form, FormStateInterface $form_state): void {
+    $this->configFactory->getEditable('custom_multistep_form.settings')->delete();
     for ($i = 1; $i <= 3; $i++) {
+      $step_name = $form_state->get("step_name_$i");
       $step_order = $form_state->getValue(['steps', 'step_order', $i, 'weight']);
       $enabled_steps = $form_state->getValue(['steps', "step_$i"]);
       $this->configFactory->getEditable('custom_multistep_form.settings')
-        ->set("step_order_$i", $step_order)
-        ->set("step_$i", $enabled_steps)
+        ->set($step_name, [
+          "enabled" => $enabled_steps,
+          "order" => $step_order,
+        ])
         ->save();
     }
   }
@@ -156,8 +183,10 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
 
     $active_steps_count = 0;
     for ($i = 1; $i <= 3; $i++) {
+      $step_name = $this->stepNames[$i];
+      $step_config = $config->get($step_name);
       $form["settings"]['steps']['step_order'][$i]['weight']['#options'] = [];
-      if ($config->get("step_$i")) {
+      if ($step_config['enabled']) {
         $active_steps_count++;
       }
     }
@@ -166,12 +195,16 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
 
     for ($i = 1; $i <= 3; $i++) {
       $step_status = $complete_form['settings']['steps']["step_$i"]['#value'];
+      $step_name = $this->stepNames[$i];
+      $step_config = $config->get($step_name);
 
       if ($step_status == 0) {
-        if ($config->get("step_$i")) {
+        if ($step_config['enabled']) {
           $config
-            ->set("step_$i", NULL)
-            ->set("step_order_$i", NULL)
+            ->set($step_name, [
+              "enabled" => NULL,
+              "order" => NULL,
+            ])
             ->save();
           $changed = TRUE;
           $form["settings"]["steps"]["step_order"][$i]["weight"]["#access"] = FALSE;
@@ -180,9 +213,12 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
         }
       }
       elseif ($step_status == 1) {
-        if (!$config->get("step_$i")) {
+        if (!$step_config['enabled']) {
           $config
-            ->set("step_$i", 1)
+            ->set($step_name, [
+              "enabled" => 1,
+              "order" => $i,
+            ])
             ->save();
           $changed = TRUE;
           $form["settings"]['steps']['step_order'][$i]['weight']['#access'] = TRUE;
@@ -200,7 +236,9 @@ class FormConfigureBlock extends BlockBase implements ContainerFactoryPluginInte
 
     if ($changed) {
       for ($i = 1; $i <= 3; $i++) {
-        $step_enabled = $config->get("step_$i");
+        $step_name = $this->stepNames[$i];
+        $step_config = $config->get($step_name);
+        $step_enabled = $step_config['enabled'];
         if ($step_enabled) {
           for ($j = 1; $j <= $active_steps_count; $j++) {
             $form["settings"]['steps']['step_order'][$i]['weight']['#options'][$j] = $this->t('@step', ['@step' => $j]);

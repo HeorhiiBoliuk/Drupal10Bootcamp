@@ -10,7 +10,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Creates a custom multistep checkout form.
  */
-class CustomMultistepForm extends FormBase {
+class CustomMultistepCheckoutForm extends FormBase {
+
+  /**
+   * Steps names.
+   */
+  protected $stepNames = [
+    1 => 'Products',
+    2 => 'Delivery',
+    3 => 'Payment',
+  ];
 
   /**
    * Construct for form.
@@ -23,7 +32,7 @@ class CustomMultistepForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container): CustomMultistepForm|static {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
     );
@@ -33,7 +42,7 @@ class CustomMultistepForm extends FormBase {
    * {@inheritDoc}
    */
   public function getFormId() {
-    return 'custom_multistep_form';
+    return 'custom_multistep_checkout_form';
   }
 
   /**
@@ -44,12 +53,21 @@ class CustomMultistepForm extends FormBase {
     $finished = $form_state->getStorage()['finished'] ?? 0;
     $enabled_steps = 0;
     for ($i = 1; $i <= 3; $i++) {
-      $enabled = $config->get("step_$i");
-      if ($enabled != 0) {
+      $step_config = $config->get($this->stepNames[$i]);
+      if ($step_config['enabled']) {
         $enabled_steps++;
       }
     }
-    $enabled_steps++;
+    /*
+     * The last finished step is always enabled.
+     * So i`m always adding the 1 to step collection if the steps is existing.
+     */
+    if ($enabled_steps > 0) {
+      $enabled_steps++;
+    }
+    else {
+      return [];
+    }
 
     $page_num = $form_state->get('page_num') ?? 1;
     $progress_percentage = ($page_num / $enabled_steps) * 100;
@@ -75,8 +93,9 @@ class CustomMultistepForm extends FormBase {
 
     $step_order = [];
     for ($i = 1; $i <= 3; $i++) {
-      if ($config->get('step_' . $i)) {
-        $step_order[$i] = $config->get('step_order_' . $i);
+      $step_config = $config->get($this->stepNames[$i]);
+      if ($step_config['enabled']) {
+        $step_order[$i] = $step_config['order'];
       }
     }
     $page_num = $form_state->get('page_num') ?? 1;
@@ -104,8 +123,8 @@ class CustomMultistepForm extends FormBase {
    * Form step: Product selection.
    */
   public function formProductSelection(array $form, FormStateInterface $form_state): array {
-    $page_name = $form_state->set('page_name', 'product');
-    $page_num = $form_state->get('page_num') ?? 1;
+    // Used in submit form.
+    $form_state->set('page_name', 'product');
     $default_values = $form_state->getStorage();
 
     $form['description'] = [
@@ -120,42 +139,15 @@ class CustomMultistepForm extends FormBase {
       '#title' => $this->t('Product'),
       '#description' => $this->t('Select product type.'),
       '#options' => [
-        '1' => 'Food',
-        '2' => 'Drink',
-        '3' => 'Other',
+        '1' => $this->t('Food'),
+        '2' => $this->t('Drink'),
+        '3' => $this->t('Other'),
       ],
       '#default_value' => $default_values["page_product_values"]["type"] ?? NULL,
       '#required' => TRUE,
     ];
 
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-
-    if ($page_num != 1) {
-      $form['actions']['back'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Back'),
-        '#button_type' => 'primary',
-        '#submit' => ['::pageBack'],
-        '#limit_validation_errors' => [],
-        '#ajax' => [
-          'callback' => '::ajaxCallback',
-          'wrapper' => 'custom-multistep-form-' . $page_num,
-        ],
-      ];
-    }
-
-    $form['actions']['next'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Next'),
-      '#button_type' => 'primary',
-      '#submit' => ['::submitForm'],
-      '#ajax' => [
-        'callback' => '::ajaxCallback',
-        'wrapper' => 'custom-multistep-form-' . $page_num,
-      ],
-    ];
+    $this->actionsForm($form, $form_state);
 
     return $form;
   }
@@ -164,8 +156,8 @@ class CustomMultistepForm extends FormBase {
    * Form step: Delivery options.
    */
   public function formDelivery(array $form, FormStateInterface $form_state): array {
-    $page_num = $form_state->get('page_num') ?? 1;
-    $page_name = $form_state->set('page_name', 'delivery');
+    // Used in submit form.
+    $form_state->set('page_name', 'delivery');
     $default_values = $form_state->getStorage();
 
     $form['description'] = [
@@ -178,7 +170,7 @@ class CustomMultistepForm extends FormBase {
     $form['country'] = [
       '#type' => 'select',
       '#title' => $this->t('Country'),
-      '#options' => ['Ukraine', 'Turkey', 'Poland'],
+      '#options' => [$this->t('Ukraine'), $this->t('Turkey'), $this->t('Poland')],
       '#description' => $this->t('Select your country'),
       '#default_value' => $default_values["page_delivery_values"]["country"] ?? NULL,
       '#required' => TRUE,
@@ -186,40 +178,13 @@ class CustomMultistepForm extends FormBase {
     $form['city'] = [
       '#type' => 'select',
       '#title' => $this->t('City'),
-      '#options' => ['Kherson', 'Lutsk', 'Kiev'],
+      '#options' => [$this->t('Kherson'), $this->t('Lutsk'), $this->t('Kiev')],
       '#default_value' => $default_values["page_delivery_values"]["city"] ?? NULL,
       '#description' => $this->t('Select your city'),
       '#required' => TRUE,
     ];
 
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-
-    if ($page_num != 1) {
-      $form['actions']['back'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Back'),
-        '#button_type' => 'primary',
-        '#limit_validation_errors' => [],
-        '#submit' => ['::pageBack'],
-        '#ajax' => [
-          'callback' => '::ajaxCallback',
-          'wrapper' => 'custom-multistep-form-' . $page_num,
-        ],
-      ];
-    }
-
-    $form['actions']['next'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Next'),
-      '#button_type' => 'primary',
-      '#submit' => ['::submitForm'],
-      '#ajax' => [
-        'callback' => '::ajaxCallback',
-        'wrapper' => 'custom-multistep-form-' . $page_num,
-      ],
-    ];
+    $this->actionsForm($form, $form_state);
 
     return $form;
   }
@@ -228,8 +193,8 @@ class CustomMultistepForm extends FormBase {
    * Form step: Payment.
    */
   public function formPayment(array $form, FormStateInterface $form_state): array {
-    $page_name = $form_state->set('page_name', 'payment');
-    $page_num = $form_state->get('page_num') ?? 1;
+    // Used in submit form.
+    $form_state->set('page_name', 'payment');
 
     $form['#id'] = 'custom-multistep-form-' . $form_state->get('page_num') ?? 1;
 
@@ -250,7 +215,7 @@ class CustomMultistepForm extends FormBase {
     ];
     $form['expiry_date'] = [
       '#type' => 'fieldset',
-      '#title' => t('Expiry date'),
+      '#title' => $this->t('Expiry date'),
       '#weight' => 3,
       '#required' => TRUE,
     ];
@@ -263,20 +228,20 @@ class CustomMultistepForm extends FormBase {
     $year = (int) date('Y');
     $form['expiry_date']['month'] = [
       '#type' => 'select',
-      '#title' => t('Month'),
+      '#title' => $this->t('Month'),
       '#options' => $months,
       '#attributes' => ['class' => ['expiry-date']],
     ];
     $form['expiry_date']['year'] = [
       '#type' => 'select',
-      '#title' => t('Year'),
+      '#title' => $this->t('Year'),
       '#default_value' => $year + 1,
       '#options' => array_combine(range($year, $year + 8), range($year, $year + 8)),
     ];
 
     $form['secure_code'] = [
       '#type' => 'textfield',
-      '#title' => t('Secure code'),
+      '#title' => $this->t('Secure code'),
       '#weight' => 2,
       '#size' => 3,
       '#maxlength' => 3,
@@ -284,34 +249,7 @@ class CustomMultistepForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-
-    if ($page_num != 1) {
-      $form['actions']['back'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Back'),
-        '#button_type' => 'primary',
-        '#limit_validation_errors' => [],
-        '#submit' => ['::pageBack'],
-        '#ajax' => [
-          'callback' => '::ajaxCallback',
-          'wrapper' => 'custom-multistep-form-' . $page_num,
-        ],
-      ];
-    }
-
-    $form['actions']['next'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Next'),
-      '#button_type' => 'primary',
-      '#submit' => ['::submitForm'],
-      '#ajax' => [
-        'callback' => '::ajaxCallback',
-        'wrapper' => 'custom-multistep-form-' . $page_num,
-      ],
-    ];
+    $this->actionsForm($form, $form_state);
 
     return $form;
   }
@@ -320,7 +258,8 @@ class CustomMultistepForm extends FormBase {
    * Form step: Finish.
    */
   public function formFinish(array $form, FormStateInterface $form_state): array {
-    $page_name = $form_state->set('page_name', 'payment');
+    // Used in submit form.
+    $form_state->set('page_name', 'payment');
 
     $values = $form_state->getStorage();
 
@@ -406,6 +345,44 @@ class CustomMultistepForm extends FormBase {
     $step_number = $triggered['#value']->getArguments()['@step'];
     $form_state->set('page_num', $step_number);
     $form_state->setRebuild(TRUE);
+  }
+
+  /**
+   * Return the form with actions for forms.
+   */
+  public function actionsForm(array &$form, FormStateInterface $form_state): array {
+    $page_num = $form_state->get('page_num') ?? 1;
+
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+
+    if ($page_num != 1) {
+      $form['actions']['back'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Back'),
+        '#button_type' => 'primary',
+        '#limit_validation_errors' => [],
+        '#submit' => ['::pageBack'],
+        '#ajax' => [
+          'callback' => '::ajaxCallback',
+          'wrapper' => 'custom-multistep-form-' . $page_num,
+        ],
+      ];
+    }
+
+    $form['actions']['next'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Next'),
+      '#button_type' => 'primary',
+      '#submit' => ['::submitForm'],
+      '#ajax' => [
+        'callback' => '::ajaxCallback',
+        'wrapper' => 'custom-multistep-form-' . $page_num,
+      ],
+    ];
+
+    return $form;
   }
 
 }

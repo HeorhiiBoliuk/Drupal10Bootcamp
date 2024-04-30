@@ -1,3 +1,0 @@
-custom_multistep_form.progress-bar:
-  js:
-    js/progress-bar.js: {}

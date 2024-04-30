@@ -29,6 +29,7 @@ module:
   cron_example: 0
   custom_location: 0
   custom_map_plugin: 0
+  custom_multistep_form: 0
   datetime: 0
   dblog: 0
   dbtng_example: 0
