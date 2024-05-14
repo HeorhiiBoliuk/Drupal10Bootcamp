@@ -1,0 +1,9 @@
+Products:
+  enabled: 1
+  order: '1'
+Delivery:
+  enabled: 1
+  order: '2'
+Payment:
+  enabled: 1
+  order: '3'
